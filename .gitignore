@@ -1,0 +1,21 @@
+# Python virtual environment
+venv/
+
+# Streamlit cache
+.streamlit/
+
+# Data files (keep if you want to version control sample data)
+data/*.json
+
+# OS files
+*.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter notebooks
+*.ipynb
+
+# VSCode settings
+.vscode/
