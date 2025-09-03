@@ -5,7 +5,7 @@ venv/
 .streamlit/
 
 # Data files (keep if you want to version control sample data)
-data/*.json
+
 
 # OS files
 *.DS_Store
