@@ -1,3 +1,19 @@
+---
+title: "Cricket Stats Explorer"
+emoji: 🏏
+colorFrom: yellow
+colorTo: green
+sdk: docker
+python_version: "3.10"
+app_file: streamlit_app.py
+pinned: false
+---
+
+# Cricket Stats Explorer 🏏
+
+This is a Streamlit app deployed on HuggingFace Spaces to explore cricket statistics with
+True Average and True Strike Rate visualizations.
+
 # 📊 Cricket Stats Analysis App – Requirements
 
 ## 🎯 Project Idea
