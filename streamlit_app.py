@@ -23,7 +23,7 @@ st.title("🏏 Cricket Stats Analysis App")
 # -----------------------------
 # Load Data
 # -----------------------------
-DATA_FOLDER = "/home/sandeep/Desktop/cric_stats/ipl_male_json"  # Path to your JSON files
+DATA_FOLDER = "data"  # Path to your JSON files
 json_folder = DATA_FOLDER
 
 try:
