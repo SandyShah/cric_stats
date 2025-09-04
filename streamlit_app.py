@@ -16,9 +16,23 @@ from utils.stats_processor import compute_basic_stats, compute_true_batting_stat
 from utils.visualizer import (
     plot_runs_per_match,
     plot_top_players,
-    plot_true_batting_stats,
-    plot_match_level_true_batting_stats
+    plot_true_batting_stats
 )
+
+st.markdown('</div></div>', unsafe_allow_html=True)
+
+# Add axis selection dropdowns
+st.markdown("### Plot Configuration")
+stat_options = [
+    "Runs", "Balls", "Strike Rate", "Average", "Innings",
+    "4s", "6s", "DO Runs", "DO Balls", "DO Strike Rate",
+    "DO Average", "DO 4s", "DO 6s", "DO %"
+]
+col_plot1, col_plot2 = st.columns(2)
+with col_plot1:
+    x_axis = st.selectbox("X-Axis", stat_options, index=0)
+with col_plot2:
+    y_axis = st.selectbox("Y-Axis", stat_options, index=2)
 
 # Sidebar navigation for multipage
 st.sidebar.title("Navigation")
@@ -688,7 +702,78 @@ elif page == "Batting Stats":
                 # Format percentages after transposing
                 if "DO %" in df_summary_transposed.index:
                     df_summary_transposed.loc["DO %"] = df_summary_transposed.loc["DO %"].str.rstrip('%').astype(float).round(2).astype(str) + '%'
+                    
+                    # Create scatter plot if we have players
+                    if filtered_players and len(filtered_players) > 0:
+                        st.markdown("### Player Comparison Plot")
+                        
+                        # Create column mapping for plot
+                        plot_column_mapping = {
+                            "Runs": "Total Runs",
+                            "Balls": "Total Balls",
+                            "Strike Rate": "Strike Rate",
+                            "Average": "Average",
+                            "Innings": "Innings",
+                            "4s": "4s",
+                            "6s": "6s",
+                            "DO Runs": "DO Runs",
+                            "DO Balls": "DO Balls",
+                            "DO Strike Rate": "DO_SR",
+                            "DO Average": "DO_Average",
+                            "DO 4s": "DO 4s",
+                            "DO 6s": "DO 6s",
+                            "DO %": "DO_%"
+                        }
+                        
+                        # Get the actual column names
+                        x_col = plot_column_mapping[x_axis]
+                        y_col = plot_column_mapping[y_axis]
+                        
+                        # Create scatter plot using plotly
+                        import plotly.express as px
+                        
+                        # Prepare data for plotting
+                        plot_df = df_summary.copy()
+                        
+                        # Convert percentage strings to float if necessary
+                        if "%" in x_col:
+                            plot_df[x_col] = plot_df[x_col].str.rstrip('%').astype(float)
+                        if "%" in y_col:
+                            plot_df[y_col] = plot_df[y_col].str.rstrip('%').astype(float)
+                        
+                        # Create bubble plot
+                        fig = px.scatter(
+                            plot_df,
+                            x=x_col,
+                            y=y_col,
+                            text=plot_df.index,  # Player names
+                            size="Total Runs",    # Bubble size based on total runs
+                            color=plot_df.index,  # Different color for each player
+                            title=f"{y_axis} vs {x_axis}",
+                            labels={
+                                x_col: x_axis,
+                                y_col: y_axis
+                            },
+                            hover_data=["Total Runs", "Innings", "Strike Rate", "Average"]  # Additional info on hover
+                        )
+                        
+                        # Update layout
+                        fig.update_traces(
+                            textposition='top center',
+                            marker=dict(size=20),
+                            textfont=dict(size=10)
+                        )
+                        fig.update_layout(
+                            showlegend=True,
+                            height=600,
+                            xaxis_title=x_axis,
+                            yaxis_title=y_axis
+                        )
+                        
+                        # Display the plot
+                        st.plotly_chart(fig, use_container_width=True)
                 
+                # Display the summary dataframe
                 st.dataframe(
                     df_summary_transposed,
                     use_container_width=True,
