@@ -24,10 +24,29 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 # Add axis selection dropdowns
 st.markdown("### Plot Configuration")
 stat_options = [
-    "Runs", "Balls", "Strike Rate", "Average", "Innings",
+    "Total Runs", "Total Balls", "Strike Rate", "Average", "Innings",
     "4s", "6s", "DO Runs", "DO Balls", "DO Strike Rate",
     "DO Average", "DO 4s", "DO 6s", "DO %"
 ]
+
+# Create mapping for display names to actual column names
+plot_column_mapping = {
+    "Total Runs": "Total Runs",
+    "Total Balls": "Total Balls",
+    "Strike Rate": "Strike Rate",
+    "Average": "Average",
+    "Innings": "Innings",
+    "4s": "4s",
+    "6s": "6s",
+    "DO Runs": "DO Runs",
+    "DO Balls": "DO Balls",
+    "DO Strike Rate": "DO Strike Rate",
+    "DO Average": "DO Average",
+    "DO 4s": "DO 4s",
+    "DO 6s": "DO 6s",
+    "DO %": "DO %"
+}
+
 col_plot1, col_plot2 = st.columns(2)
 with col_plot1:
     x_axis = st.selectbox("X-Axis", stat_options, index=0)
@@ -285,10 +304,20 @@ elif page == "Batting Stats":
     if selected_tournament != "All":
         filtered_matches = [m for m in filtered_matches if m["tournament"] == selected_tournament]
 
+    # Get all available years
     years = sorted(list(set(m["year"] for m in filtered_matches if m["year"])))
-    selected_year = st.sidebar.selectbox("Select Year", ["All"] + [str(y) for y in years])
-    if selected_year != "All":
-        filtered_matches = [m for m in filtered_matches if str(m["year"]) == selected_year]
+    # Convert years to strings for selection
+    year_options = [str(y) for y in years]
+    # Allow multiple year selection
+    selected_years = st.sidebar.multiselect(
+        "Select Year(s)",
+        options=year_options,
+        default=[],
+        help="Select multiple years by clicking. Leave empty to see all years."
+    )
+    # Filter matches if years are selected
+    if selected_years:
+        filtered_matches = [m for m in filtered_matches if str(m["year"]) in selected_years]
 
     all_teams = sorted(list(set(team for m in filtered_matches for team in m["teams"])))
     col1, col2 = st.sidebar.columns(2)
@@ -666,7 +695,7 @@ elif page == "Batting Stats":
                         "Matches": player_matches.get(player, 0),
                         "Innings": player_innings.get(player, {}).get('count', 0),
                         "Not Outs": player_innings.get(player, {}).get('count', 0) - player_dismissals.get(player, {}).get('count', 0),
-                        "Dismissal Details": player_dismissals.get(player, {}).get('details', []),
+                        "Dismissals": player_dismissals.get(player, {}).get('count', 0),
                         "Total Runs": player_runs.get(player, 0),
                         "Total Balls": player_balls.get(player, 0),
                         "Strike Rate": round((player_runs.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2),
@@ -707,27 +736,9 @@ elif page == "Batting Stats":
                     if filtered_players and len(filtered_players) > 0:
                         st.markdown("### Player Comparison Plot")
                         
-                        # Create column mapping for plot
-                        plot_column_mapping = {
-                            "Runs": "Total Runs",
-                            "Balls": "Total Balls",
-                            "Strike Rate": "Strike Rate",
-                            "Average": "Average",
-                            "Innings": "Innings",
-                            "4s": "4s",
-                            "6s": "6s",
-                            "DO Runs": "DO Runs",
-                            "DO Balls": "DO Balls",
-                            "DO Strike Rate": "DO_SR",
-                            "DO Average": "DO_Average",
-                            "DO 4s": "DO 4s",
-                            "DO 6s": "DO 6s",
-                            "DO %": "DO_%"
-                        }
-                        
-                        # Get the actual column names
-                        x_col = plot_column_mapping[x_axis]
-                        y_col = plot_column_mapping[y_axis]
+                        # Use the selected axis values directly as they now match the DataFrame columns
+                        x_col = x_axis
+                        y_col = y_axis
                         
                         # Create scatter plot using plotly
                         import plotly.express as px
