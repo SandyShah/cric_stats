@@ -279,10 +279,15 @@ elif page == "Batting Stats":
         filtered_matches = [m for m in filtered_matches if m["date"] == selected_date]
 
     match_options = [m["match_name"] for m in filtered_matches]
-    selected_matches = st.sidebar.multiselect("Select Match(es)", match_options, default=match_options[:1])
+    selected_matches = st.sidebar.multiselect("Select Match(es)", match_options)
+    
+    # If specific matches are selected, filter to just those matches
     if selected_matches:
         filtered_matches = [m for m in filtered_matches if m["match_name"] in selected_matches]
-
+        st.markdown(f"**Showing stats for selected {len(selected_matches)} matches**")
+    else:
+        st.markdown(f"**Showing aggregated stats for all {len(filtered_matches)} matches matching filters**")
+    
     player_filter = st.sidebar.text_input("Filter by Player (optional)")
 
     # Load and aggregate data for selected matches
@@ -346,34 +351,245 @@ elif page == "Batting Stats":
                     st.warning(f"Error processing match count for {match['match_name']}: {str(e)}")
             
             # Create DataFrame with players as columns
-            players = sorted(player_runs.keys())
-            data = {
-                player: [
-                    player_matches.get(player, 0),  # Matches played
-                    player_runs[player]  # Runs
+            all_players = sorted(player_runs.keys())  # Alphabetically sorted players
+            
+            # Create columns for main content and player selector
+            col1, col2 = st.columns([7, 3])  # 70% main content, 30% selector
+            
+            with col2:
+                # Add custom CSS for fixed positioning and scrolling
+                st.markdown("""
+                    <style>
+                        /* Container styling */
+                        .player-selector-wrapper {
+                            position: fixed;
+                            right: 2rem;
+                            top: 100px;
+                            width: 22%;
+                            background: white;
+                            z-index: 1000;
+                            border-radius: 4px;
+                            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                        }
+                        
+                        .player-selector {
+                            border: 1px solid #e0e0e0;
+                            border-radius: 4px;
+                            background-color: white;
+                        }
+                        
+                        /* Search box styling */
+                        .search-box {
+                            padding: 8px;
+                            border-bottom: 1px solid #e0e0e0;
+                        }
+                        
+                        .search-box input {
+                            width: 100%;
+                            padding: 5px;
+                            border: 1px solid #ddd;
+                            border-radius: 4px;
+                        }
+                        
+                        /* Header styling */
+                        .selector-header {
+                            padding: 8px 12px;
+                            background-color: #f8f9fa;
+                            border-bottom: 1px solid #e0e0e0;
+                            font-weight: bold;
+                            font-size: 14px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        
+                        /* Checkbox list container */
+                        .checkbox-list {
+                            max-height: 400px;
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            padding: 0;
+                            margin: 0;
+                            background: white;
+                        }
+                        
+                        /* Custom checkbox styling */
+                        .stCheckbox {
+                            padding: 4px 12px !important;
+                            margin: 0 !important;
+                            border-bottom: 1px solid #f0f0f0;
+                        }
+                        
+                        .stCheckbox:hover {
+                            background-color: #f8f9fa;
+                        }
+                        
+                        /* Make checkboxes more compact */
+                        .stCheckbox > label {
+                            font-size: 13px !important;
+                            padding: 2px 0 !important;
+                        }
+                        
+                        /* Scrollbar styling */
+                        .checkbox-list::-webkit-scrollbar {
+                            width: 6px;
+                        }
+                        
+                        .checkbox-list::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                        }
+                        
+                        .checkbox-list::-webkit-scrollbar-thumb {
+                            background: #888;
+                            border-radius: 3px;
+                        }
+                        
+                        .checkbox-list::-webkit-scrollbar-thumb:hover {
+                            background: #555;
+                        }
+                        
+                        /* Keep select all checkbox always visible */
+                        .select-all-option {
+                            position: sticky;
+                            top: 0;
+                            background: white;
+                            padding: 8px 12px;
+                            border-bottom: 1px solid #e0e0e0;
+                            z-index: 1;
+                        }
+                    </style>
+                """, unsafe_allow_html=True)
+
+                # Start the fixed position container
+                st.markdown('<div class="player-selector-wrapper">', unsafe_allow_html=True)
+                st.markdown('<div class="player-selector">', unsafe_allow_html=True)
+                
+                # Header with title
+                st.markdown('<div class="selector-header">Player Selection</div>', unsafe_allow_html=True)
+                
+                # Search box
+                st.markdown('<div class="search-box">', unsafe_allow_html=True)
+                player_search = st.text_input("", placeholder="Search players...", label_visibility="collapsed")
+                st.markdown('</div>', unsafe_allow_html=True)
+                
+                                # Process comma-separated search and filter players
+                filtered_players = []
+                if player_search:
+                    # Split search terms by comma and strip whitespace
+                    search_names = [name.strip() for name in player_search.split(',')]
+                    
+                    # Create a case-insensitive map of player names
+                    player_map = {p.lower(): p for p in all_players}
+                    
+                    # Find exact matches first, then partial matches for each search term
+                    for search_name in search_names:
+                        search_lower = search_name.lower()
+                        # Try exact match first
+                        exact_matches = [
+                            player_map[name] for name in player_map
+                            if search_lower == name
+                        ]
+                        # Then try partial matches if no exact match found
+                        if not exact_matches:
+                            matches = [
+                                player_map[name] for name in player_map
+                                if search_lower in name
+                            ]
+                            filtered_players.extend(matches)
+                        else:
+                            filtered_players.extend(exact_matches)
+                else:
+                    filtered_players = sorted(all_players)
+                
+                # Remove duplicates while preserving order
+                filtered_players = list(dict.fromkeys(filtered_players))
+                
+                st.markdown('</div></div>', unsafe_allow_html=True)
+
+            with col1:
+                if filtered_players:
+                    # Create DataFrame with players as rows and stats as columns
+                    data = []
+                    for player in filtered_players:
+                        data.append({
+                            'Player': player,
+                            'Matches': player_matches.get(player, 0),
+                            'Runs': player_runs.get(player, 0),
+                            'Average': player_runs.get(player, 0) / max(player_matches.get(player, 1), 1),  # Runs per match
+                        })
+                    
+                    df = pd.DataFrame(data)
+                    
+                    # Format the Average column
+                    df['Average'] = df['Average'].round(2)
+                    
+                    # Sort by Runs in descending order if no specific search, otherwise keep search order
+                    if not player_search:
+                        df = df.sort_values('Runs', ascending=False)
+                    
+                    # Add serial number
+                    df.insert(0, 'Sr.', range(1, len(df) + 1))
+                    
+                    # Display the table with custom formatting
+                    st.markdown("""
+                        <style>
+                            .dataframe {
+                                font-size: 14px;
+                                text-align: left;
+                            }
+                            .dataframe thead tr th {
+                                text-align: left;
+                                background-color: #f8f9fa;
+                                padding: 8px !important;
+                            }
+                            .dataframe tbody tr td {
+                                text-align: left;
+                                padding: 8px !important;
+                            }
+                        </style>
+                    """, unsafe_allow_html=True)
+                    
+                    st.dataframe(
+                        df.set_index(['Sr.', 'Player']),  # Multi-index with Sr. and Player
+                        use_container_width=True,
+                        height=min(len(filtered_players) * 35 + 38, 400)  # Adjust height based on number of rows
+                    )
+                
+                # Get selected players from checkbox states
+                selected_players = [
+                    player for player in filtered_players
+                    if st.session_state.player_checkboxes.get(f"checkbox_{player}", False) or select_all
                 ]
-                for player in players
-            }
             
-            df = pd.DataFrame(data, index=["Matches Played", "Runs Scored"])
-            
-            # Transpose for sorting
-            df_sorted = df.T
-            df_sorted = df_sorted.sort_values(by="Runs Scored", ascending=False)
-            df = df_sorted.T
-            
-            # Display summary of total matches
-            st.markdown(f"**Analysis based on {len(filtered_matches)} matches**")
-            
-            # Display the table
-            st.subheader("Batting Stats Table")
-            st.dataframe(df)
-            
-            # Add a summary of matches included
-            st.markdown("---")
-            st.markdown("**Matches included in analysis:**")
-            for match in filtered_matches:
-                st.markdown(f"- {match['match_name']} ({match['date']})")
+            with col1:
+                # Filter data for selected players
+                data = {
+                    player: [
+                        player_matches.get(player, 0),  # Matches played
+                        player_runs[player]  # Runs
+                    ]
+                    for player in selected_players
+                }
+                
+                df = pd.DataFrame(data, index=["Matches Played", "Runs Scored"])
+                
+                # Transpose for sorting
+                df_sorted = df.T
+                df_sorted = df_sorted.sort_values(by="Runs Scored", ascending=False)
+                df = df_sorted.T
+                
+                # Display summary of total matches
+                st.markdown(f"**Analysis based on {len(filtered_matches)} matches**")
+                
+                # Display the table
+                st.subheader("Batting Stats Table")
+                st.dataframe(df)
+                
+                # Add a summary of matches included
+                st.markdown("---")
+                st.markdown("**Matches included in analysis:**")
+                for match in filtered_matches:
+                    st.markdown(f"- {match['match_name']} ({match['date']})")
         else:
             st.info("No batting data available for selected filters.")
     else:
