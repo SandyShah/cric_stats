@@ -1,25 +1,23 @@
-import streamlit as st
-import pandas as pd
-import os
-import json
-
-# Sidebar navigation for multipage
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Match Stats", "Batting Stats"])
-
-from utils.data_loader import load_json_files, load_selected_dataset, get_match_info
-from utils.stats_processor import compute_basic_stats, compute_true_batting_stats, compute_match_level_true_batting_stats
-from utils.visualizer import plot_runs_per_match, plot_top_players, plot_true_batting_stats, plot_match_level_true_batting_stats
-
 # -----------------------------
 # Streamlit Page Config
 # -----------------------------
+import streamlit as st
 st.set_page_config(
     page_title="Cricket Stats Analysis",
     page_icon="🏏",
     layout="wide"
 )
 
+import pandas as pd
+import os
+import json
+from utils.data_loader import load_json_files, load_selected_dataset, get_match_info
+from utils.stats_processor import compute_basic_stats, compute_true_batting_stats, compute_match_level_true_batting_stats
+from utils.visualizer import plot_runs_per_match, plot_top_players, plot_true_batting_stats, plot_match_level_true_batting_stats
+
+# Sidebar navigation for multipage
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Match Stats", "Batting Stats"])
 
 if page == "Match Stats":
     st.title("🏏 Cricket Stats Analysis App")
@@ -403,52 +401,6 @@ elif page == "Batting Stats":
                             align-items: center;
                         }
                         
-                        /* Checkbox list container */
-                        .checkbox-list {
-                            max-height: 400px;
-                            overflow-y: auto;
-                            overflow-x: hidden;
-                            padding: 0;
-                            margin: 0;
-                            background: white;
-                        }
-                        
-                        /* Custom checkbox styling */
-                        .stCheckbox {
-                            padding: 4px 12px !important;
-                            margin: 0 !important;
-                            border-bottom: 1px solid #f0f0f0;
-                        }
-                        
-                        .stCheckbox:hover {
-                            background-color: #f8f9fa;
-                        }
-                        
-                        /* Make checkboxes more compact */
-                        .stCheckbox > label {
-                            font-size: 13px !important;
-                            padding: 2px 0 !important;
-                        }
-                        
-                        /* Scrollbar styling */
-                        .checkbox-list::-webkit-scrollbar {
-                            width: 6px;
-                        }
-                        
-                        .checkbox-list::-webkit-scrollbar-track {
-                            background: #f1f1f1;
-                        }
-                        
-                        .checkbox-list::-webkit-scrollbar-thumb {
-                            background: #888;
-                            border-radius: 3px;
-                        }
-                        
-                        .checkbox-list::-webkit-scrollbar-thumb:hover {
-                            background: #555;
-                        }
-                        
-                        /* Keep select all checkbox always visible */
                         .select-all-option {
                             position: sticky;
                             top: 0;
@@ -554,12 +506,6 @@ elif page == "Batting Stats":
                         use_container_width=True,
                         height=min(len(filtered_players) * 35 + 38, 400)  # Adjust height based on number of rows
                     )
-                
-                # Get selected players from checkbox states
-                selected_players = [
-                    player for player in filtered_players
-                    if st.session_state.player_checkboxes.get(f"checkbox_{player}", False) or select_all
-                ]
             
             with col1:
                 # Filter data for selected players
@@ -568,7 +514,7 @@ elif page == "Batting Stats":
                         player_matches.get(player, 0),  # Matches played
                         player_runs[player]  # Runs
                     ]
-                    for player in selected_players
+                    for player in filtered_players
                 }
                 
                 df = pd.DataFrame(data, index=["Matches Played", "Runs Scored"])
