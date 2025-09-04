@@ -90,9 +90,6 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
 def compute_match_level_true_batting_stats(dataset):
     """
     Compute true batting stats at match level.
-    First calculates stats for all players, then identifies top 6 performers,
-    and finally calculates true stats using top 6 as benchmark.
-    
     True average = ((player_avg / top6_avg) - 1) * 100
     True strike rate = ((player_sr / top6_sr) - 1) * 100
 
@@ -104,9 +101,14 @@ def compute_match_level_true_batting_stats(dataset):
     innings_data = dataset.get('innings', [])
     match_info = dataset.get('info', {})
 
+    # Get players for each team (assume first 6 are top-order)
+    team_players = {}
+    for team, players in match_info.get('players', {}).items():
+        team_players[team] = players[:6]  # Top 6 batters
+
     # Track stats for each player in this match
     player_stats = defaultdict(lambda: {
-        'runs': 0, 'balls': 0, 'outs': 0, 'team': '', 'average': 0, 'strike_rate': 0
+        'runs': 0, 'balls': 0, 'outs': 0, 'team': ''
     })
 
     # Process each innings
@@ -129,37 +131,16 @@ def compute_match_level_true_batting_stats(dataset):
                         if wicket.get('player_out') == batter:
                             player_stats[batter]['outs'] += 1
 
-    # Calculate initial stats for all players
-    all_players_stats = []
-    for player, stats in player_stats.items():
-        if stats['balls'] > 0:  # Only include players who batted
-            avg = stats['runs'] / stats['outs'] if stats['outs'] > 0 else stats['runs']
-            sr = (stats['runs'] / stats['balls']) * 100
-            stats['average'] = avg
-            stats['strike_rate'] = sr
-            all_players_stats.append({
-                'player': player,
-                'team': stats['team'],
-                'runs': stats['runs'],
-                'balls': stats['balls'],
-                'outs': stats['outs'],
-                'average': avg,
-                'strike_rate': sr
-            })
-    
-    # Convert to DataFrame for easier processing
-    stats_df = pd.DataFrame(all_players_stats)
-    
-    # Calculate composite score (weighted average of average and strike rate)
-    stats_df['score'] = stats_df['average'] * 0.6 + stats_df['strike_rate'] * 0.4
-    
-    # Get top 6 players for each team based on composite score
+    # Calculate top 6 aggregate stats for each team
     team_top6_stats = {}
-    for team in stats_df['team'].unique():
-        team_df = stats_df[stats_df['team'] == team].nlargest(6, 'score')
+    for team, top6_players in team_players.items():
+        total_runs = sum(player_stats[p]['runs'] for p in top6_players if p in player_stats)
+        total_balls = sum(player_stats[p]['balls'] for p in top6_players if p in player_stats)
+        total_outs = sum(player_stats[p]['outs'] for p in top6_players if p in player_stats)
+
         team_top6_stats[team] = {
-            'avg': team_df['average'].mean(),
-            'sr': team_df['strike_rate'].mean()
+            'avg': total_runs / total_outs if total_outs > 0 else 0,
+            'sr': (total_runs / total_balls * 100) if total_balls > 0 else 0
         }
 
     # Calculate true stats for each player
