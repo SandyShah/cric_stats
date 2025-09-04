@@ -304,8 +304,8 @@ elif page == "Batting Stats":
     if selected_tournament != "All":
         filtered_matches = [m for m in filtered_matches if m["tournament"] == selected_tournament]
 
-    # Get all available years
-    years = sorted(list(set(m["year"] for m in filtered_matches if m["year"])))
+    # Get all available years and sort in descending order (most recent first)
+    years = sorted(list(set(m["year"] for m in filtered_matches if m["year"])), reverse=True)
     # Convert years to strings for selection
     year_options = [str(y) for y in years]
     # Allow multiple year selection
@@ -347,9 +347,27 @@ elif page == "Batting Stats":
     # If specific matches are selected, filter to just those matches
     if selected_matches:
         filtered_matches = [m for m in filtered_matches if m["match_name"] in selected_matches]
-        st.markdown(f"**Showing stats for selected {len(selected_matches)} matches**")
+        st.markdown("### Match Selection Details")
+        st.markdown(f"**Selected Matches:** {len(selected_matches)}")
     else:
-        st.markdown(f"**Showing aggregated stats for all {len(filtered_matches)} matches matching filters**")
+        st.markdown("### Match Selection Details")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(f"**Total Matches:** {len(filtered_matches)}")
+            st.markdown(f"**Tournament:** {selected_tournament if selected_tournament != 'All' else 'All Tournaments'}")
+            if selected_years:
+                st.markdown(f"**Years:** {', '.join(selected_years)}")
+            else:
+                st.markdown("**Years:** All Years")
+        with col2:
+            if selected_venue != "All":
+                st.markdown(f"**Venue:** {selected_venue}")
+            if team1 != "All":
+                st.markdown(f"**Team 1:** {team1}")
+            if team2 != "All":
+                st.markdown(f"**Team 2:** {team2}")
+            if selected_date != "All":
+                st.markdown(f"**Date:** {selected_date}")
     
     player_filter = st.sidebar.text_input("Filter by Player (optional)")
 
@@ -622,13 +640,19 @@ elif page == "Batting Stats":
                         total_matches = player_matches.get(player, 0)  # Total matches in squad
                         innings_played = player_innings.get(player, {}).get('count', 0)  # Times actually batted
                         
+                        # Calculate total boundaries and balls per boundary
+                        total_boundaries = player_fours.get(player, 0) + player_sixes.get(player, 0)
+                        balls_per_boundary = total_balls / total_boundaries if total_boundaries > 0 else float('inf')
+                        
                         data.append({
                             'Player': player,
                             'Matches': total_matches,
                             'Innings': innings_played,
                             'Runs': total_runs,
+                            'Balls': total_balls,
                             '4s': player_fours.get(player, 0),
                             '6s': player_sixes.get(player, 0),
+                            'BpB': round(balls_per_boundary, 2) if balls_per_boundary != float('inf') else '-',  # Balls per Boundary
                             'SR': total_sr,
                             'Dismissals': player_dismissals.get(player, {}).get('count', 0),
                             'Not Outs': player_innings.get(player, {}).get('count', 0) - player_dismissals.get(player, {}).get('count', 0),
