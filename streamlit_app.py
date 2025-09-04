@@ -24,27 +24,30 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 # Add axis selection dropdowns
 st.markdown("### Plot Configuration")
 stat_options = [
-    "Total Runs", "Total Balls", "Strike Rate", "Average", "Innings",
-    "4s", "6s", "DO Runs", "DO Balls", "DO Strike Rate",
-    "DO Average", "DO 4s", "DO 6s", "DO %"
+    "Matches", "Innings", "Runs", "Balls", "4s", "6s", 
+    "BpB", "SR", "Dismissals", "Not Outs", "Average",
+    "DO_Runs", "DO_4s", "DO_6s", "DO_%", "DO_SR", "DO_Average"
 ]
 
-# Create mapping for display names to actual column names
+# Create mapping for display names to actual column names (using exact DataFrame column names)
 plot_column_mapping = {
-    "Total Runs": "Total Runs",
-    "Total Balls": "Total Balls",
-    "Strike Rate": "Strike Rate",
-    "Average": "Average",
+    "Matches": "Matches",
     "Innings": "Innings",
+    "Runs": "Runs",
+    "Balls": "Balls",
     "4s": "4s",
     "6s": "6s",
-    "DO Runs": "DO Runs",
-    "DO Balls": "DO Balls",
-    "DO Strike Rate": "DO Strike Rate",
-    "DO Average": "DO Average",
-    "DO 4s": "DO 4s",
-    "DO 6s": "DO 6s",
-    "DO %": "DO %"
+    "BpB": "BpB",
+    "SR": "SR",
+    "Dismissals": "Dismissals",
+    "Not Outs": "Not Outs",
+    "Average": "Average",
+    "DO_Runs": "DO_Runs",
+    "DO_4s": "DO_4s",
+    "DO_6s": "DO_6s",
+    "DO_%": "DO_%",
+    "DO_SR": "DO_SR",
+    "DO_Average": "DO_Average"
 }
 
 col_plot1, col_plot2 = st.columns(2)
