@@ -13,7 +13,12 @@ import os
 import json
 from utils.data_loader import load_json_files, load_selected_dataset, get_match_info
 from utils.stats_processor import compute_basic_stats, compute_true_batting_stats, compute_match_level_true_batting_stats
-from utils.visualizer import plot_runs_per_match, plot_top_players, plot_true_batting_stats, plot_match_level_true_batting_stats
+from utils.visualizer import (
+    plot_runs_per_match,
+    plot_top_players,
+    plot_true_batting_stats,
+    plot_match_level_true_batting_stats
+)
 
 # Sidebar navigation for multipage
 st.sidebar.title("Navigation")
@@ -218,6 +223,21 @@ if page == "Match Stats":
 elif page == "Batting Stats":
     st.title("Batting Stats")
 
+    # Initialize stats tracking
+    player_runs = {}
+    player_do_runs = {}  # Death overs runs (16-20)
+    player_balls = {}    # Total balls faced
+    player_do_balls = {} # Death overs balls faced
+    player_fours = {}    # Total fours
+    player_do_fours = {} # Death overs fours
+    player_sixes = {}    # Total sixes
+    player_do_sixes = {} # Death overs sixes
+    player_matches = {}  # Total matches in playing XI
+    player_innings = {}  # Innings where player batted
+    
+    # Track which players are processed for each match to avoid double counting
+    processed_players = set()
+
     # Load available files and match info
     DATA_FOLDER = "data"
     json_folder = DATA_FOLDER
@@ -290,6 +310,16 @@ elif page == "Batting Stats":
 
     # Load and aggregate data for selected matches
     player_runs = {}
+    player_do_runs = {}   # Death overs runs (16-20)
+    player_balls = {}     # Total balls faced
+    player_do_balls = {}  # Death overs balls faced
+    player_fours = {}     # Total fours
+    player_do_fours = {}  # Death overs fours
+    player_sixes = {}     # Total sixes
+    player_do_sixes = {}  # Death overs sixes
+    player_matches = {}   # Total matches in playing XI (counted from team sheets)
+    player_innings = {}   # Innings where player batted (counted from actual batting)
+    
     if filtered_matches:
         for match in filtered_matches:
             try:
@@ -299,9 +329,32 @@ elif page == "Batting Stats":
                 if 'innings' in dataset:
                     innings_data = dataset['innings']
                 
+                # Reset processed players set for this match
+                processed_players.clear()
+                
+                # Get teams and their players for this match
+                teams_info = dataset.get('info', {}).get('players', {})
+                if teams_info:  # Only process if we have valid team information
+                    for team_name, team_players in teams_info.items():
+                        for player in team_players:
+                            # Skip if we've already processed this player (in case they appear in both teams somehow)
+                            if player in processed_players:
+                                continue
+                                
+                            # Apply player filter if it exists
+                            if player_filter and player_filter.lower() not in player.lower():
+                                continue
+                                
+                            # Mark as processed and increment matches (they were in playing XI)
+                            processed_players.add(player)
+                            player_matches[player] = player_matches.get(player, 0) + 1
+                
                 for innings in innings_data:
                     if 'overs' in innings:
                         for over in innings['overs']:
+                            over_num = int(over.get('over', 0))
+                            is_death_over = over_num >= 15  # Over numbers are 0-based, so 15 means 16th over
+                            
                             if 'deliveries' in over:
                                 for delivery in over['deliveries']:
                                     if 'batter' in delivery:
@@ -312,9 +365,41 @@ elif page == "Batting Stats":
                                         if player_filter and player_filter.lower() not in batter.lower():
                                             continue
                                             
+                                        # Initialize player data structures if needed
+                                        if batter not in player_innings:
+                                            player_innings[batter] = {
+                                                'count': 0,
+                                                'matches': set()  # Set to track unique matches
+                                            }
+                                        
+                                        # Track innings (only once per match per player)
+                                        match_id = match["file_path"]
+                                        if match_id not in player_innings[batter]['matches']:
+                                            player_innings[batter]['matches'].add(match_id)
+                                            player_innings[batter]['count'] += 1
+
+                                        # Count balls faced (excluding extras like wides and no-balls)
+                                        if 'extras' not in delivery or not delivery['extras']:
+                                            # Aggregate balls faced
+                                            player_balls[batter] = player_balls.get(batter, 0) + 1
+                                            if is_death_over:
+                                                player_do_balls[batter] = player_do_balls.get(batter, 0) + 1
+                                        
                                         # Aggregate runs
                                         if batter:
                                             player_runs[batter] = player_runs.get(batter, 0) + runs
+                                            if is_death_over:
+                                                player_do_runs[batter] = player_do_runs.get(batter, 0) + runs
+                                            
+                                            # Count boundaries
+                                            if runs == 4:
+                                                player_fours[batter] = player_fours.get(batter, 0) + 1
+                                                if is_death_over:
+                                                    player_do_fours[batter] = player_do_fours.get(batter, 0) + 1
+                                            elif runs == 6:
+                                                player_sixes[batter] = player_sixes.get(batter, 0) + 1
+                                                if is_death_over:
+                                                    player_do_sixes[batter] = player_do_sixes.get(batter, 0) + 1
 
             except Exception as e:
                 st.warning(f"Error loading {match['match_name']}: {str(e)}")
@@ -323,30 +408,8 @@ elif page == "Batting Stats":
 
         # Prepare table: columns = players, rows = stats
         if player_runs:
-            # Track matches played by each player
-            player_matches = {}
-            
-            # Process each match to count player appearances
-            for match in filtered_matches:
-                try:
-                    dataset = load_selected_dataset(match["file_path"])
-                    if 'innings' in dataset:
-                        match_players = set()  # Track unique players in this match
-                        for innings in dataset['innings']:
-                            if 'overs' in innings:
-                                for over in innings['overs']:
-                                    if 'deliveries' in over:
-                                        for delivery in over['deliveries']:
-                                            if 'batter' in delivery:
-                                                batter = delivery['batter']
-                                                match_players.add(batter)
-                        
-                        # Update match count for each player who appeared
-                        for player in match_players:
-                            player_matches[player] = player_matches.get(player, 0) + 1
-                                                
-                except Exception as e:
-                    st.warning(f"Error processing match count for {match['match_name']}: {str(e)}")
+            # We'll use the player_matches that was already calculated from playing XI information
+            # No need to recalculate matches here as it's already done when processing the playing XI
             
             # Create DataFrame with players as columns
             all_players = sorted(player_runs.keys())  # Alphabetically sorted players
@@ -463,17 +526,45 @@ elif page == "Batting Stats":
                     # Create DataFrame with players as rows and stats as columns
                     data = []
                     for player in filtered_players:
+                        total_runs = player_runs.get(player, 0)
+                        death_runs = player_do_runs.get(player, 0)
+                        total_balls = player_balls.get(player, 0)
+                        death_balls = player_do_balls.get(player, 0)
+                        
+                        # Calculate strike rates
+                        total_sr = (total_runs / max(total_balls, 1)) * 100
+                        death_sr = (death_runs / max(death_balls, 1)) * 100
+                        
+                        # Get number of matches and innings
+                        total_matches = player_matches.get(player, 0)  # Total matches in squad
+                        innings_played = player_innings.get(player, {}).get('count', 0)  # Times actually batted
+                        
                         data.append({
                             'Player': player,
-                            'Matches': player_matches.get(player, 0),
-                            'Runs': player_runs.get(player, 0),
-                            'Average': player_runs.get(player, 0) / max(player_matches.get(player, 1), 1),  # Runs per match
+                            'Matches': total_matches,
+                            'Innings': innings_played,
+                            'Runs': total_runs,
+                            '4s': player_fours.get(player, 0),
+                            '6s': player_sixes.get(player, 0),
+                            'SR': total_sr,
+                            'Average': total_runs/max(innings_played, 1),  # Changed to use innings instead of matches
+                            'DO_Runs': death_runs,
+                            'DO_4s': player_do_fours.get(player, 0),
+                            'DO_6s': player_do_sixes.get(player, 0),
+                            'DO_%': (death_runs/total_runs*100) if total_runs > 0 else 0,
+                            'DO_SR': death_sr,
+                            'DO_Average': death_runs/max(innings_played, 1)  # Changed to use innings instead of matches
                         })
                     
                     df = pd.DataFrame(data)
                     
-                    # Format the Average column
-                    df['Average'] = df['Average'].round(2)
+                    # Format numeric columns
+                    numeric_columns = ['SR', 'Average', 'DO_%', 'DO_SR', 'DO_Average']
+                    for col in numeric_columns:
+                        df[col] = df[col].round(2)
+                        
+                    # Add % symbol to DO_%
+                    df['DO_%'] = df['DO_%'].astype(str) + '%'
                     
                     # Sort by Runs in descending order if no specific search, otherwise keep search order
                     if not player_search:
@@ -509,27 +600,53 @@ elif page == "Batting Stats":
             
             with col1:
                 # Filter data for selected players
+                # Create a summary DataFrame with all stats
                 data = {
-                    player: [
-                        player_matches.get(player, 0),  # Matches played
-                        player_runs[player]  # Runs
-                    ]
+                    player: {
+                        "Matches": player_matches.get(player, 0),
+                        "Innings": player_innings.get(player, {}).get('count', 0),
+                        "Total Runs": player_runs.get(player, 0),
+                        "Total Balls": player_balls.get(player, 0),
+                        "Strike Rate": round((player_runs.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2),
+                        "Average": round(player_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
+                        "4s": player_fours.get(player, 0),
+                        "6s": player_sixes.get(player, 0),
+                        "DO Runs": player_do_runs.get(player, 0),
+                        "DO Balls": player_do_balls.get(player, 0),
+                        "DO Strike Rate": round((player_do_runs.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2),
+                        "DO Average": round(player_do_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
+                        "DO 4s": player_do_fours.get(player, 0),
+                        "DO 6s": player_do_sixes.get(player, 0),
+                        "DO %": f"{round((player_do_runs.get(player, 0) / max(player_runs.get(player, 1), 1)) * 100, 2)}%"
+                    }
                     for player in filtered_players
                 }
                 
-                df = pd.DataFrame(data, index=["Matches Played", "Runs Scored"])
+                df_summary = pd.DataFrame.from_dict(data, orient='index')
                 
-                # Transpose for sorting
-                df_sorted = df.T
-                df_sorted = df_sorted.sort_values(by="Runs Scored", ascending=False)
-                df = df_sorted.T
+                # Sort by Total Runs in descending order
+                df_summary = df_summary.sort_values(by="Total Runs", ascending=False)
                 
                 # Display summary of total matches
                 st.markdown(f"**Analysis based on {len(filtered_matches)} matches**")
                 
-                # Display the table
-                st.subheader("Batting Stats Table")
-                st.dataframe(df)
+                # Display the table with custom formatting
+                st.subheader("Batting Stats Summary")
+                
+                # Transpose the DataFrame and sort columns (players) by Total Runs
+                df_summary_sorted = df_summary.sort_values(by="Total Runs", ascending=False)
+                df_summary_transposed = df_summary_sorted.T
+                
+                # Format percentages after transposing
+                if "DO %" in df_summary_transposed.index:
+                    df_summary_transposed.loc["DO %"] = df_summary_transposed.loc["DO %"].str.rstrip('%').astype(float).round(2).astype(str) + '%'
+                
+                st.dataframe(
+                    df_summary_transposed,
+                    use_container_width=True,
+                    height=500  # Fixed height for better readability of all stats
+                )
+                # st.dataframe(data)
                 
                 # Add a summary of matches included
                 st.markdown("---")
