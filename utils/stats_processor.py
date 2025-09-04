@@ -1,3 +1,7 @@
+import pandas as pd
+from collections import defaultdict
+
+
 def compute_basic_stats(dataset, team_filter=None, player_filter=None):
     """
     Convert JSON dataset to DataFrame and compute basic stats.
@@ -6,18 +10,18 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
     # Extract match info
     info = dataset.get('info', {})
     innings_data = dataset.get('innings', [])
-    
+
     # Process innings data
     innings_stats = []
-    
+
     for inning in innings_data:
         team = inning.get('team', '')
         overs = inning.get('overs', [])
-        
+
         # Initialize stats for this innings
         batters_stats = {}
         bowlers_stats = {}
-        
+
         # Process each over
         for over in overs:
             for delivery in over.get('deliveries', []):
@@ -27,7 +31,7 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
                 batter_runs = runs.get('batter', 0)
                 extras = runs.get('extras', 0)
                 total = runs.get('total', 0)
-                
+
                 # Update batter stats
                 if batter not in batters_stats:
                     batters_stats[batter] = {'runs': 0, 'balls': 0, 'fours': 0, 'sixes': 0}
@@ -37,7 +41,7 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
                     batters_stats[batter]['fours'] += 1
                 elif batter_runs == 6:
                     batters_stats[batter]['sixes'] += 1
-                
+
                 # Update bowler stats
                 if bowler not in bowlers_stats:
                     bowlers_stats[bowler] = {'runs': 0, 'balls': 0, 'wickets': 0}
@@ -45,7 +49,7 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
                 bowlers_stats[bowler]['balls'] += 1
                 if 'wickets' in delivery:
                     bowlers_stats[bowler]['wickets'] += len(delivery['wickets'])
-        
+
         # Convert stats to DataFrame records
         for batter, stats in batters_stats.items():
             innings_stats.append({
@@ -58,7 +62,7 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
                 'sixes': stats['sixes'],
                 'strike_rate': (stats['runs'] / stats['balls'] * 100) if stats['balls'] > 0 else 0
             })
-        
+
         for bowler, stats in bowlers_stats.items():
             overs = stats['balls'] // 6 + (stats['balls'] % 6) / 10
             innings_stats.append({
@@ -70,18 +74,105 @@ def compute_basic_stats(dataset, team_filter=None, player_filter=None):
                 'wickets': stats['wickets'],
                 'economy': stats['runs'] / overs if overs > 0 else 0
             })
-    
+
     # Create DataFrame
     df = pd.DataFrame(innings_stats)
-    
+
     # Apply filters
     if team_filter:
         df = df[df['team'] == team_filter]
     if player_filter:
         df = df[df['player'].str.contains(player_filter, case=False, na=False)]
-    
+
     return df
-import pandas as pd
+
+
+def compute_match_level_true_batting_stats(dataset):
+    """
+    Compute true batting stats at match level.
+    True average = ((player_avg / top6_avg) - 1) * 100
+    True strike rate = ((player_sr / top6_sr) - 1) * 100
+
+    Args:
+        dataset: Single match JSON data
+    Returns:
+        DataFrame with player-level true batting stats for this match
+    """
+    innings_data = dataset.get('innings', [])
+    match_info = dataset.get('info', {})
+
+    # Get players for each team (assume first 6 are top-order)
+    team_players = {}
+    for team, players in match_info.get('players', {}).items():
+        team_players[team] = players[:6]  # Top 6 batters
+
+    # Track stats for each player in this match
+    player_stats = defaultdict(lambda: {
+        'runs': 0, 'balls': 0, 'outs': 0, 'team': ''
+    })
+
+    # Process each innings
+    for inning in innings_data:
+        team = inning.get('team', '')
+
+        # Process deliveries to collect stats
+        for over in inning.get('overs', []):
+            for delivery in over.get('deliveries', []):
+                batter = delivery.get('batter', '')
+                runs = delivery.get('runs', {}).get('batter', 0)
+
+                player_stats[batter]['runs'] += runs
+                player_stats[batter]['balls'] += 1
+                player_stats[batter]['team'] = team
+
+                # Check for wickets
+                if 'wickets' in delivery:
+                    for wicket in delivery['wickets']:
+                        if wicket.get('player_out') == batter:
+                            player_stats[batter]['outs'] += 1
+
+    # Calculate top 6 aggregate stats for each team
+    team_top6_stats = {}
+    for team, top6_players in team_players.items():
+        total_runs = sum(player_stats[p]['runs'] for p in top6_players if p in player_stats)
+        total_balls = sum(player_stats[p]['balls'] for p in top6_players if p in player_stats)
+        total_outs = sum(player_stats[p]['outs'] for p in top6_players if p in player_stats)
+
+        team_top6_stats[team] = {
+            'avg': total_runs / total_outs if total_outs > 0 else 0,
+            'sr': (total_runs / total_balls * 100) if total_balls > 0 else 0
+        }
+
+    # Calculate true stats for each player
+    results = []
+    for player, stats in player_stats.items():
+        if stats['balls'] > 0:  # Only include players who faced balls
+            team = stats['team']
+            player_avg = stats['runs'] / stats['outs'] if stats['outs'] > 0 else stats['runs']  # If not out, use runs
+            player_sr = (stats['runs'] / stats['balls']) * 100
+
+            # Get team's top 6 benchmarks
+            top6_avg = team_top6_stats.get(team, {}).get('avg', 0)
+            top6_sr = team_top6_stats.get(team, {}).get('sr', 0)
+
+            # Calculate true stats
+            true_avg = ((player_avg / top6_avg) - 1) * 100 if top6_avg > 0 else 0
+            true_sr = ((player_sr / top6_sr) - 1) * 100 if top6_sr > 0 else 0
+
+            results.append({
+                'player': player,
+                'team': team,
+                'runs': stats['runs'],
+                'balls': stats['balls'],
+                'outs': stats['outs'],
+                'average': player_avg,
+                'strike_rate': player_sr,
+                'true_average': true_avg,
+                'true_strike_rate': true_sr,
+                'is_top6': player in team_players.get(team, [])
+            })
+
+    return pd.DataFrame(results)
 
 
 def compute_true_batting_stats(match_data_list, top_n=25):
@@ -89,7 +180,7 @@ def compute_true_batting_stats(match_data_list, top_n=25):
     Compute true average and true strike rate as per the article:
     True average = ((player_avg / top6_avg) - 1) * 100
     True strike rate = ((player_sr / top6_sr) - 1) * 100
-    
+
     Args:
         match_data_list: list of match dicts (from JSON)
         top_n: number of top run scorers to return
@@ -97,7 +188,7 @@ def compute_true_batting_stats(match_data_list, top_n=25):
         DataFrame with batter stats including true_avg and true_sr
     """
     from collections import defaultdict
-    
+
     # Track stats for each batter across all matches
     bat_stats = defaultdict(lambda: {
         "runs": 0,          # Total runs

@@ -1,3 +1,6 @@
+import plotly.express as px
+
+
 def plot_runs_per_match(df):
     """Plot batting performance."""
     if not df.empty and 'role' in df and 'runs' in df:
@@ -27,56 +30,82 @@ def plot_top_players(df):
         fig.update_layout(xaxis_tickangle=-45)
         return fig
     return px.scatter(title="No bowling data found")
-import plotly.express as px
 
 
 def plot_true_batting_stats(df):
-    """
-    Scatter plot of true average vs true strike rate for top batters,
-    exactly as shown in the article, with quadrant analysis.
-    """
-    # Create the scatter plot
+    """Create scatter plot of true average vs true strike rate."""
     fig = px.scatter(
-        df,
-        x="true_sr",
-        y="true_avg",
-        text="batter",
-        size="runs",
-        color="avg_position",  # Color by batting position
+        df, 
+        x='true_sr', 
+        y='true_avg',
+        hover_data=['batter', 'runs', 'matches_played'],
+        title='True Average vs True Strike Rate (Top Run Scorers)',
         labels={
-            "true_sr": "True Strike Rate (%)", 
-            "true_avg": "True Average (%)",
-            "avg_position": "Average Batting Position"
-        },
-        title="True Average vs True Strike Rate (Top Run Scorers)"
+            'true_sr': 'True Strike Rate (%)',
+            'true_avg': 'True Average (%)'
+        }
     )
-    
-    # Add quadrant lines at x=0 and y=0
+
+    # Add quadrant lines
     fig.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5)
     fig.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.5)
-    
-    # Customize text position and appearance
-    fig.update_traces(
-        textposition="top center",
-        textfont=dict(size=10),
-        marker=dict(opacity=0.8)
-    )
-    
-    # Update layout
+
+    # Add annotations for quadrants
+    fig.add_annotation(x=20, y=20, text="High Avg & SR", showarrow=False, font=dict(color="green"))
+    fig.add_annotation(x=-20, y=20, text="High Avg, Low SR", showarrow=False, font=dict(color="blue"))
+    fig.add_annotation(x=20, y=-20, text="Low Avg, High SR", showarrow=False, font=dict(color="orange"))
+    fig.add_annotation(x=-20, y=-20, text="Low Avg & SR", showarrow=False, font=dict(color="red"))
+
     fig.update_layout(
-        xaxis_title="True Strike Rate (%)",
-        yaxis_title="True Average (%)",
-        legend_title="Batting Position",
-        height=700,
-        width=1000,
-        showlegend=True,
-        # Add quadrant annotations
-        annotations=[
-            dict(x=50, y=50, text="Elite Performers<br>(High Avg & SR)", showarrow=False),
-            dict(x=-50, y=50, text="Anchors<br>(High Avg, Low SR)", showarrow=False),
-            dict(x=50, y=-50, text="Aggressive Players<br>(Low Avg, High SR)", showarrow=False),
-            dict(x=-50, y=-50, text="Struggling Players<br>(Low Avg & SR)", showarrow=False),
-        ]
+        width=800,
+        height=600,
+        showlegend=False
     )
-    
+
+    return fig
+
+
+def plot_match_level_true_batting_stats(df):
+    """Create scatter plot for match-level true batting stats."""
+    # Color by team
+    fig = px.scatter(
+        df, 
+        x='true_strike_rate', 
+        y='true_average',
+        color='team',
+        size='runs',
+        hover_data=['player', 'runs', 'balls', 'is_top6'],
+        title='Match-Level True Average vs True Strike Rate',
+        labels={
+            'true_strike_rate': 'True Strike Rate (%)',
+            'true_average': 'True Average (%)'
+        }
+    )
+
+    # Add quadrant lines
+    fig.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5)
+    fig.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.5)
+
+    # Add annotations for quadrants
+    fig.add_annotation(x=10, y=10, text="Above Average", showarrow=False, font=dict(color="green"))
+    fig.add_annotation(x=-10, y=10, text="Anchor Role", showarrow=False, font=dict(color="blue"))
+    fig.add_annotation(x=10, y=-10, text="Aggressive", showarrow=False, font=dict(color="orange"))
+    fig.add_annotation(x=-10, y=-10, text="Below Average", showarrow=False, font=dict(color="red"))
+
+    # Add player names as text
+    for _, row in df.iterrows():
+        fig.add_annotation(
+            x=row['true_strike_rate'],
+            y=row['true_average'],
+            text=row['player'].split()[-1],  # Last name only
+            showarrow=False,
+            font=dict(size=8),
+            yshift=10
+        )
+
+    fig.update_layout(
+        width=800,
+        height=600
+    )
+
     return fig

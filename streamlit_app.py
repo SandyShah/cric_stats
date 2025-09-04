@@ -4,8 +4,8 @@ import os
 import json
 
 from utils.data_loader import load_json_files, load_selected_dataset, get_match_info
-from utils.stats_processor import compute_basic_stats, compute_true_batting_stats
-from utils.visualizer import plot_runs_per_match, plot_top_players, plot_true_batting_stats
+from utils.stats_processor import compute_basic_stats, compute_true_batting_stats, compute_match_level_true_batting_stats
+from utils.visualizer import plot_runs_per_match, plot_top_players, plot_true_batting_stats, plot_match_level_true_batting_stats
 
 # -----------------------------
 # Streamlit Page Config
@@ -181,6 +181,41 @@ else:
 
                 st.subheader("📊 Processed Stats")
                 st.dataframe(stats_df)
+
+                # -----------------------------
+                # Match-level True Batting Stats
+                # -----------------------------
+                st.subheader("🎯 True Batting Stats (This Match)")
+                st.info("True stats compare each player's performance to the average of top 6 batsmen in this match")
+                
+                try:
+                    true_match_stats = compute_match_level_true_batting_stats(dataset)
+                    if not true_match_stats.empty:
+                        # Display stats with formatting
+                        display_cols = ['player', 'team', 'runs', 'balls', 'average', 'strike_rate', 
+                                      'true_average', 'true_strike_rate', 'is_top6']
+                        formatted_stats = true_match_stats[display_cols].copy()
+                        
+                        # Round numeric columns
+                        for col in ['average', 'strike_rate', 'true_average', 'true_strike_rate']:
+                            formatted_stats[col] = formatted_stats[col].round(2)
+                        
+                        st.dataframe(formatted_stats, use_container_width=True)
+                        
+                        # Show interpretation
+                        st.markdown("""
+                        **How to read True Stats:**
+                        - **True Average > 0**: Player performed better than top 6 average
+                        - **True Strike Rate > 0**: Player struck faster than top 6 average
+                        - **Negative values**: Player performed below top 6 benchmark
+                        """)
+                        
+                        # Visualization for match-level true stats
+                        st.plotly_chart(plot_match_level_true_batting_stats(true_match_stats), use_container_width=True)
+                    else:
+                        st.warning("No batting data available for true stats calculation")
+                except Exception as e:
+                    st.error(f"Error calculating true batting stats: {str(e)}")
 
                 # -----------------------------
                 # Visualizations
