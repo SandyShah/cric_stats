@@ -149,6 +149,7 @@ if page == "Match Stats":
                     st.write(f"**Tournament:** {selected_match_info['tournament']}")
                     st.write(f"**Teams:** {selected_match_info['team1']} vs {selected_match_info['team2']}")
                     st.write(f"**Date:** {selected_match_info['date']}")
+                    st.write(f"**File:** {os.path.basename(selected_match_info['file_path'])}")
                 with col2:
                     st.write(f"**Venue:** {selected_match_info['venue']}")
                     st.write(f"**City:** {selected_match_info['city']}")
@@ -234,6 +235,7 @@ elif page == "Batting Stats":
     player_do_sixes = {} # Death overs sixes
     player_matches = {}  # Total matches in playing XI
     player_innings = {}  # Innings where player batted
+    player_dismissals = {}  # Number of times player got out
     
     # Track which players are processed for each match to avoid double counting
     processed_players = set()
@@ -377,6 +379,44 @@ elif page == "Batting Stats":
                                         if match_id not in player_innings[batter]['matches']:
                                             player_innings[batter]['matches'].add(match_id)
                                             player_innings[batter]['count'] += 1
+                                        
+                                        # Check for dismissal in this delivery
+                                        if 'wickets' in delivery:
+                                            for wicket in delivery['wickets']:
+                                                dismissed_player = wicket.get('player_out')
+                                                # Initialize dismissals count and details if needed for dismissed player
+                                                if dismissed_player not in player_dismissals:
+                                                    player_dismissals[dismissed_player] = {
+                                                        'count': 0,
+                                                        'details': []  # Track dismissal details
+                                                    }
+                                                
+                                                # Increment dismissal count for the dismissed player
+                                                player_dismissals[dismissed_player]['count'] += 1
+                                                
+                                                # Store dismissal details
+                                                dismissal_info = {
+                                                    'kind': wicket.get('kind', 'unknown'),
+                                                    'fielders': [f.get('name') for f in wicket.get('fielders', [])] if 'fielders' in wicket else [],
+                                                    'bowler': delivery.get('bowler'),
+                                                    'over': over.get('over'),
+                                                    'batter_on_strike': batter,
+                                                    'non_striker': delivery.get('non_striker'),
+                                                    'score': f"{innings.get('team')} {sum(d.get('runs', {}).get('total', 0) for o in innings['overs'][:over.get('over', 0)+1] for d in o.get('deliveries', []))}-{len([w for o in innings['overs'][:over.get('over', 0)+1] for d in o.get('deliveries', []) for w in d.get('wickets', [])])}", 
+                                                    'match': match.get('match_name', os.path.basename(match["file_path"])),
+                                                    'file': os.path.basename(match["file_path"])
+                                                }
+                                                player_dismissals[dismissed_player]['details'].append(dismissal_info)
+                                                
+                                                # Also mark this delivery for tracking innings
+                                                if dismissed_player not in player_innings:
+                                                    player_innings[dismissed_player] = {
+                                                        'count': 0,
+                                                        'matches': set()  # Set to track unique matches
+                                                    }
+                                                if match_id not in player_innings[dismissed_player]['matches']:
+                                                    player_innings[dismissed_player]['matches'].add(match_id)
+                                                    player_innings[dismissed_player]['count'] += 1
 
                                         # Count balls faced (excluding extras like wides and no-balls)
                                         if 'extras' not in delivery or not delivery['extras']:
@@ -547,21 +587,27 @@ elif page == "Batting Stats":
                             '4s': player_fours.get(player, 0),
                             '6s': player_sixes.get(player, 0),
                             'SR': total_sr,
-                            'Average': total_runs/max(innings_played, 1),  # Changed to use innings instead of matches
+                            'Dismissals': player_dismissals.get(player, {}).get('count', 0),
+                            'Not Outs': player_innings.get(player, {}).get('count', 0) - player_dismissals.get(player, {}).get('count', 0),
+                            'Average': float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else total_runs/player_dismissals.get(player, {}).get('count', 1),  # Total runs/Dismissals
                             'DO_Runs': death_runs,
                             'DO_4s': player_do_fours.get(player, 0),
                             'DO_6s': player_do_sixes.get(player, 0),
                             'DO_%': (death_runs/total_runs*100) if total_runs > 0 else 0,
                             'DO_SR': death_sr,
-                            'DO_Average': death_runs/max(innings_played, 1)  # Changed to use innings instead of matches
+                            'DO_Average': float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else death_runs/player_dismissals.get(player, {}).get('count', 1),  # Death overs runs/Dismissals
                         })
                     
                     df = pd.DataFrame(data)
                     
                     # Format numeric columns
-                    numeric_columns = ['SR', 'Average', 'DO_%', 'DO_SR', 'DO_Average']
+                    numeric_columns = ['SR', 'DO_%', 'DO_SR']
                     for col in numeric_columns:
                         df[col] = df[col].round(2)
+                    
+                    # Format average columns to show "-" for not-out cases with no dismissals
+                    for col in ['Average', 'DO_Average']:
+                        df[col] = df[col].apply(lambda x: "-" if x == float('inf') else round(x, 2))
                         
                     # Add % symbol to DO_%
                     df['DO_%'] = df['DO_%'].astype(str) + '%'
@@ -605,10 +651,12 @@ elif page == "Batting Stats":
                     player: {
                         "Matches": player_matches.get(player, 0),
                         "Innings": player_innings.get(player, {}).get('count', 0),
+                        "Not Outs": player_innings.get(player, {}).get('count', 0) - player_dismissals.get(player, {}).get('count', 0),
+                        "Dismissal Details": player_dismissals.get(player, {}).get('details', []),
                         "Total Runs": player_runs.get(player, 0),
                         "Total Balls": player_balls.get(player, 0),
                         "Strike Rate": round((player_runs.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2),
-                        "Average": round(player_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
+                        "Average": float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else round(player_runs.get(player, 0) / player_dismissals.get(player, {}).get('count', 1), 2),
                         "4s": player_fours.get(player, 0),
                         "6s": player_sixes.get(player, 0),
                         "DO Runs": player_do_runs.get(player, 0),
@@ -650,9 +698,41 @@ elif page == "Batting Stats":
                 
                 # Add a summary of matches included
                 st.markdown("---")
+                # Display matches included
                 st.markdown("**Matches included in analysis:**")
                 for match in filtered_matches:
                     st.markdown(f"- {match['match_name']} ({match['date']})")
+
+                # Add a section for dismissal details
+                if 'Dismissal Details' in df_summary_transposed.index:
+                    st.markdown("---")
+                    st.markdown("**Dismissal Details:**")
+                    for player, details in df_summary.iterrows():
+                        dismissals = details.get('Dismissal Details', [])
+                        if dismissals:
+                            st.markdown(f"**{player}**")
+                            for d in dismissals:
+                                # Format fielders if any
+                                fielder_text = f" by {', '.join(d['fielders'])}" if d['fielders'] else ""
+                                # Format bowler if available
+                                bowler_text = f" (bowler: {d['bowler']})" if d['bowler'] else ""
+                                # Construct dismissal string
+                                # Format bowler info
+                                bowler_text = f" (bowled by {d['bowler']})" if d['bowler'] and d['kind'] != "run out" else ""
+                                
+                                # Format score and match info
+                                score_text = f" at {d['score']}" if 'score' in d else ""
+                                match_text = f" - {d['match']}" if 'match' in d else f" [{d['file']}]"
+                                
+                                # Add batting position context for run outs
+                                position_text = ""
+                                if d['kind'] == "run out":
+                                    if d.get('batter_on_strike') == player:
+                                        position_text = " (on strike)"
+                                    elif d.get('non_striker') == player:
+                                        position_text = " (at non-striker's end)"
+                                        
+                                st.markdown(f"- {d['kind']}{position_text}{fielder_text}{bowler_text} in over {d['over']}{score_text}{match_text}")
         else:
             st.info("No batting data available for selected filters.")
     else:
