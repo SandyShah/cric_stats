@@ -355,10 +355,70 @@ elif page == "Batting Stats":
         with col1:
             st.markdown(f"**Total Matches:** {len(filtered_matches)}")
             st.markdown(f"**Tournament:** {selected_tournament if selected_tournament != 'All' else 'All Tournaments'}")
+
+            # Helper: format consecutive numeric selections into ranges (works for years and positions)
+            def _ordinal(n):
+                try:
+                    n = int(n)
+                except Exception:
+                    return str(n)
+                if 10 <= n % 100 <= 20:
+                    suf = 'th'
+                else:
+                    suf = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
+                return f"{n}{suf}"
+
+            def _format_ranges(items, use_ordinal=False, empty_label='All'):
+                if not items:
+                    return f"{empty_label}"
+                try:
+                    nums = sorted({int(x) for x in items})
+                except Exception:
+                    # fallback: join raw strings
+                    return ', '.join(map(str, items))
+
+                ranges = []
+                start = prev = nums[0]
+                for n in nums[1:]:
+                    if n == prev + 1:
+                        prev = n
+                        continue
+                    if start == prev:
+                        ranges.append(_ordinal(start) if use_ordinal else str(start))
+                    else:
+                        a = _ordinal(start) if use_ordinal else str(start)
+                        b = _ordinal(prev) if use_ordinal else str(prev)
+                        ranges.append(f"{a}-{b}")
+                    start = prev = n
+                if start == prev:
+                    ranges.append(_ordinal(start) if use_ordinal else str(start))
+                else:
+                    a = _ordinal(start) if use_ordinal else str(start)
+                    b = _ordinal(prev) if use_ordinal else str(prev)
+                    ranges.append(f"{a}-{b}")
+
+                if len(ranges) == 1:
+                    return ranges[0]
+                if len(ranges) == 2:
+                    return f"{ranges[0]} & {ranges[1]}"
+                return f"{', '.join(ranges[:-1])} & {ranges[-1]}"
+
+            # Years
             if selected_years:
-                st.markdown(f"**Years:** {', '.join(selected_years)}")
+                years_text = _format_ranges(selected_years, use_ordinal=False, empty_label='All Years')
+                st.markdown(f"**Years:** {years_text}")
             else:
                 st.markdown("**Years:** All Years")
+
+            # Analysis summary line placed directly under selection details
+            st.markdown(f"**Analysis based on {len(filtered_matches)} matches**")
+
+            # Positions (show human-friendly ordinals/ranges)
+            try:
+                pos_text = _format_ranges(selected_positions, use_ordinal=True, empty_label='All positions')
+            except Exception:
+                pos_text = 'All positions'
+            st.markdown(f"**Positions:** {pos_text}")
         with col2:
             if selected_venue != "All":
                 st.markdown(f"**Venue:** {selected_venue}")
@@ -1060,6 +1120,60 @@ elif page == "Batting Stats":
                 
                 # Display summary of total matches
                 st.markdown(f"**Analysis based on {len(filtered_matches)} matches**")
+
+                # Helper to format selected positions into human-friendly ranges
+                def _ordinal(n):
+                    try:
+                        n = int(n)
+                    except Exception:
+                        return str(n)
+                    if 10 <= n % 100 <= 20:
+                        suf = 'th'
+                    else:
+                        suf = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
+                    return f"{n}{suf}"
+
+                def _format_positions(sel_pos):
+                    if not sel_pos:
+                        return 'All positions'
+                    # Convert to sorted unique ints
+                    try:
+                        nums = sorted({int(x) for x in sel_pos})
+                    except Exception:
+                        # fallback: join raw
+                        return ', '.join(map(str, sel_pos))
+
+                    ranges = []
+                    start = prev = nums[0]
+                    for n in nums[1:]:
+                        if n == prev + 1:
+                            prev = n
+                            continue
+                        # close range
+                        if start == prev:
+                            ranges.append(_ordinal(start))
+                        else:
+                            ranges.append(f"{_ordinal(start)}-{_ordinal(prev)}")
+                        start = prev = n
+                    # close final range
+                    if start == prev:
+                        ranges.append(_ordinal(start))
+                    else:
+                        ranges.append(f"{_ordinal(start)}-{_ordinal(prev)}")
+
+                    # join with commas and an ampersand for the last item
+                    if len(ranges) == 1:
+                        return ranges[0]
+                    if len(ranges) == 2:
+                        return f"{ranges[0]} & {ranges[1]}"
+                    return f"{', '.join(ranges[:-1])} & {ranges[-1]}"
+
+                # Show selected positions (human-friendly)
+                try:
+                    pos_text = _format_positions(selected_positions) if 'selected_positions' in globals() or 'selected_positions' in locals() else 'All positions'
+                except Exception:
+                    pos_text = 'All positions'
+                st.markdown(f"**Positions:** {pos_text}")
                 
                 # Display the table with custom formatting
                 st.subheader("Batting Stats Summary")
