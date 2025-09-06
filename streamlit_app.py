@@ -239,6 +239,9 @@ elif page == "Batting Stats":
     player_matches = {}  # Total matches in playing XI
     player_innings = {}  # Innings where player batted
     player_dismissals = {}  # Number of times player got out
+    # Dot ball tracking
+    player_dot_balls = {}   # Total dot balls faced
+    player_do_dot_balls = {}# Death overs dot balls faced
     
     # Track which players are processed for each match to avoid double counting
     processed_players = set()
@@ -455,6 +458,11 @@ elif page == "Batting Stats":
                                             player_balls[batter] = player_balls.get(batter, 0) + 1
                                             if is_death_over:
                                                 player_do_balls[batter] = player_do_balls.get(batter, 0) + 1
+                                            # Count dot balls (run == 0)
+                                            if runs == 0:
+                                                player_dot_balls[batter] = player_dot_balls.get(batter, 0) + 1
+                                                if is_death_over:
+                                                    player_do_dot_balls[batter] = player_do_dot_balls.get(batter, 0) + 1
                                         
                                         # Aggregate runs
                                         if batter:
@@ -631,8 +639,16 @@ elif page == "Batting Stats":
                             'DO_4s': player_do_fours.get(player, 0),
                             'DO_6s': player_do_sixes.get(player, 0),
                             'DO_%': (death_runs/total_runs*100) if total_runs > 0 else 0,
+                            'Dots': player_dot_balls.get(player, 0),
+                            'DO_Dots': player_do_dot_balls.get(player, 0),
+                            'Dot_%': (player_dot_balls.get(player, 0)/total_balls*100) if total_balls > 0 else 0,
+                            'DO_Dot_%': (player_do_dot_balls.get(player, 0)/max(death_balls,1)*100) if death_balls > 0 else 0,
                             'DO_SR': death_sr,
                             'DO_Average': float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else death_runs/player_dismissals.get(player, {}).get('count', 1),  # Death overs runs/Dismissals
+                            # Death overs balls per boundary (DO_BpB)
+                            'DO_BpB': (round(death_balls / (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)), 2)
+                                      if (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)) > 0 and death_balls > 0
+                                      else '-'),
                         })
                     
                     df = pd.DataFrame(data)
@@ -648,6 +664,11 @@ elif page == "Batting Stats":
                         
                     # Add % symbol to DO_%
                     df['DO_%'] = df['DO_%'].astype(str) + '%'
+                    # Add Dot % and DO Dot % as percentage strings
+                    if 'Dot_%' in df.columns:
+                        df['Dot_%'] = df['Dot_%'].round(2).astype(str) + '%'
+                    if 'DO_Dot_%' in df.columns:
+                        df['DO_Dot_%'] = df['DO_Dot_%'].round(2).astype(str) + '%'
                     
                     # Sort by Runs in descending order if no specific search, otherwise keep search order
                     if not player_search:
@@ -675,6 +696,17 @@ elif page == "Batting Stats":
                         </style>
                     """, unsafe_allow_html=True)
                     
+                    # Reorder columns into a logical batting-stats order while keeping any new columns
+                    preferred_order = [
+                        'Sr.', 'Player', 'Matches', 'Innings', 'Not Outs', 'Dismissals',
+                        'Runs', 'Balls', 'SR', 'Average', '4s', '6s', 'BpB', 'Dots', 'Dot_%',
+                        'DO_Runs', 'DO_Balls', 'DO_SR', 'DO_Average', 'DO_4s', 'DO_6s', 'DO_BpB', 'DO_Dots', 'DO_Dot_%', 'DO_%'
+                    ]
+                    cols_in_order = [c for c in preferred_order if c in df.columns]
+                    # Append any columns not in preferred_order (keeps future additions)
+                    cols_in_order += [c for c in df.columns if c not in cols_in_order]
+                    df = df[cols_in_order]
+
                     st.dataframe(
                         df.set_index(['Sr.', 'Player']),  # Multi-index with Sr. and Player
                         use_container_width=True,
@@ -692,17 +724,25 @@ elif page == "Batting Stats":
                         "Dismissals": player_dismissals.get(player, {}).get('count', 0),
                         "Total Runs": player_runs.get(player, 0),
                         "Total Balls": player_balls.get(player, 0),
+                        "BpB": (round(player_balls.get(player, 0) / max((player_fours.get(player, 0) + player_sixes.get(player, 0)), 1), 2)
+                                if (player_fours.get(player, 0) + player_sixes.get(player, 0)) > 0 else '-'),
                         "Strike Rate": round((player_runs.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2),
                         "Average": float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else round(player_runs.get(player, 0) / player_dismissals.get(player, {}).get('count', 1), 2),
                         "4s": player_fours.get(player, 0),
                         "6s": player_sixes.get(player, 0),
-                        "DO Runs": player_do_runs.get(player, 0),
-                        "DO Balls": player_do_balls.get(player, 0),
-                        "DO Strike Rate": round((player_do_runs.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2),
-                        "DO Average": round(player_do_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
-                        "DO 4s": player_do_fours.get(player, 0),
-                        "DO 6s": player_do_sixes.get(player, 0),
-                        "DO %": f"{round((player_do_runs.get(player, 0) / max(player_runs.get(player, 1), 1)) * 100, 2)}%"
+                        "DO_Runs": player_do_runs.get(player, 0),
+                        "DO_Balls": player_do_balls.get(player, 0),
+                        "DO_SR": round((player_do_runs.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2),
+                        "DO_Average": round(player_do_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
+                        "DO_4s": player_do_fours.get(player, 0),
+                        "DO_6s": player_do_sixes.get(player, 0),
+                        "DO_%": f"{round((player_do_runs.get(player, 0) / max(player_runs.get(player, 1), 1)) * 100, 2)}%",
+                        "DO_BpB": (round(player_do_balls.get(player, 0) / max((player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)), 1), 2)
+                                   if (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)) > 0 else '-'),
+                        "Dots": player_dot_balls.get(player, 0),
+                        "DO_Dots": player_do_dot_balls.get(player, 0),
+                        "Dot_%": f"{round((player_dot_balls.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2)}%",
+                        "DO_Dot_%": f"{round((player_do_dot_balls.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2)}%"
                     }
                     for player in filtered_players
                 }
@@ -721,86 +761,111 @@ elif page == "Batting Stats":
                 # Transpose the DataFrame and sort columns (players) by Total Runs
                 df_summary_sorted = df_summary.sort_values(by="Total Runs", ascending=False)
                 df_summary_transposed = df_summary_sorted.T
-                
-                # Format percentages after transposing
-                if "DO %" in df_summary_transposed.index:
-                    df_summary_transposed.loc["DO %"] = df_summary_transposed.loc["DO %"].str.rstrip('%').astype(float).round(2).astype(str) + '%'
-                    
-                    # Create scatter plot if we have players
-                    if filtered_players and len(filtered_players) > 0:
-                        st.markdown("### Player Comparison Plot")
-                        
-                        # Add axis selection for scatter plot
-                        # Use the exact column names from the summary DataFrame so select options match the table
-                        stat_options = list(df_summary.columns)
+                # Normalize any rows that are stored as percent-strings (e.g., 'DO_%', 'Dot_%', 'DO_Dot_%')
+                for idx in df_summary_transposed.index:
+                    try:
+                        row = df_summary_transposed.loc[idx].astype(str)
+                    except Exception:
+                        continue
+                    if row.str.contains('%').any():
+                        # Strip %, convert to float where possible, round and re-append '%'
+                        new_vals = []
+                        for v in row:
+                            if isinstance(v, str) and v.endswith('%'):
+                                try:
+                                    num = float(v.rstrip('%'))
+                                    new_vals.append(f"{round(num,2)}%")
+                                except Exception:
+                                    new_vals.append(v)
+                            else:
+                                new_vals.append(v)
+                        df_summary_transposed.loc[idx] = new_vals
 
-                        col_plot1, col_plot2 = st.columns(2)
-                        with col_plot1:
-                            x_axis = st.selectbox("X-Axis", stat_options, index=0)
-                        with col_plot2:
-                            # default to a sensible second choice (prefer Strike Rate if present)
-                            default_y = 0
-                            if "Strike Rate" in stat_options:
-                                default_y = stat_options.index("Strike Rate")
-                            y_axis = st.selectbox("Y-Axis", stat_options, index=default_y)
+                # Create scatter plot if we have players
+                if filtered_players and len(filtered_players) > 0:
+                    st.markdown("### Player Comparison Plot")
 
-                        # Use the selected axis values (column names from df_summary)
-                        x_col = x_axis
-                        y_col = y_axis
+                    # Add axis selection for scatter plot
+                    # Use the exact column names from the summary DataFrame so select options match the table
+                    stat_options = list(df_summary.columns)
 
-                        # Create scatter plot using plotly
-                        import plotly.express as px
+                    col_plot1, col_plot2 = st.columns(2)
+                    with col_plot1:
+                        x_axis = st.selectbox("X-Axis", stat_options, index=0)
+                    with col_plot2:
+                        # default to a sensible second choice (prefer Strike Rate if present)
+                        default_y = 0
+                        if "Strike Rate" in stat_options:
+                            default_y = stat_options.index("Strike Rate")
+                        y_axis = st.selectbox("Y-Axis", stat_options, index=default_y)
 
-                        # Prepare data for plotting (work on a copy)
-                        plot_df = df_summary.copy()
+                    # Use the selected axis values (column names from df_summary)
+                    x_col = x_axis
+                    y_col = y_axis
 
-                        # Helper: convert column to numeric, handling percent strings and non-numeric placeholders
-                        def to_numeric_series(s):
-                            # Convert everything to string first
-                            ser = s.astype(str)
-                            # If any value ends with '%', strip and convert
-                            if ser.str.endswith('%').any():
-                                return ser.str.rstrip('%').replace({'nan': None}).astype(float)
-                            # Otherwise coerce to numeric, converting non-numeric to NaN
-                            return pd.to_numeric(ser.replace({'nan': None}), errors='coerce')
+                    # Create scatter plot using plotly
+                    import plotly.express as px
 
-                        # Convert selected columns to numeric for plotting
-                        plot_df[x_col] = to_numeric_series(plot_df[x_col])
-                        plot_df[y_col] = to_numeric_series(plot_df[y_col])
+                    # Prepare data for plotting (work on a copy)
+                    plot_df = df_summary.copy()
 
-                        # Create bubble plot
-                        fig = px.scatter(
-                            plot_df,
-                            x=x_col,
-                            y=y_col,
-                            text=plot_df.index,  # Player names
-                            size="Total Runs" if "Total Runs" in plot_df.columns else None,    # Bubble size based on total runs when available
-                            color=plot_df.index if not plot_df.index.empty else None,  # Different color for each player
-                            title=f"{y_axis} vs {x_axis}",
-                            labels={
-                                x_col: x_axis,
-                                y_col: y_axis
-                            },
-                            hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]  # Additional info on hover
-                        )
-                        
-                        # Update layout
-                        fig.update_traces(
-                            textposition='top center',
-                            marker=dict(size=20),
-                            textfont=dict(size=10)
-                        )
-                        fig.update_layout(
-                            showlegend=True,
-                            height=600,
-                            xaxis_title=x_axis,
-                            yaxis_title=y_axis
-                        )
-                        
-                        # Display the plot
-                        st.plotly_chart(fig, use_container_width=True)
+                    # Helper: convert column to numeric, handling percent strings and non-numeric placeholders
+                    def to_numeric_series(s):
+                        # Convert everything to string first
+                        ser = s.astype(str)
+                        # If any value ends with '%', strip and convert
+                        if ser.str.endswith('%').any():
+                            return ser.str.rstrip('%').replace({'nan': None}).astype(float)
+                        # Otherwise coerce to numeric, converting non-numeric to NaN
+                        return pd.to_numeric(ser.replace({'nan': None}), errors='coerce')
+
+                    # Convert selected columns to numeric for plotting
+                    plot_df[x_col] = to_numeric_series(plot_df[x_col])
+                    plot_df[y_col] = to_numeric_series(plot_df[y_col])
+
+                    # Create bubble plot
+                    fig = px.scatter(
+                        plot_df,
+                        x=x_col,
+                        y=y_col,
+                        text=plot_df.index,  # Player names
+                        size="Total Runs" if "Total Runs" in plot_df.columns else None,    # Bubble size based on total runs when available
+                        color=plot_df.index if not plot_df.index.empty else None,  # Different color for each player
+                        title=f"{y_axis} vs {x_axis}",
+                        labels={
+                            x_col: x_axis,
+                            y_col: y_axis
+                        },
+                        hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]  # Additional info on hover
+                    )
+                    # Update layout
+                    fig.update_traces(
+                        textposition='top center',
+                        marker=dict(size=20),
+                        textfont=dict(size=10)
+                    )
+                    fig.update_layout(
+                        showlegend=True,
+                        height=600,
+                        xaxis_title=x_axis,
+                        yaxis_title=y_axis
+                    )
+
+                    # Display the plot
+                    st.plotly_chart(fig, use_container_width=True)
                 
                 # Display the summary dataframe
+                # Reorder summary stats rows into a logical order (keep any additional stats)
+                preferred_stats_order = [
+                    'Matches', 'Innings', 'Not Outs', 'Dismissals',
+                    'Total Runs', 'Total Balls', 'Strike Rate', 'Average',
+                    '4s', '6s', 'BpB', 'Dots', 'Dot %',
+                    'DO Runs', 'DO Balls', 'DO Strike Rate', 'DO Average', 'DO 4s', 'DO 6s', 'DO %', 'DO Dots', 'DO Dot %', 'DO_BpB'
+                ]
+                rows_in_order = [r for r in preferred_stats_order if r in df_summary_transposed.index]
+                rows_in_order += [r for r in df_summary_transposed.index if r not in rows_in_order]
+                df_summary_transposed = df_summary_transposed.reindex(rows_in_order)
+
                 st.dataframe(
                     df_summary_transposed,
                     use_container_width=True,
