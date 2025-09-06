@@ -353,7 +353,7 @@ elif page == "Batting Stats":
         st.markdown("### Match Selection Details")
         col1, col2 = st.columns(2)
         with col1:
-            st.markdown(f"**Total Matches:** {len(filtered_matches)}")
+            # st.markdown(f"**Total Matches:** {len(filtered_matches)}")
             st.markdown(f"**Tournament:** {selected_tournament if selected_tournament != 'All' else 'All Tournaments'}")
 
             # Helper: format consecutive numeric selections into ranges (works for years and positions)
@@ -667,7 +667,7 @@ elif page == "Batting Stats":
             all_players = sorted(player_runs.keys())  # Alphabetically sorted players
             
             # Create columns for main content and player selector
-            col1, col2 = st.columns([7, 3])  # 70% main content, 30% selector
+            col1, col2 = st.columns([8, 2])  # 80% main content, 20% selector
             
             with col2:
                 # Add custom CSS for fixed positioning and scrolling
@@ -1224,6 +1224,7 @@ elif page == "Batting Stats":
                     except Exception:
                         pass
 
+                    # Axis selectors and dynamic plot filters
                     col_plot1, col_plot2 = st.columns(2)
                     with col_plot1:
                         x_axis = st.selectbox("X-Axis", stat_options, index=0)
@@ -1238,7 +1239,6 @@ elif page == "Batting Stats":
                     x_col = x_axis
                     y_col = y_axis
 
-                    # Create scatter plot using plotly
                     import plotly.express as px
 
                     # Prepare data for plotting (work on a copy)
@@ -1254,31 +1254,64 @@ elif page == "Batting Stats":
                         # Otherwise coerce to numeric, converting non-numeric to NaN
                         return pd.to_numeric(ser.replace({'nan': None}), errors='coerce')
 
-                    # Convert selected columns to numeric for plotting
+                    # Ensure session state for dynamic plot filters
+                    if 'plot_filters' not in st.session_state:
+                        st.session_state['plot_filters'] = []
+
+                    # Define operators used by filters
+                    ops = ['>=', '<=', '>', '<', '==', '!=']
+
+                    # Convert selected columns to numeric for plotting and for filtering
                     plot_df[x_col] = to_numeric_series(plot_df[x_col])
                     plot_df[y_col] = to_numeric_series(plot_df[y_col])
 
-                    # Create bubble plot
+                    # Apply dynamic filters from session_state
+                    for f in st.session_state.get('plot_filters', []):
+                        col_name = f.get('col')
+                        op = f.get('op')
+                        raw_val = f.get('val')
+                        if not col_name or raw_val is None or raw_val == '':
+                            continue
+                        try:
+                            ser = to_numeric_series(plot_df[col_name])
+                            val_str = str(raw_val).strip()
+                            if val_str.endswith('%'):
+                                val = float(val_str.rstrip('%'))
+                            else:
+                                val = float(val_str)
+                            if op == '>=':
+                                plot_df = plot_df[ser >= val]
+                            elif op == '<=':
+                                plot_df = plot_df[ser <= val]
+                            elif op == '>':
+                                plot_df = plot_df[ser > val]
+                            elif op == '<':
+                                plot_df = plot_df[ser < val]
+                            elif op == '==':
+                                plot_df = plot_df[ser == val]
+                            elif op == '!=':
+                                plot_df = plot_df[ser != val]
+                        except Exception:
+                            col_series = plot_df[col_name].astype(str)
+                            if op == '==':
+                                plot_df = plot_df[col_series == str(raw_val)]
+                            elif op == '!=':
+                                plot_df = plot_df[col_series != str(raw_val)]
+
+                    # Create bubble plot in the main left column (col1) so it keeps its original width
                     fig = px.scatter(
                         plot_df,
                         x=x_col,
                         y=y_col,
                         text=plot_df.index,  # Player names
-                        size="Total Runs" if "Total Runs" in plot_df.columns else None,    # Bubble size based on total runs when available
-                        color=plot_df.index if not plot_df.index.empty else None,  # Different color for each player
+                        size="Total Runs" if "Total Runs" in plot_df.columns else None,
+                        color=plot_df.index if not plot_df.index.empty else None,
                         title=f"{y_axis} vs {x_axis}",
-                        labels={
-                            x_col: x_axis,
-                            y_col: y_axis
-                        },
-                        hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]  # Additional info on hover
+                        labels={x_col: x_axis, y_col: y_axis},
+                        hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]
                     )
-                    # Update layout
-                    fig.update_traces(
-                        textposition='top center',
-                        marker=dict(size=20),
-                        textfont=dict(size=12)
-                    )
+                    # Update layout and traces
+                    fig.update_traces(textposition='top center', marker=dict(size=20), textfont=dict(size=12))
                     fig.update_layout(
                         showlegend=True,
                         height=600,
@@ -1288,9 +1321,39 @@ elif page == "Batting Stats":
                         yaxis=dict(title=y_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
                         legend=dict(font=dict(size=12))
                     )
-
-                    # Display the plot
                     st.plotly_chart(fig, use_container_width=True)
+
+                    # Render the plot filters directly below the plot (always visible)
+                    st.markdown("#### Plot Filters")
+                    st.caption("Add multiple filters to restrict plotted players (AND semantics)")
+                    # Buttons to add/clear filters
+                    add_cols = st.columns([1,1])
+                    with add_cols[0]:
+                        if st.button("Add filter", key="add_plot_filter"):
+                            st.session_state['plot_filters'].append({'col': stat_options[0] if stat_options else '', 'op': '>=', 'val': ''})
+                    with add_cols[1]:
+                        if st.button("Clear", key="clear_plot_filters"):
+                            st.session_state['plot_filters'] = []
+
+                    # Render current filters as compact rows; allow removal
+                    for i, f in list(enumerate(st.session_state.get('plot_filters', []))):
+                        row_cols = st.columns([4,2,3,1])
+                        try:
+                            idx = stat_options.index(f.get('col')) if f.get('col') in stat_options else 0
+                        except Exception:
+                            idx = 0
+                        with row_cols[0]:
+                            col_sel = st.selectbox("Column", stat_options, index=idx, key=f"filter_col_{i}")
+                        with row_cols[1]:
+                            op_sel = st.selectbox("Operator", ops, index=ops.index(f.get('op')) if f.get('op') in ops else 0, key=f"filter_op_{i}")
+                        with row_cols[2]:
+                            val_in = st.text_input("Value", value=str(f.get('val', '')), key=f"filter_val_{i}")
+                        with row_cols[3]:
+                            remove = st.button("Remove", key=f"filter_remove_{i}")
+                        st.session_state['plot_filters'][i] = {'col': col_sel, 'op': op_sel, 'val': val_in}
+                        if remove:
+                            st.session_state['plot_filters'].pop(i)
+                            st.experimental_rerun()
                 
                 # Display the summary dataframe
                 # Reorder summary stats rows into a logical order (keep any additional stats)
