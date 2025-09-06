@@ -12,7 +12,14 @@ def plot_runs_per_match(df):
                     title="Batting Performance",
                     labels={'player': 'Batsman', 'runs': 'Runs Scored'},
                     hover_data=['balls', 'fours', 'sixes', 'strike_rate'])
-        fig.update_layout(xaxis_tickangle=-45)
+        fig.update_layout(
+            xaxis_tickangle=-45,
+            title_font=dict(size=20),
+            title_x=0.5,
+            xaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+            yaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+            legend=dict(font=dict(size=12))
+        )
         return fig
     return px.scatter(title="No batting data found")
 
@@ -27,7 +34,14 @@ def plot_top_players(df):
                     title="Bowling Performance",
                     labels={'player': 'Bowler', 'wickets': 'Wickets Taken'},
                     hover_data=['overs', 'runs', 'economy'])
-        fig.update_layout(xaxis_tickangle=-45)
+        fig.update_layout(
+            xaxis_tickangle=-45,
+            title_font=dict(size=20),
+            title_x=0.5,
+            xaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+            yaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+            legend=dict(font=dict(size=12))
+        )
         return fig
     return px.scatter(title="No bowling data found")
 
@@ -59,7 +73,11 @@ def plot_true_batting_stats(df):
     fig.update_layout(
         width=800,
         height=600,
-        showlegend=False
+    showlegend=False,
+    title_font=dict(size=20),
+    title_x=0.5,
+    xaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+    yaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)'))
     )
 
     return fig
@@ -105,7 +123,12 @@ def plot_match_level_true_batting_stats(df):
 
     fig.update_layout(
         width=800,
-        height=600
+        height=600,
+        title_font=dict(size=20),
+        title_x=0.5,
+    xaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+    yaxis=dict(title_font=dict(size=16), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+    legend=dict(font=dict(size=12))
     )
 
     return fig

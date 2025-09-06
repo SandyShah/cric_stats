@@ -949,13 +949,16 @@ elif page == "Batting Stats":
                     fig.update_traces(
                         textposition='top center',
                         marker=dict(size=20),
-                        textfont=dict(size=10)
+                        textfont=dict(size=12)
                     )
                     fig.update_layout(
                         showlegend=True,
                         height=600,
-                        xaxis_title=x_axis,
-                        yaxis_title=y_axis
+                        title_font=dict(size=18),
+                        title_x=0.5,
+                        xaxis=dict(title=x_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                        yaxis=dict(title=y_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                        legend=dict(font=dict(size=12))
                     )
 
                     # Display the plot
