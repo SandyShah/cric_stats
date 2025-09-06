@@ -21,40 +21,7 @@ from utils.visualizer import (
 
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-# Add axis selection dropdowns
-st.markdown("### Plot Configuration")
-stat_options = [
-    "Matches", "Innings", "Runs", "Balls", "4s", "6s", 
-    "BpB", "SR", "Dismissals", "Not Outs", "Average",
-    "DO_Runs", "DO_4s", "DO_6s", "DO_%", "DO_SR", "DO_Average"
-]
-
-# Create mapping for display names to actual column names (using exact DataFrame column names)
-plot_column_mapping = {
-    "Matches": "Matches",
-    "Innings": "Innings",
-    "Runs": "Runs",
-    "Balls": "Balls",
-    "4s": "4s",
-    "6s": "6s",
-    "BpB": "BpB",
-    "SR": "SR",
-    "Dismissals": "Dismissals",
-    "Not Outs": "Not Outs",
-    "Average": "Average",
-    "DO_Runs": "DO_Runs",
-    "DO_4s": "DO_4s",
-    "DO_6s": "DO_6s",
-    "DO_%": "DO_%",
-    "DO_SR": "DO_SR",
-    "DO_Average": "DO_Average"
-}
-
-col_plot1, col_plot2 = st.columns(2)
-with col_plot1:
-    x_axis = st.selectbox("X-Axis", stat_options, index=0)
-with col_plot2:
-    y_axis = st.selectbox("Y-Axis", stat_options, index=2)
+# Sidebar navigation
 
 # Sidebar navigation for multipage
 st.sidebar.title("Navigation")
@@ -763,36 +730,58 @@ elif page == "Batting Stats":
                     if filtered_players and len(filtered_players) > 0:
                         st.markdown("### Player Comparison Plot")
                         
-                        # Use the selected axis values directly as they now match the DataFrame columns
+                        # Add axis selection for scatter plot
+                        # Use the exact column names from the summary DataFrame so select options match the table
+                        stat_options = list(df_summary.columns)
+
+                        col_plot1, col_plot2 = st.columns(2)
+                        with col_plot1:
+                            x_axis = st.selectbox("X-Axis", stat_options, index=0)
+                        with col_plot2:
+                            # default to a sensible second choice (prefer Strike Rate if present)
+                            default_y = 0
+                            if "Strike Rate" in stat_options:
+                                default_y = stat_options.index("Strike Rate")
+                            y_axis = st.selectbox("Y-Axis", stat_options, index=default_y)
+
+                        # Use the selected axis values (column names from df_summary)
                         x_col = x_axis
                         y_col = y_axis
-                        
+
                         # Create scatter plot using plotly
                         import plotly.express as px
-                        
-                        # Prepare data for plotting
+
+                        # Prepare data for plotting (work on a copy)
                         plot_df = df_summary.copy()
-                        
-                        # Convert percentage strings to float if necessary
-                        if "%" in x_col:
-                            plot_df[x_col] = plot_df[x_col].str.rstrip('%').astype(float)
-                        if "%" in y_col:
-                            plot_df[y_col] = plot_df[y_col].str.rstrip('%').astype(float)
-                        
+
+                        # Helper: convert column to numeric, handling percent strings and non-numeric placeholders
+                        def to_numeric_series(s):
+                            # Convert everything to string first
+                            ser = s.astype(str)
+                            # If any value ends with '%', strip and convert
+                            if ser.str.endswith('%').any():
+                                return ser.str.rstrip('%').replace({'nan': None}).astype(float)
+                            # Otherwise coerce to numeric, converting non-numeric to NaN
+                            return pd.to_numeric(ser.replace({'nan': None}), errors='coerce')
+
+                        # Convert selected columns to numeric for plotting
+                        plot_df[x_col] = to_numeric_series(plot_df[x_col])
+                        plot_df[y_col] = to_numeric_series(plot_df[y_col])
+
                         # Create bubble plot
                         fig = px.scatter(
                             plot_df,
                             x=x_col,
                             y=y_col,
                             text=plot_df.index,  # Player names
-                            size="Total Runs",    # Bubble size based on total runs
-                            color=plot_df.index,  # Different color for each player
+                            size="Total Runs" if "Total Runs" in plot_df.columns else None,    # Bubble size based on total runs when available
+                            color=plot_df.index if not plot_df.index.empty else None,  # Different color for each player
                             title=f"{y_axis} vs {x_axis}",
                             labels={
                                 x_col: x_axis,
                                 y_col: y_axis
                             },
-                            hover_data=["Total Runs", "Innings", "Strike Rate", "Average"]  # Additional info on hover
+                            hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]  # Additional info on hover
                         )
                         
                         # Update layout
