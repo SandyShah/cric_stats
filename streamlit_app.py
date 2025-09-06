@@ -242,6 +242,9 @@ elif page == "Batting Stats":
     # Dot ball tracking
     player_dot_balls = {}   # Total dot balls faced
     player_do_dot_balls = {}# Death overs dot balls faced
+    # Position-based stats: track stats by number of wickets already fallen when player came to bat
+    # Structure: { player: { starting_wickets: { 'runs':int, 'balls':int, '4s':int, '6s':int, 'dismissals':int, 'innings':int } } }
+    player_position_stats = {}
     
     # Track which players are processed for each match to avoid double counting
     processed_players = set()
@@ -386,6 +389,10 @@ elif page == "Batting Stats":
                             player_matches[player] = player_matches.get(player, 0) + 1
                 
                 for innings in innings_data:
+                    # Track wickets in this innings to determine the 'came to bat after N wickets' position
+                    current_wickets = 0
+                    # Map of players to the starting wicket count for this innings (set when they face their first legal ball)
+                    innings_player_start = {}
                     if 'overs' in innings:
                         for over in innings['overs']:
                             over_num = int(over.get('over', 0))
@@ -396,6 +403,8 @@ elif page == "Batting Stats":
                                     if 'batter' in delivery:
                                         batter = delivery['batter']
                                         runs = delivery.get('runs', {}).get('batter', 0)
+
+                                        # We'll set the batter's innings start when they face their first legal ball (below)
                                         
                                         # Apply player filter if set
                                         if player_filter and player_filter.lower() not in batter.lower():
@@ -424,10 +433,18 @@ elif page == "Batting Stats":
                                                         'count': 0,
                                                         'details': []  # Track dismissal details
                                                     }
-                                                
+
                                                 # Increment dismissal count for the dismissed player
                                                 player_dismissals[dismissed_player]['count'] += 1
-                                                
+
+                                                # If we know which position they started in this innings, increment position dismissals
+                                                start_pos = innings_player_start.get(dismissed_player)
+                                                if start_pos is not None:
+                                                    pstats = player_position_stats.setdefault(dismissed_player, {}).setdefault(start_pos, {
+                                                        'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                    })
+                                                    pstats['dismissals'] = pstats.get('dismissals', 0) + 1
+
                                                 # Store dismissal details
                                                 dismissal_info = {
                                                     'kind': wicket.get('kind', 'unknown'),
@@ -441,7 +458,7 @@ elif page == "Batting Stats":
                                                     'file': os.path.basename(match["file_path"])
                                                 }
                                                 player_dismissals[dismissed_player]['details'].append(dismissal_info)
-                                                
+
                                                 # Also mark this delivery for tracking innings
                                                 if dismissed_player not in player_innings:
                                                     player_innings[dismissed_player] = {
@@ -451,24 +468,59 @@ elif page == "Batting Stats":
                                                 if match_id not in player_innings[dismissed_player]['matches']:
                                                     player_innings[dismissed_player]['matches'].add(match_id)
                                                     player_innings[dismissed_player]['count'] += 1
+                                                # Increase the innings-level wicket count for this delivery
+                                                try:
+                                                    current_wickets += 1
+                                                except NameError:
+                                                    # If for some reason current_wickets isn't defined, initialize it
+                                                    current_wickets = 1
 
                                         # Count balls faced (excluding extras like wides and no-balls)
                                         if 'extras' not in delivery or not delivery['extras']:
+                                            # If this is the first legal ball this batter faced in this innings, record their start position
+                                            if batter not in innings_player_start:
+                                                innings_player_start[batter] = current_wickets
+                                                pos = innings_player_start[batter]
+                                                pos_stats = player_position_stats.setdefault(batter, {}).setdefault(pos, {
+                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                })
+                                                pos_stats['innings'] = pos_stats.get('innings', 0) + 1
+
                                             # Aggregate balls faced
                                             player_balls[batter] = player_balls.get(batter, 0) + 1
                                             if is_death_over:
                                                 player_do_balls[batter] = player_do_balls.get(batter, 0) + 1
+
                                             # Count dot balls (run == 0)
                                             if runs == 0:
                                                 player_dot_balls[batter] = player_dot_balls.get(batter, 0) + 1
                                                 if is_death_over:
                                                     player_do_dot_balls[batter] = player_do_dot_balls.get(batter, 0) + 1
+
+                                            # Also add to position-specific ball count
+                                            start_pos = innings_player_start.get(batter)
+                                            if start_pos is not None:
+                                                pstats = player_position_stats.setdefault(batter, {}).setdefault(start_pos, {
+                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                })
+                                                pstats['balls'] = pstats.get('balls', 0) + 1
                                         
                                         # Aggregate runs
                                         if batter:
                                             player_runs[batter] = player_runs.get(batter, 0) + runs
                                             if is_death_over:
                                                 player_do_runs[batter] = player_do_runs.get(batter, 0) + runs
+                                            # Also add to position-specific runs/boundaries
+                                            start_pos = innings_player_start.get(batter)
+                                            if start_pos is not None:
+                                                pstats = player_position_stats.setdefault(batter, {}).setdefault(start_pos, {
+                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                })
+                                                pstats['runs'] = pstats.get('runs', 0) + runs
+                                                if runs == 4:
+                                                    pstats['4s'] = pstats.get('4s', 0) + 1
+                                                elif runs == 6:
+                                                    pstats['6s'] = pstats.get('6s', 0) + 1
                                             
                                             # Count boundaries
                                             if runs == 4:
@@ -622,7 +674,8 @@ elif page == "Batting Stats":
                         total_boundaries = player_fours.get(player, 0) + player_sixes.get(player, 0)
                         balls_per_boundary = total_balls / total_boundaries if total_boundaries > 0 else float('inf')
                         
-                        data.append({
+                        # Build row dict explicitly to avoid complex dict-unpacking issues
+                        row = {
                             'Player': player,
                             'Matches': total_matches,
                             'Innings': innings_played,
@@ -648,8 +701,27 @@ elif page == "Batting Stats":
                             # Death overs balls per boundary (DO_BpB)
                             'DO_BpB': (round(death_balls / (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)), 2)
                                       if (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)) > 0 and death_balls > 0
-                                      else '-'),
-                        })
+                                      else '-')
+                        }
+
+                        # Position-based stats (0..9): came after p wickets fallen
+                        for p in range(0, 10):
+                            pst = player_position_stats.get(player, {}).get(p, {})
+                            runs_p = pst.get('runs', 0)
+                            balls_p = pst.get('balls', 0)
+                            fours_p = pst.get('4s', 0)
+                            sixes_p = pst.get('6s', 0)
+                            dismissals_p = pst.get('dismissals', 0)
+
+                            row[f"{p}_Runs"] = runs_p
+                            row[f"{p}_Balls"] = balls_p
+                            row[f"{p}_SR"] = round((runs_p / max(balls_p, 1)) * 100, 2) if balls_p > 0 else 0
+                            row[f"{p}_Average"] = ('-' if dismissals_p == 0 else round(runs_p / dismissals_p, 2))
+                            row[f"{p}_BpB"] = (round(balls_p / max((fours_p + sixes_p), 1), 2) if (fours_p + sixes_p) > 0 and balls_p > 0 else '-')
+                            row[f"{p}_4s"] = fours_p
+                            row[f"{p}_6s"] = sixes_p
+
+                        data.append(row)
                     
                     df = pd.DataFrame(data)
                     
@@ -700,6 +772,17 @@ elif page == "Batting Stats":
                     preferred_order = [
                         'Sr.', 'Player', 'Matches', 'Innings', 'Not Outs', 'Dismissals',
                         'Runs', 'Balls', 'SR', 'Average', '4s', '6s', 'BpB', 'Dots', 'Dot_%',
+                        # Position stats 0..9
+                        '0_Runs','0_Balls','0_SR','0_Average','0_BpB','0_4s','0_6s',
+                        '1_Runs','1_Balls','1_SR','1_Average','1_BpB','1_4s','1_6s',
+                        '2_Runs','2_Balls','2_SR','2_Average','2_BpB','2_4s','2_6s',
+                        '3_Runs','3_Balls','3_SR','3_Average','3_BpB','3_4s','3_6s',
+                        '4_Runs','4_Balls','4_SR','4_Average','4_BpB','4_4s','4_6s',
+                        '5_Runs','5_Balls','5_SR','5_Average','5_BpB','5_4s','5_6s',
+                        '6_Runs','6_Balls','6_SR','6_Average','6_BpB','6_4s','6_6s',
+                        '7_Runs','7_Balls','7_SR','7_Average','7_BpB','7_4s','7_6s',
+                        '8_Runs','8_Balls','8_SR','8_Average','8_BpB','8_4s','8_6s',
+                        '9_Runs','9_Balls','9_SR','9_Average','9_BpB','9_4s','9_6s',
                         'DO_Runs', 'DO_Balls', 'DO_SR', 'DO_Average', 'DO_4s', 'DO_6s', 'DO_BpB', 'DO_Dots', 'DO_Dot_%', 'DO_%'
                     ]
                     cols_in_order = [c for c in preferred_order if c in df.columns]
@@ -748,6 +831,30 @@ elif page == "Batting Stats":
                 }
                 
                 df_summary = pd.DataFrame.from_dict(data, orient='index')
+
+                # Add position-based columns (0 means player started the innings; 1 means after 1 wicket fell, ... up to 9)
+                max_pos = 10  # track positions 0..9
+                for player in df_summary.index:
+                    pos_stats = player_position_stats.get(player, {})
+                    for p in range(0, max_pos):
+                        stats = pos_stats.get(p, {})
+                        runs = stats.get('runs', 0)
+                        balls = stats.get('balls', 0)
+                        fours = stats.get('4s', 0)
+                        sixes = stats.get('6s', 0)
+                        dismissals = stats.get('dismissals', 0)
+
+                        sr = round((runs / max(balls, 1)) * 100, 2) if balls > 0 else 0
+                        avg = '-' if dismissals == 0 else round(runs / dismissals, 2)
+                        bpb = (round(balls / max((fours + sixes), 1), 2) if (fours + sixes) > 0 and balls > 0 else '-')
+
+                        df_summary.loc[player, f"{p}_Runs"] = runs
+                        df_summary.loc[player, f"{p}_Balls"] = balls
+                        df_summary.loc[player, f"{p}_SR"] = sr
+                        df_summary.loc[player, f"{p}_Average"] = avg
+                        df_summary.loc[player, f"{p}_BpB"] = bpb
+                        df_summary.loc[player, f"{p}_4s"] = fours
+                        df_summary.loc[player, f"{p}_6s"] = sixes
                 
                 # Sort by Total Runs in descending order
                 df_summary = df_summary.sort_values(by="Total Runs", ascending=False)
