@@ -295,6 +295,26 @@ elif page == "Batting Stats":
     if selected_years:
         filtered_matches = [m for m in filtered_matches if str(m["year"]) in selected_years]
 
+    # Batting position filter (0..9) - allow multiple selections
+    position_options = [str(i) for i in range(0, 10)]
+    selected_positions = st.sidebar.multiselect(
+        "Select Batting Position(s)",
+        options=position_options,
+        default=[],
+        help="Select one or more starting-wicket positions (0 means opened the innings). Leave empty to include all positions."
+    )
+
+    # Option: only show players who have actually batted in the selected positions
+    filter_players_by_position = st.sidebar.checkbox(
+        "Show only players who batted in selected positions",
+        value=False,
+        help="When checked, the player selector will only list players who have at least one innings that started at any of the selected positions."
+    )
+
+    # Option: restrict matches to those where the (sidebar) player filter played in the selected positions
+    # The option to restrict matches to those where a selected player batted in selected positions
+    # has been removed to simplify the UI and avoid confusing behavior.
+
     all_teams = sorted(list(set(team for m in filtered_matches for team in m["teams"])))
     col1, col2 = st.sidebar.columns(2)
     with col1:
@@ -360,6 +380,9 @@ elif page == "Batting Stats":
     player_innings = {}   # Innings where player batted (counted from actual batting)
     
     if filtered_matches:
+    # (previously there was an optional pre-scan here to restrict matches by player+position;
+    # that feature has been removed to simplify the UI and avoid confusing match filtering)
+        
         for match in filtered_matches:
             try:
                 dataset = load_selected_dataset(match["file_path"])
@@ -617,8 +640,8 @@ elif page == "Batting Stats":
                 st.markdown('<div class="search-box">', unsafe_allow_html=True)
                 player_search = st.text_input("", placeholder="Search players...", label_visibility="collapsed")
                 st.markdown('</div>', unsafe_allow_html=True)
-                
-                                # Process comma-separated search and filter players
+
+                # Process comma-separated search and filter players
                 filtered_players = []
                 if player_search:
                     # Split search terms by comma and strip whitespace
@@ -649,6 +672,22 @@ elif page == "Batting Stats":
                 
                 # Remove duplicates while preserving order
                 filtered_players = list(dict.fromkeys(filtered_players))
+
+                # If user chose to filter players by selected positions, restrict the list
+                if selected_positions and filter_players_by_position:
+                    try:
+                        sel_pos_ints = [int(p) for p in selected_positions]
+                    except Exception:
+                        sel_pos_ints = []
+
+                    def has_played_in_positions(player_name):
+                        pstats = player_position_stats.get(player_name, {})
+                        for pos in sel_pos_ints:
+                            if pstats.get(pos, {}).get('innings', 0) > 0:
+                                return True
+                        return False
+
+                    filtered_players = [p for p in filtered_players if has_played_in_positions(p)]
                 
                 st.markdown('</div></div>', unsafe_allow_html=True)
 
@@ -721,6 +760,28 @@ elif page == "Batting Stats":
                             row[f"{p}_4s"] = fours_p
                             row[f"{p}_6s"] = sixes_p
 
+                        # Aggregated stats for selected positions (SelPos_*)
+                        try:
+                            sel_pos_ints = [int(p) for p in selected_positions] if selected_positions else None
+                        except Exception:
+                            sel_pos_ints = None
+
+                        sel_runs = sel_balls = sel_4s = sel_6s = sel_innings = 0
+                        pos_keys = range(0, 10) if not sel_pos_ints else sel_pos_ints
+                        for pos in pos_keys:
+                            pst = player_position_stats.get(player, {}).get(pos, {})
+                            sel_runs += pst.get('runs', 0)
+                            sel_balls += pst.get('balls', 0)
+                            sel_4s += pst.get('4s', 0)
+                            sel_6s += pst.get('6s', 0)
+                            sel_innings += pst.get('innings', 0)
+
+                        row['SelPos_Runs'] = sel_runs
+                        row['SelPos_Balls'] = sel_balls
+                        row['SelPos_4s'] = sel_4s
+                        row['SelPos_6s'] = sel_6s
+                        row['SelPos_Innings'] = sel_innings
+
                         data.append(row)
                     
                     df = pd.DataFrame(data)
@@ -772,6 +833,8 @@ elif page == "Batting Stats":
                     preferred_order = [
                         'Sr.', 'Player', 'Matches', 'Innings', 'Not Outs', 'Dismissals',
                         'Runs', 'Balls', 'SR', 'Average', '4s', '6s', 'BpB', 'Dots', 'Dot_%',
+                        # Aggregated selected-position summary
+                        'SelPos_Runs', 'SelPos_Balls', 'SelPos_4s', 'SelPos_6s', 'SelPos_Innings',
                         # Position stats 0..9
                         '0_Runs','0_Balls','0_SR','0_Average','0_BpB','0_4s','0_6s',
                         '1_Runs','1_Balls','1_SR','1_Average','1_BpB','1_4s','1_6s',
@@ -829,6 +892,28 @@ elif page == "Batting Stats":
                     }
                     for player in filtered_players
                 }
+                # Add aggregated selected-position columns (SelPos_*) to df_summary
+                for player in list(data.keys()):
+                    try:
+                        sel_pos_ints = [int(p) for p in selected_positions] if selected_positions else None
+                    except Exception:
+                        sel_pos_ints = None
+
+                    sel_runs = sel_balls = sel_4s = sel_6s = sel_innings = 0
+                    pos_keys = range(0, 10) if not sel_pos_ints else sel_pos_ints
+                    for pos in pos_keys:
+                        pst = player_position_stats.get(player, {}).get(pos, {})
+                        sel_runs += pst.get('runs', 0)
+                        sel_balls += pst.get('balls', 0)
+                        sel_4s += pst.get('4s', 0)
+                        sel_6s += pst.get('6s', 0)
+                        sel_innings += pst.get('innings', 0)
+
+                    data[player]['SelPos_Runs'] = sel_runs
+                    data[player]['SelPos_Balls'] = sel_balls
+                    data[player]['SelPos_4s'] = sel_4s
+                    data[player]['SelPos_6s'] = sel_6s
+                    data[player]['SelPos_Innings'] = sel_innings
                 
                 df_summary = pd.DataFrame.from_dict(data, orient='index')
 
@@ -970,6 +1055,8 @@ elif page == "Batting Stats":
                     'Matches', 'Innings', 'Not Outs', 'Dismissals',
                     'Total Runs', 'Total Balls', 'Strike Rate', 'Average',
                     '4s', '6s', 'BpB', 'Dots', 'Dot %',
+                    # Aggregated selected-position summary
+                    'SelPos_Runs', 'SelPos_Balls', 'SelPos_4s', 'SelPos_6s', 'SelPos_Innings',
                     'DO Runs', 'DO Balls', 'DO Strike Rate', 'DO Average', 'DO 4s', 'DO 6s', 'DO %', 'DO Dots', 'DO Dot %', 'DO_BpB'
                 ]
                 rows_in_order = [r for r in preferred_stats_order if r in df_summary_transposed.index]
