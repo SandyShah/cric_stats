@@ -242,6 +242,10 @@ elif page == "Batting Stats":
     # Dot ball tracking
     player_dot_balls = {}   # Total dot balls faced
     player_do_dot_balls = {}# Death overs dot balls faced
+    # Scoring milestone tracking (per-innings counts)
+    player_30s = {}
+    player_50s = {}
+    player_100s = {}
     # Position-based stats: track stats by number of wickets already fallen when player came to bat
     # Structure: { player: { starting_wickets: { 'runs':int, 'balls':int, '4s':int, '6s':int, 'dismissals':int, 'innings':int } } }
     player_position_stats = {}
@@ -417,6 +421,8 @@ elif page == "Batting Stats":
                     # Map of players to the starting wicket count for this innings (set when they face their first legal ball)
                     innings_player_start = {}
                     if 'overs' in innings:
+                        # Track runs scored by each batter in this innings so we can detect 30/50/100 milestones
+                        innings_runs = {}
                         for over in innings['overs']:
                             over_num = int(over.get('over', 0))
                             is_death_over = over_num >= 15  # Over numbers are 0-based, so 15 means 16th over
@@ -514,6 +520,9 @@ elif page == "Batting Stats":
                                             if is_death_over:
                                                 player_do_balls[batter] = player_do_balls.get(batter, 0) + 1
 
+                                            # Track runs within this innings for milestone detection
+                                            innings_runs[batter] = innings_runs.get(batter, 0) + runs
+
                                             # Count dot balls (run == 0)
                                             if runs == 0:
                                                 player_dot_balls[batter] = player_dot_balls.get(batter, 0) + 1
@@ -524,7 +533,8 @@ elif page == "Batting Stats":
                                             start_pos = innings_player_start.get(batter)
                                             if start_pos is not None:
                                                 pstats = player_position_stats.setdefault(batter, {}).setdefault(start_pos, {
-                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0,
+                                                    '30s': 0, '50s': 0, '100s': 0
                                                 })
                                                 pstats['balls'] = pstats.get('balls', 0) + 1
                                         
@@ -537,7 +547,8 @@ elif page == "Batting Stats":
                                             start_pos = innings_player_start.get(batter)
                                             if start_pos is not None:
                                                 pstats = player_position_stats.setdefault(batter, {}).setdefault(start_pos, {
-                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0
+                                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0,
+                                                    '30s': 0, '50s': 0, '100s': 0
                                                 })
                                                 pstats['runs'] = pstats.get('runs', 0) + runs
                                                 if runs == 4:
@@ -554,7 +565,34 @@ elif page == "Batting Stats":
                                                 player_sixes[batter] = player_sixes.get(batter, 0) + 1
                                                 if is_death_over:
                                                     player_do_sixes[batter] = player_do_sixes.get(batter, 0) + 1
+                                        # end delivery
+                        # After finishing this innings, update milestone counters per player in this innings
+                        for batter_name, runs_scored in innings_runs.items():
+                            try:
+                                start_pos = innings_player_start.get(batter_name)
+                            except Exception:
+                                start_pos = None
 
+                            # Update global milestone counters
+                            if runs_scored >= 30:
+                                player_30s[batter_name] = player_30s.get(batter_name, 0) + 1
+                            if runs_scored >= 50:
+                                player_50s[batter_name] = player_50s.get(batter_name, 0) + 1
+                            if runs_scored >= 100:
+                                player_100s[batter_name] = player_100s.get(batter_name, 0) + 1
+
+                            # Update position-specific milestone counters if we have the start position
+                            if start_pos is not None:
+                                pstats = player_position_stats.setdefault(batter_name, {}).setdefault(start_pos, {
+                                    'runs': 0, 'balls': 0, '4s': 0, '6s': 0, 'dismissals': 0, 'innings': 0,
+                                    '30s': 0, '50s': 0, '100s': 0
+                                })
+                                if runs_scored >= 30:
+                                    pstats['30s'] = pstats.get('30s', 0) + 1
+                                if runs_scored >= 50:
+                                    pstats['50s'] = pstats.get('50s', 0) + 1
+                                if runs_scored >= 100:
+                                    pstats['100s'] = pstats.get('100s', 0) + 1
             except Exception as e:
                 st.warning(f"Error loading {match['match_name']}: {str(e)}")
                 st.error(f"Detailed error: {str(e)}")
@@ -740,7 +778,11 @@ elif page == "Batting Stats":
                             # Death overs balls per boundary (DO_BpB)
                             'DO_BpB': (round(death_balls / (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)), 2)
                                       if (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)) > 0 and death_balls > 0
-                                      else '-')
+                                      else '-'),
+                            # Milestones
+                            '30s': player_30s.get(player, 0),
+                            '50s': player_50s.get(player, 0),
+                            '100s': player_100s.get(player, 0)
                         }
 
                         # Position-based stats (0..9): came after p wickets fallen
@@ -759,6 +801,10 @@ elif page == "Batting Stats":
                             row[f"{p}_BpB"] = (round(balls_p / max((fours_p + sixes_p), 1), 2) if (fours_p + sixes_p) > 0 and balls_p > 0 else '-')
                             row[f"{p}_4s"] = fours_p
                             row[f"{p}_6s"] = sixes_p
+                            # position milestone columns
+                            row[f"{p}_30s"] = pst.get('30s', 0)
+                            row[f"{p}_50s"] = pst.get('50s', 0)
+                            row[f"{p}_100s"] = pst.get('100s', 0)
 
                         # Aggregated stats for selected positions (SelPos_*)
                         try:
@@ -767,6 +813,8 @@ elif page == "Batting Stats":
                             sel_pos_ints = None
 
                         sel_runs = sel_balls = sel_4s = sel_6s = sel_innings = 0
+                        sel_30s = sel_50s = sel_100s = 0
+                        sel_dismissals = 0
                         pos_keys = range(0, 10) if not sel_pos_ints else sel_pos_ints
                         for pos in pos_keys:
                             pst = player_position_stats.get(player, {}).get(pos, {})
@@ -775,19 +823,35 @@ elif page == "Batting Stats":
                             sel_4s += pst.get('4s', 0)
                             sel_6s += pst.get('6s', 0)
                             sel_innings += pst.get('innings', 0)
+                            sel_30s += pst.get('30s', 0)
+                            sel_50s += pst.get('50s', 0)
+                            sel_100s += pst.get('100s', 0)
+                            sel_dismissals += pst.get('dismissals', 0)
 
                         row['SelPos_Runs'] = sel_runs
                         row['SelPos_Balls'] = sel_balls
+                        # Selected-position Strike Rate
+                        row['SelPos_SR'] = round((sel_runs / max(sel_balls, 1)) * 100, 2) if sel_balls > 0 else 0
                         row['SelPos_4s'] = sel_4s
                         row['SelPos_6s'] = sel_6s
+                        # Balls per boundary for selected positions
+                        row['SelPos_BpB'] = (round(sel_balls / (sel_4s + sel_6s), 2)
+                                             if (sel_4s + sel_6s) > 0 and sel_balls > 0
+                                             else '-')
                         row['SelPos_Innings'] = sel_innings
+                        row['SelPos_30s'] = sel_30s
+                        row['SelPos_50s'] = sel_50s
+                        row['SelPos_100s'] = sel_100s
+                        # Selected-position dismissals and average
+                        row['SelPos_Dismissals'] = sel_dismissals
+                        row['SelPos_Average'] = ('-' if sel_dismissals == 0 else round(sel_runs / sel_dismissals, 2))
 
                         data.append(row)
                     
                     df = pd.DataFrame(data)
                     
                     # Format numeric columns
-                    numeric_columns = ['SR', 'DO_%', 'DO_SR']
+                    numeric_columns = ['SR', 'DO_%', 'DO_SR', '30s', '50s', '100s']
                     for col in numeric_columns:
                         df[col] = df[col].round(2)
                     
@@ -830,27 +894,52 @@ elif page == "Batting Stats":
                     """, unsafe_allow_html=True)
                     
                     # Reorder columns into a logical batting-stats order while keeping any new columns
+                    # Determine which position columns to show: if user selected positions, show only those
+                    try:
+                        sel_pos_ints = [int(p) for p in selected_positions] if selected_positions else None
+                    except Exception:
+                        sel_pos_ints = None
+
+                    preferred_position_columns = []
+                    pos_range = sel_pos_ints if sel_pos_ints is not None else list(range(0,10))
+                    for p in pos_range:
+                        preferred_position_columns += [
+                            f'{p}_Runs', f'{p}_Balls', f'{p}_SR', f'{p}_Average', f'{p}_BpB', f'{p}_4s', f'{p}_6s',
+                            f'{p}_30s', f'{p}_50s', f'{p}_100s'
+                        ]
+
                     preferred_order = [
                         'Sr.', 'Player', 'Matches', 'Innings', 'Not Outs', 'Dismissals',
                         'Runs', 'Balls', 'SR', 'Average', '4s', '6s', 'BpB', 'Dots', 'Dot_%',
-                        # Aggregated selected-position summary
-                        'SelPos_Runs', 'SelPos_Balls', 'SelPos_4s', 'SelPos_6s', 'SelPos_Innings',
-                        # Position stats 0..9
-                        '0_Runs','0_Balls','0_SR','0_Average','0_BpB','0_4s','0_6s',
-                        '1_Runs','1_Balls','1_SR','1_Average','1_BpB','1_4s','1_6s',
-                        '2_Runs','2_Balls','2_SR','2_Average','2_BpB','2_4s','2_6s',
-                        '3_Runs','3_Balls','3_SR','3_Average','3_BpB','3_4s','3_6s',
-                        '4_Runs','4_Balls','4_SR','4_Average','4_BpB','4_4s','4_6s',
-                        '5_Runs','5_Balls','5_SR','5_Average','5_BpB','5_4s','5_6s',
-                        '6_Runs','6_Balls','6_SR','6_Average','6_BpB','6_4s','6_6s',
-                        '7_Runs','7_Balls','7_SR','7_Average','7_BpB','7_4s','7_6s',
-                        '8_Runs','8_Balls','8_SR','8_Average','8_BpB','8_4s','8_6s',
-                        '9_Runs','9_Balls','9_SR','9_Average','9_BpB','9_4s','9_6s',
+                        # Aggregated selected-position summary (grouped)
+                        'SelPos_Runs', 'SelPos_Balls', 'SelPos_SR', 'SelPos_Average', 'SelPos_Dismissals',
+                        'SelPos_4s', 'SelPos_6s', 'SelPos_BpB', 'SelPos_Innings', 'SelPos_30s', 'SelPos_50s', 'SelPos_100s',
+                        # Position stats (only selected positions if any)
+                    ] + preferred_position_columns + [
                         'DO_Runs', 'DO_Balls', 'DO_SR', 'DO_Average', 'DO_4s', 'DO_6s', 'DO_BpB', 'DO_Dots', 'DO_Dot_%', 'DO_%'
                     ]
                     cols_in_order = [c for c in preferred_order if c in df.columns]
-                    # Append any columns not in preferred_order (keeps future additions)
-                    cols_in_order += [c for c in df.columns if c not in cols_in_order]
+                    # Append any non-position columns not already in preferred_order; exclude
+                    # position-specific columns for unselected positions so they don't appear at the end
+                    extra_cols = []
+                    for c in df.columns:
+                        if c in cols_in_order:
+                            continue
+                        # If this looks like a position column (e.g., '6_Runs'), decide whether to include
+                        parts = c.split('_', 1)
+                        if len(parts) > 1 and parts[0].isdigit():
+                            try:
+                                pnum = int(parts[0])
+                            except Exception:
+                                extra_cols.append(c)
+                                continue
+                            # If user selected positions, only include columns for those positions
+                            if sel_pos_ints is not None and pnum not in sel_pos_ints:
+                                continue
+                        # otherwise include the extra column
+                        extra_cols.append(c)
+
+                    cols_in_order += extra_cols
                     df = df[cols_in_order]
 
                     st.dataframe(
@@ -888,7 +977,11 @@ elif page == "Batting Stats":
                         "Dots": player_dot_balls.get(player, 0),
                         "DO_Dots": player_do_dot_balls.get(player, 0),
                         "Dot_%": f"{round((player_dot_balls.get(player, 0) / max(player_balls.get(player, 1), 1)) * 100, 2)}%",
-                        "DO_Dot_%": f"{round((player_do_dot_balls.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2)}%"
+                        "DO_Dot_%": f"{round((player_do_dot_balls.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2)}%",
+                        # Milestones
+                        "30s": player_30s.get(player, 0),
+                        "50s": player_50s.get(player, 0),
+                        "100s": player_100s.get(player, 0)
                     }
                     for player in filtered_players
                 }
@@ -900,6 +993,8 @@ elif page == "Batting Stats":
                         sel_pos_ints = None
 
                     sel_runs = sel_balls = sel_4s = sel_6s = sel_innings = 0
+                    sel_30s = sel_50s = sel_100s = 0
+                    sel_dismissals = 0
                     pos_keys = range(0, 10) if not sel_pos_ints else sel_pos_ints
                     for pos in pos_keys:
                         pst = player_position_stats.get(player, {}).get(pos, {})
@@ -909,11 +1004,26 @@ elif page == "Batting Stats":
                         sel_6s += pst.get('6s', 0)
                         sel_innings += pst.get('innings', 0)
 
+                        sel_30s += pst.get('30s', 0)
+                        sel_50s += pst.get('50s', 0)
+                        sel_100s += pst.get('100s', 0)
+                        sel_dismissals += pst.get('dismissals', 0)
+
                     data[player]['SelPos_Runs'] = sel_runs
                     data[player]['SelPos_Balls'] = sel_balls
                     data[player]['SelPos_4s'] = sel_4s
                     data[player]['SelPos_6s'] = sel_6s
+                    # SelPos balls-per-boundary
+                    data[player]['SelPos_BpB'] = (round(sel_balls / max((sel_4s + sel_6s), 1), 2)
+                                                   if (sel_4s + sel_6s) > 0 and sel_balls > 0 else '-')
+                    # SelPos Strike Rate and Average
+                    data[player]['SelPos_SR'] = round((sel_runs / max(sel_balls, 1)) * 100, 2) if sel_balls > 0 else 0
                     data[player]['SelPos_Innings'] = sel_innings
+                    data[player]['SelPos_30s'] = sel_30s
+                    data[player]['SelPos_50s'] = sel_50s
+                    data[player]['SelPos_100s'] = sel_100s
+                    data[player]['SelPos_Dismissals'] = sel_dismissals
+                    data[player]['SelPos_Average'] = ('-' if sel_dismissals == 0 else round(sel_runs / sel_dismissals, 2))
                 
                 df_summary = pd.DataFrame.from_dict(data, orient='index')
 
@@ -940,6 +1050,10 @@ elif page == "Batting Stats":
                         df_summary.loc[player, f"{p}_BpB"] = bpb
                         df_summary.loc[player, f"{p}_4s"] = fours
                         df_summary.loc[player, f"{p}_6s"] = sixes
+                        # milestones per position
+                        df_summary.loc[player, f"{p}_30s"] = stats.get('30s', 0)
+                        df_summary.loc[player, f"{p}_50s"] = stats.get('50s', 0)
+                        df_summary.loc[player, f"{p}_100s"] = stats.get('100s', 0)
                 
                 # Sort by Total Runs in descending order
                 df_summary = df_summary.sort_values(by="Total Runs", ascending=False)
@@ -979,7 +1093,22 @@ elif page == "Batting Stats":
 
                     # Add axis selection for scatter plot
                     # Use the exact column names from the summary DataFrame so select options match the table
+                    # Prefer showing columns in a friendly preferred order when available
                     stat_options = list(df_summary.columns)
+                    try:
+                        preferred_stat_names = [
+                            'Matches', 'Innings', 'Not Outs', 'Dismissals',
+                            'Total Runs', 'Total Balls', 'Strike Rate', 'Average',
+                            '4s', '6s', 'BpB', 'Dots', 'Dot_%',
+                            'SelPos_Runs', 'SelPos_Balls', 'SelPos_SR', 'SelPos_Average', 'SelPos_Dismissals', 'SelPos_4s', 'SelPos_6s', 'SelPos_BpB', 'SelPos_Innings', 'SelPos_30s', 'SelPos_50s', 'SelPos_100s',
+                            'DO_Runs', 'DO_Balls', 'DO_SR', 'DO_Average', 'DO_4s', 'DO_6s', 'DO_%', 'DO_Dots', 'DO_Dot_%', 'DO_BpB'
+                        ]
+                        # Move any preferred names present in stat_options to the front, preserving their order
+                        ordered = [s for s in preferred_stat_names if s in stat_options]
+                        remaining = [s for s in stat_options if s not in ordered]
+                        stat_options = ordered + remaining
+                    except Exception:
+                        pass
 
                     col_plot1, col_plot2 = st.columns(2)
                     with col_plot1:
@@ -1054,11 +1183,32 @@ elif page == "Batting Stats":
                 preferred_stats_order = [
                     'Matches', 'Innings', 'Not Outs', 'Dismissals',
                     'Total Runs', 'Total Balls', 'Strike Rate', 'Average',
-                    '4s', '6s', 'BpB', 'Dots', 'Dot %',
-                    # Aggregated selected-position summary
-                    'SelPos_Runs', 'SelPos_Balls', 'SelPos_4s', 'SelPos_6s', 'SelPos_Innings',
-                    'DO Runs', 'DO Balls', 'DO Strike Rate', 'DO Average', 'DO 4s', 'DO 6s', 'DO %', 'DO Dots', 'DO Dot %', 'DO_BpB'
+                    '4s', '6s', 'BpB', 'Dots', 'Dot_%',
+                    # Aggregated selected-position summary (grouped)
+                    'SelPos_Runs', 'SelPos_Balls', 'SelPos_SR', 'SelPos_Average', 'SelPos_Dismissals',
+                    'SelPos_4s', 'SelPos_6s', 'SelPos_BpB', 'SelPos_Innings', 'SelPos_30s', 'SelPos_50s', 'SelPos_100s',
+                    'DO_Runs', 'DO_Balls', 'DO_SR', 'DO_Average', 'DO_4s', 'DO_6s', 'DO_%', 'DO_Dots', 'DO_Dot_%', 'DO_BpB'
                 ]
+
+                # If the user selected specific positions, drop rows for unselected positions
+                try:
+                    sel_pos_ints = [int(p) for p in selected_positions] if selected_positions else None
+                except Exception:
+                    sel_pos_ints = None
+
+                if sel_pos_ints is not None:
+                    # Build a set of position-related row name prefixes to keep
+                    keep_prefixes = set(str(p) + '_' for p in sel_pos_ints)
+                    rows_to_drop = []
+                    for idx in df_summary_transposed.index:
+                        parts = idx.split('_', 1)
+                        if len(parts) > 1 and parts[0].isdigit():
+                            # position-specific row
+                            if parts[0] not in [str(p) for p in sel_pos_ints]:
+                                rows_to_drop.append(idx)
+                    if rows_to_drop:
+                        df_summary_transposed = df_summary_transposed.drop(rows_to_drop, errors='ignore')
+
                 rows_in_order = [r for r in preferred_stats_order if r in df_summary_transposed.index]
                 rows_in_order += [r for r in df_summary_transposed.index if r not in rows_in_order]
                 df_summary_transposed = df_summary_transposed.reindex(rows_in_order)
