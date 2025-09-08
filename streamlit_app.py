@@ -11,6 +11,8 @@ st.set_page_config(
 import pandas as pd
 import os
 import json
+import numpy as np
+import numpy as np
 from utils.data_loader import load_json_files, load_selected_dataset, get_match_info
 from utils.stats_processor import compute_basic_stats, compute_true_batting_stats, compute_match_level_true_batting_stats
 from utils.visualizer import (
@@ -242,6 +244,8 @@ elif page == "Batting Stats":
     # Dot ball tracking
     player_dot_balls = {}   # Total dot balls faced
     player_do_dot_balls = {}# Death overs dot balls faced
+    # Death-over dismissals tracking
+    player_do_dismissals = {}  # Number of times player was dismissed in death overs
     # Scoring milestone tracking (per-innings counts)
     player_30s = {}
     player_50s = {}
@@ -525,6 +529,13 @@ elif page == "Batting Stats":
 
                                                 # Increment dismissal count for the dismissed player
                                                 player_dismissals[dismissed_player]['count'] += 1
+
+                                                # If this wicket happened in death overs, increment death-over dismissals
+                                                try:
+                                                    if is_death_over:
+                                                        player_do_dismissals[dismissed_player] = player_do_dismissals.get(dismissed_player, 0) + 1
+                                                except Exception:
+                                                    pass
 
                                                 # If we know which position they started in this innings, increment position dismissals
                                                 start_pos = innings_player_start.get(dismissed_player)
@@ -834,7 +845,10 @@ elif page == "Batting Stats":
                             'Dot_%': (player_dot_balls.get(player, 0)/total_balls*100) if total_balls > 0 else 0,
                             'DO_Dot_%': (player_do_dot_balls.get(player, 0)/max(death_balls,1)*100) if death_balls > 0 else 0,
                             'DO_SR': death_sr,
-                            'DO_Average': float('inf') if player_dismissals.get(player, {}).get('count', 0) == 0 else death_runs/player_dismissals.get(player, {}).get('count', 1),  # Death overs runs/Dismissals
+                            # Death-over dismissals (explicit column)
+                            'DO_Dismissals': player_do_dismissals.get(player, 0),
+                            # Use death-over dismissals to compute DO_Average
+                            'DO_Average': float('inf') if player_do_dismissals.get(player, 0) == 0 else death_runs/player_do_dismissals.get(player, 1),  # Death overs runs / death-over dismissals
                             # Death overs balls per boundary (DO_BpB)
                             'DO_BpB': (round(death_balls / (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)), 2)
                                       if (player_do_fours.get(player, 0) + player_do_sixes.get(player, 0)) > 0 and death_balls > 0
@@ -909,23 +923,75 @@ elif page == "Batting Stats":
                         data.append(row)
                     
                     df = pd.DataFrame(data)
-                    
-                    # Format numeric columns
-                    numeric_columns = ['SR', 'DO_%', 'DO_SR', '30s', '50s', '100s']
-                    for col in numeric_columns:
-                        df[col] = df[col].round(2)
-                    
-                    # Format average columns to show "-" for not-out cases with no dismissals
+
+                    # Helper: coerce any numeric-like columns from strings (strip % and '-') to numeric types
+                    def _coerce_numeric_columns(df_local):
+                        for c in df_local.columns:
+                            if c in ['Player']:
+                                # leave player name as-is
+                                continue
+                            try:
+                                ser = df_local[c].astype(str).str.strip()
+                            except Exception:
+                                continue
+                            # Prepare a cleaned series by stripping percent signs and placeholder dashes
+                            cleaned = ser.str.rstrip('%').replace({'-': ''})
+                            # Attempt numeric conversion
+                            conv = pd.to_numeric(cleaned.replace({'': pd.NA}), errors='coerce')
+                            # If there is at least one numeric value, use the converted series and fill NaN/inf with 0
+                            if conv.notna().sum() > 0:
+                                conv = conv.fillna(0)
+                                conv = conv.replace([pd.NA, None], 0)
+                                try:
+                                    conv = conv.replace([float('inf'), float('-inf')], 0)
+                                except Exception:
+                                    pass
+                                df_local[c] = conv
+
+                    _coerce_numeric_columns(df)
+
+                    # Round float columns to 2 decimals for nicer display
+                    for col in df.columns:
+                        try:
+                            if pd.api.types.is_float_dtype(df[col].dtype):
+                                df[col] = df[col].round(2)
+                        except Exception:
+                            continue
+
+                    # For Average columns, convert infinities/NaN to numeric and then replace non-finite with 0
                     for col in ['Average', 'DO_Average']:
-                        df[col] = df[col].apply(lambda x: "-" if x == float('inf') else round(x, 2))
-                        
-                    # Add % symbol to DO_%
-                    df['DO_%'] = df['DO_%'].astype(str) + '%'
-                    # Add Dot % and DO Dot % as percentage strings
-                    if 'Dot_%' in df.columns:
-                        df['Dot_%'] = df['Dot_%'].round(2).astype(str) + '%'
-                    if 'DO_Dot_%' in df.columns:
-                        df['DO_Dot_%'] = df['DO_Dot_%'].round(2).astype(str) + '%'
+                        if col in df.columns:
+                            df[col] = pd.to_numeric(df[col], errors='coerce')
+
+                    # Replace infinities and NaNs with 0 across the DataFrame to avoid sorting/plotting issues
+                    try:
+                        df = df.replace([float('inf'), float('-inf'), np.inf, -np.inf], 0).fillna(0)
+                    except Exception:
+                        df = df.fillna(0)
+
+                    # Normalize dtypes: make integer-like columns Int64 and others floats
+                    def _normalize_df_types(df_local):
+                        for c in df_local.columns:
+                            if c == 'Player':
+                                continue
+                            try:
+                                ser = df_local[c]
+                                # Work on stringified values to clean placeholders
+                                s = ser.astype(str).str.strip()
+                                cleaned = s.str.rstrip('%').replace({'-': '', '': pd.NA})
+                                conv = pd.to_numeric(cleaned.replace({pd.NA: None}), errors='coerce')
+                                if conv.notna().sum() == 0:
+                                    continue
+                                non_na = conv.dropna()
+                                # If all values are integer-valued, use nullable Int64
+                                if ((non_na % 1) == 0).all():
+                                    df_local[c] = conv.astype('Int64')
+                                else:
+                                    df_local[c] = conv.astype(float).round(2)
+                            except Exception:
+                                continue
+
+                    _normalize_df_types(df)
                     
                     # Sort by Runs in descending order if no specific search, otherwise keep search order
                     if not player_search:
@@ -1028,7 +1094,11 @@ elif page == "Batting Stats":
                         "DO_Runs": player_do_runs.get(player, 0),
                         "DO_Balls": player_do_balls.get(player, 0),
                         "DO_SR": round((player_do_runs.get(player, 0) / max(player_do_balls.get(player, 1), 1)) * 100, 2),
-                        "DO_Average": round(player_do_runs.get(player, 0) / max(player_innings.get(player, {}).get('count', 1), 1), 2),
+                        # Death-over dismissals column
+                        "DO_Dismissals": player_do_dismissals.get(player, 0),
+                        # Compute DO_Average using death-over dismissals where available; fall back to 0 if none
+                        "DO_Average": (round(player_do_runs.get(player, 0) / player_do_dismissals.get(player, 1), 2)
+                                        if player_do_dismissals.get(player, 0) > 0 else 0),
                         "DO_4s": player_do_fours.get(player, 0),
                         "DO_6s": player_do_sixes.get(player, 0),
                         "DO_%": f"{round((player_do_runs.get(player, 0) / max(player_runs.get(player, 1), 1)) * 100, 2)}%",
@@ -1085,7 +1155,85 @@ elif page == "Batting Stats":
                     data[player]['SelPos_Dismissals'] = sel_dismissals
                     data[player]['SelPos_Average'] = ('-' if sel_dismissals == 0 else round(sel_runs / sel_dismissals, 2))
                 
+                # Ensure percentage-like values are numeric (do not store as strings with %)
+                for player_key, player_vals in data.items():
+                    # DO_% was previously stored as a percent string; ensure numeric
+                    if 'DO_%' in player_vals:
+                        try:
+                            # If it's a string with %, strip it
+                            if isinstance(player_vals['DO_%'], str) and player_vals['DO_%'].endswith('%'):
+                                player_vals['DO_%'] = float(player_vals['DO_%'].rstrip('%'))
+                        except Exception:
+                            try:
+                                player_vals['DO_%'] = float(player_vals['DO_%'])
+                            except Exception:
+                                player_vals['DO_%'] = pd.NA
+                    if 'Dot_%' in player_vals:
+                        try:
+                            if isinstance(player_vals['Dot_%'], str) and player_vals['Dot_%'].endswith('%'):
+                                player_vals['Dot_%'] = float(player_vals['Dot_%'].rstrip('%'))
+                        except Exception:
+                            try:
+                                player_vals['Dot_%'] = float(player_vals['Dot_%'])
+                            except Exception:
+                                player_vals['Dot_%'] = pd.NA
+                    if 'DO_Dot_%' in player_vals:
+                        try:
+                            if isinstance(player_vals['DO_Dot_%'], str) and player_vals['DO_Dot_%'].endswith('%'):
+                                player_vals['DO_Dot_%'] = float(player_vals['DO_Dot_%'].rstrip('%'))
+                        except Exception:
+                            try:
+                                player_vals['DO_Dot_%'] = float(player_vals['DO_Dot_%'])
+                            except Exception:
+                                player_vals['DO_Dot_%'] = pd.NA
+
                 df_summary = pd.DataFrame.from_dict(data, orient='index')
+
+                # Coerce numeric-like columns in df_summary to proper numeric types so sorting works
+                def _coerce_numeric_df_summary(df_local):
+                    for c in df_local.columns:
+                        try:
+                            ser = df_local[c].astype(str).str.strip()
+                        except Exception:
+                            continue
+                        cleaned = ser.str.rstrip('%').replace({'-': ''})
+                        conv = pd.to_numeric(cleaned.replace({'': pd.NA}), errors='coerce')
+                        if conv.notna().sum() > 0:
+                            conv = conv.fillna(0)
+                            conv = conv.replace([pd.NA, None], 0)
+                            try:
+                                conv = conv.replace([float('inf'), float('-inf')], 0)
+                            except Exception:
+                                pass
+                            df_local[c] = conv
+
+                _coerce_numeric_df_summary(df_summary)
+
+                # Replace infinities and NaNs with 0 in df_summary so downstream plots/sorts work reliably
+                try:
+                    df_summary = df_summary.replace([float('inf'), float('-inf'), np.inf, -np.inf], 0).fillna(0)
+                except Exception:
+                    df_summary = df_summary.fillna(0)
+                # Further normalize dtypes (ints vs floats)
+                try:
+                    def _normalize_df_summary_types(df_local):
+                        for c in df_local.columns:
+                            try:
+                                s = df_local[c].astype(str).str.strip()
+                                cleaned = s.str.rstrip('%').replace({'-': '', '': pd.NA})
+                                conv = pd.to_numeric(cleaned.replace({pd.NA: None}), errors='coerce')
+                                if conv.notna().sum() == 0:
+                                    continue
+                                non_na = conv.dropna()
+                                if ((non_na % 1) == 0).all():
+                                    df_local[c] = conv.astype('Int64')
+                                else:
+                                    df_local[c] = conv.astype(float).round(2)
+                            except Exception:
+                                continue
+                    _normalize_df_summary_types(df_summary)
+                except Exception:
+                    pass
 
                 # Add position-based columns (0 means player started the innings; 1 means after 1 wicket fell, ... up to 9)
                 max_pos = 10  # track positions 0..9
@@ -1299,29 +1447,74 @@ elif page == "Batting Stats":
                                 plot_df = plot_df[col_series != str(raw_val)]
 
                     # Create bubble plot in the main left column (col1) so it keeps its original width
-                    fig = px.scatter(
-                        plot_df,
-                        x=x_col,
-                        y=y_col,
-                        text=plot_df.index,  # Player names
-                        size="Total Runs" if "Total Runs" in plot_df.columns else None,
-                        color=plot_df.index if not plot_df.index.empty else None,
-                        title=f"{y_axis} vs {x_axis}",
-                        labels={x_col: x_axis, y_col: y_axis},
-                        hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df.columns]
-                    )
-                    # Update layout and traces
-                    fig.update_traces(textposition='top center', marker=dict(size=20), textfont=dict(size=12))
-                    fig.update_layout(
-                        showlegend=True,
-                        height=600,
-                        title_font=dict(size=18),
-                        title_x=0.5,
-                        xaxis=dict(title=x_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
-                        yaxis=dict(title=y_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
-                        legend=dict(font=dict(size=12))
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
+                    # Filter out rows where selected x or y are not numeric/finite so scatter always has valid points
+                    try:
+                        x_ser = pd.to_numeric(plot_df[x_col], errors='coerce').fillna(0)
+                        y_ser = pd.to_numeric(plot_df[y_col], errors='coerce').fillna(0)
+                        try:
+                            x_ser = x_ser.replace([float('inf'), float('-inf')], 0)
+                            y_ser = y_ser.replace([float('inf'), float('-inf')], 0)
+                        except Exception:
+                            pass
+
+                        # After filling NaN/inf with 0, all rows are valid; create a valid plotting df
+                        plot_df_valid = plot_df.copy()
+                        plot_df_valid[x_col] = x_ser
+                        plot_df_valid[y_col] = y_ser
+
+                        if plot_df_valid.empty:
+                            st.warning(f"No valid numeric data points for the selected axes: {x_axis} vs {y_axis}")
+                        else:
+                            size_col = None
+                            if "Total Runs" in plot_df_valid.columns and pd.api.types.is_numeric_dtype(plot_df_valid["Total Runs"]):
+                                size_col = "Total Runs"
+
+                            color_vals = plot_df_valid.index.astype(str).tolist() if not plot_df_valid.index.empty else None
+                            text_vals = plot_df_valid.index.astype(str).tolist() if not plot_df_valid.index.empty else None
+
+                            # Prepare a numeric size array for Plotly: convert, drop inf, and replace NaN with a small default
+                            size_array = None
+                            if "Total Runs" in plot_df_valid.columns:
+                                s = pd.to_numeric(plot_df_valid["Total Runs"], errors='coerce').astype(float)
+                                s = s.replace([np.inf, -np.inf], np.nan)
+                                # If all sizes are NaN, fall back to a default small size; otherwise replace NaN with a small default
+                                default_size = 6.0
+                                if s.notna().sum() == 0:
+                                    size_array = np.full(len(plot_df_valid), default_size)
+                                else:
+                                    s_filled = s.fillna(default_size)
+                                    size_array = s_filled.to_numpy()
+
+                            # Pass numeric arrays (or column names) to Plotly as recommended
+                            fig = px.scatter(
+                                plot_df_valid,
+                                x=x_col,
+                                y=y_col,
+                                text=text_vals,
+                                size=size_array,
+                                size_max=40,
+                                color=color_vals,
+                                title=f"{y_axis} vs {x_axis}",
+                                labels={x_col: x_axis, y_col: y_axis},
+                                hover_data=[c for c in ["Total Runs", "Innings", "Strike Rate", "Average"] if c in plot_df_valid.columns]
+                            )
+
+                            fig.update_traces(textposition='top center', textfont=dict(size=12))
+                            fig.update_layout(
+                                showlegend=True,
+                                height=600,
+                                title_font=dict(size=18),
+                                title_x=0.5,
+                                xaxis=dict(title=x_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                                yaxis=dict(title=y_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                                legend=dict(font=dict(size=12))
+                            )
+                            st.plotly_chart(fig, use_container_width=True)
+                    except Exception as e:
+                        import traceback
+                        tb = traceback.format_exc()
+                        st.error(f"Error creating plot: {e}")
+                        st.text(tb)
 
                     # Render the plot filters directly below the plot (always visible)
                     st.markdown("#### Plot Filters")
