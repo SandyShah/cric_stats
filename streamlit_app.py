@@ -1478,7 +1478,8 @@ elif page == "Batting Stats":
                                 s = pd.to_numeric(plot_df_valid["Total Runs"], errors='coerce').astype(float)
                                 s = s.replace([np.inf, -np.inf], np.nan)
                                 # If all sizes are NaN, fall back to a default small size; otherwise replace NaN with a small default
-                                default_size = 6.0
+                                # default bubble size for missing values (reduced for smaller bubbles)
+                                default_size = 4.0
                                 if s.notna().sum() == 0:
                                     size_array = np.full(len(plot_df_valid), default_size)
                                 else:
@@ -1491,8 +1492,9 @@ elif page == "Batting Stats":
                                 x=x_col,
                                 y=y_col,
                                 text=text_vals,
-                                size=size_array,
-                                size_max=40,
+                                # size=size_array,
+                                size=np.ones(len(plot_df_valid)) * 20,
+                                size_max=20,
                                 color=color_vals,
                                 title=f"{y_axis} vs {x_axis}",
                                 labels={x_col: x_axis, y_col: y_axis},
@@ -1505,9 +1507,9 @@ elif page == "Batting Stats":
                                 height=600,
                                 title_font=dict(size=18),
                                 title_x=0.5,
-                                xaxis=dict(title=x_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
-                                yaxis=dict(title=y_axis, title_font=dict(size=14), tickfont=dict(size=12), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
-                                legend=dict(font=dict(size=12))
+                                xaxis=dict(title=x_axis, title_font=dict(size=20), tickfont=dict(size=18), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                                yaxis=dict(title=y_axis, title_font=dict(size=20), tickfont=dict(size=18), showgrid=True, gridcolor='lightgray', gridwidth=0.5, showline=True, linecolor='black', linewidth=1, minor=dict(showgrid=False, gridcolor='rgba(200,200,200,0.2)')),
+                                legend=dict(font=dict(size=18))
                             )
                             st.plotly_chart(fig, use_container_width=True)
                     except Exception as e:
