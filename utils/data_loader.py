@@ -4,6 +4,7 @@ import json
 
 def load_json_files(data_folder: str):
     """Return list of JSON files in the folder."""
+    # Updated: Fixed year extraction for season formats like "2022/23"
     return [f for f in os.listdir(data_folder) if f.endswith(".json")]
 
 def get_match_info(file_path: str):
