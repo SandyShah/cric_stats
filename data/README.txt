@@ -1,5 +1,5 @@
 This zip archive contains data files from Cricsheet in JSON format. This
-archive contains 1169 Indian Premier League matches.
+archive contains 695 Syed Mushtaq Ali Trophy matches.
 
 
 The JSON data files contained in this zip file are version 1.0.0, and 1.1.0
@@ -9,7 +9,7 @@ https://cricsheet.org/format/json/
 
 You can find the available downloads at https://cricsheet.org/downloads/, and
 you can find the most up-to-date version of this zip file at
-https://cricsheet.org/downloads/ipl_male_json.zip
+https://cricsheet.org/downloads/sma_male_json.zip
 
 
 The matches contained in this zip archive are listed below. The first field is
@@ -22,1172 +22,698 @@ as IPL). The 4th field is the gender of the players involved in the match. The
 teams involved in the match.
 
 
-2025-06-03 - club - IPL - male - 1473511 - Royal Challengers Bengaluru vs Punjab Kings
-2025-06-01 - club - IPL - male - 1473510 - Mumbai Indians vs Punjab Kings
-2025-05-30 - club - IPL - male - 1473509 - Mumbai Indians vs Gujarat Titans
-2025-05-29 - club - IPL - male - 1473508 - Punjab Kings vs Royal Challengers Bengaluru
-2025-05-27 - club - IPL - male - 1473507 - Lucknow Super Giants vs Royal Challengers Bengaluru
-2025-05-26 - club - IPL - male - 1473506 - Mumbai Indians vs Punjab Kings
-2025-05-25 - club - IPL - male - 1473505 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2025-05-25 - club - IPL - male - 1473504 - Chennai Super Kings vs Gujarat Titans
-2025-05-24 - club - IPL - male - 1485779 - Punjab Kings vs Delhi Capitals
-2025-05-23 - club - IPL - male - 1473503 - Sunrisers Hyderabad vs Royal Challengers Bengaluru
-2025-05-22 - club - IPL - male - 1473502 - Lucknow Super Giants vs Gujarat Titans
-2025-05-21 - club - IPL - male - 1473501 - Mumbai Indians vs Delhi Capitals
-2025-05-20 - club - IPL - male - 1473500 - Chennai Super Kings vs Rajasthan Royals
-2025-05-19 - club - IPL - male - 1473499 - Lucknow Super Giants vs Sunrisers Hyderabad
-2025-05-18 - club - IPL - male - 1473498 - Delhi Capitals vs Gujarat Titans
-2025-05-18 - club - IPL - male - 1473497 - Punjab Kings vs Rajasthan Royals
-2025-05-08 - club - IPL - male - 1473495 - Punjab Kings vs Delhi Capitals
-2025-05-07 - club - IPL - male - 1473494 - Kolkata Knight Riders vs Chennai Super Kings
-2025-05-06 - club - IPL - male - 1473493 - Mumbai Indians vs Gujarat Titans
-2025-05-05 - club - IPL - male - 1473492 - Delhi Capitals vs Sunrisers Hyderabad
-2025-05-04 - club - IPL - male - 1473491 - Punjab Kings vs Lucknow Super Giants
-2025-05-04 - club - IPL - male - 1473490 - Kolkata Knight Riders vs Rajasthan Royals
-2025-05-03 - club - IPL - male - 1473489 - Royal Challengers Bengaluru vs Chennai Super Kings
-2025-05-02 - club - IPL - male - 1473488 - Gujarat Titans vs Sunrisers Hyderabad
-2025-05-01 - club - IPL - male - 1473487 - Mumbai Indians vs Rajasthan Royals
-2025-04-30 - club - IPL - male - 1473486 - Chennai Super Kings vs Punjab Kings
-2025-04-29 - club - IPL - male - 1473485 - Kolkata Knight Riders vs Delhi Capitals
-2025-04-28 - club - IPL - male - 1473484 - Gujarat Titans vs Rajasthan Royals
-2025-04-27 - club - IPL - male - 1473483 - Delhi Capitals vs Royal Challengers Bengaluru
-2025-04-27 - club - IPL - male - 1473482 - Mumbai Indians vs Lucknow Super Giants
-2025-04-26 - club - IPL - male - 1473481 - Punjab Kings vs Kolkata Knight Riders
-2025-04-25 - club - IPL - male - 1473480 - Chennai Super Kings vs Sunrisers Hyderabad
-2025-04-24 - club - IPL - male - 1473479 - Royal Challengers Bengaluru vs Rajasthan Royals
-2025-04-23 - club - IPL - male - 1473478 - Sunrisers Hyderabad vs Mumbai Indians
-2025-04-22 - club - IPL - male - 1473477 - Lucknow Super Giants vs Delhi Capitals
-2025-04-21 - club - IPL - male - 1473476 - Gujarat Titans vs Kolkata Knight Riders
-2025-04-20 - club - IPL - male - 1473475 - Chennai Super Kings vs Mumbai Indians
-2025-04-20 - club - IPL - male - 1473474 - Punjab Kings vs Royal Challengers Bengaluru
-2025-04-19 - club - IPL - male - 1473473 - Lucknow Super Giants vs Rajasthan Royals
-2025-04-19 - club - IPL - male - 1473472 - Delhi Capitals vs Gujarat Titans
-2025-04-18 - club - IPL - male - 1473471 - Royal Challengers Bengaluru vs Punjab Kings
-2025-04-17 - club - IPL - male - 1473470 - Sunrisers Hyderabad vs Mumbai Indians
-2025-04-16 - club - IPL - male - 1473469 - Delhi Capitals vs Rajasthan Royals
-2025-04-15 - club - IPL - male - 1473468 - Punjab Kings vs Kolkata Knight Riders
-2025-04-14 - club - IPL - male - 1473467 - Lucknow Super Giants vs Chennai Super Kings
-2025-04-13 - club - IPL - male - 1473466 - Mumbai Indians vs Delhi Capitals
-2025-04-13 - club - IPL - male - 1473465 - Rajasthan Royals vs Royal Challengers Bengaluru
-2025-04-12 - club - IPL - male - 1473464 - Punjab Kings vs Sunrisers Hyderabad
-2025-04-12 - club - IPL - male - 1473463 - Gujarat Titans vs Lucknow Super Giants
-2025-04-11 - club - IPL - male - 1473462 - Chennai Super Kings vs Kolkata Knight Riders
-2025-04-10 - club - IPL - male - 1473461 - Royal Challengers Bengaluru vs Delhi Capitals
-2025-04-09 - club - IPL - male - 1473460 - Gujarat Titans vs Rajasthan Royals
-2025-04-08 - club - IPL - male - 1473459 - Punjab Kings vs Chennai Super Kings
-2025-04-08 - club - IPL - male - 1473456 - Lucknow Super Giants vs Kolkata Knight Riders
-2025-04-07 - club - IPL - male - 1473458 - Royal Challengers Bengaluru vs Mumbai Indians
-2025-04-06 - club - IPL - male - 1473457 - Sunrisers Hyderabad vs Gujarat Titans
-2025-04-05 - club - IPL - male - 1473455 - Rajasthan Royals vs Punjab Kings
-2025-04-05 - club - IPL - male - 1473454 - Delhi Capitals vs Chennai Super Kings
-2025-04-04 - club - IPL - male - 1473453 - Lucknow Super Giants vs Mumbai Indians
-2025-04-03 - club - IPL - male - 1473452 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2025-04-02 - club - IPL - male - 1473451 - Royal Challengers Bengaluru vs Gujarat Titans
-2025-04-01 - club - IPL - male - 1473450 - Lucknow Super Giants vs Punjab Kings
-2025-03-31 - club - IPL - male - 1473449 - Kolkata Knight Riders vs Mumbai Indians
-2025-03-30 - club - IPL - male - 1473448 - Rajasthan Royals vs Chennai Super Kings
-2025-03-30 - club - IPL - male - 1473447 - Sunrisers Hyderabad vs Delhi Capitals
-2025-03-29 - club - IPL - male - 1473446 - Gujarat Titans vs Mumbai Indians
-2025-03-28 - club - IPL - male - 1473445 - Royal Challengers Bengaluru vs Chennai Super Kings
-2025-03-27 - club - IPL - male - 1473444 - Sunrisers Hyderabad vs Lucknow Super Giants
-2025-03-26 - club - IPL - male - 1473443 - Rajasthan Royals vs Kolkata Knight Riders
-2025-03-25 - club - IPL - male - 1473442 - Punjab Kings vs Gujarat Titans
-2025-03-24 - club - IPL - male - 1473441 - Lucknow Super Giants vs Delhi Capitals
-2025-03-23 - club - IPL - male - 1473440 - Mumbai Indians vs Chennai Super Kings
-2025-03-23 - club - IPL - male - 1473439 - Sunrisers Hyderabad vs Rajasthan Royals
-2025-03-22 - club - IPL - male - 1473438 - Kolkata Knight Riders vs Royal Challengers Bengaluru
-2024-05-26 - club - IPL - male - 1426312 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2024-05-24 - club - IPL - male - 1426311 - Sunrisers Hyderabad vs Rajasthan Royals
-2024-05-22 - club - IPL - male - 1426310 - Royal Challengers Bengaluru vs Rajasthan Royals
-2024-05-21 - club - IPL - male - 1426309 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2024-05-19 - club - IPL - male - 1426307 - Punjab Kings vs Sunrisers Hyderabad
-2024-05-18 - club - IPL - male - 1426306 - Royal Challengers Bengaluru vs Chennai Super Kings
-2024-05-17 - club - IPL - male - 1426305 - Lucknow Super Giants vs Mumbai Indians
-2024-05-15 - club - IPL - male - 1426303 - Rajasthan Royals vs Punjab Kings
-2024-05-14 - club - IPL - male - 1426302 - Delhi Capitals vs Lucknow Super Giants
-2024-05-12 - club - IPL - male - 1426300 - Royal Challengers Bengaluru vs Delhi Capitals
-2024-05-12 - club - IPL - male - 1426299 - Rajasthan Royals vs Chennai Super Kings
-2024-05-11 - club - IPL - male - 1426298 - Kolkata Knight Riders vs Mumbai Indians
-2024-05-10 - club - IPL - male - 1426297 - Gujarat Titans vs Chennai Super Kings
-2024-05-09 - club - IPL - male - 1426296 - Royal Challengers Bengaluru vs Punjab Kings
-2024-05-08 - club - IPL - male - 1426295 - Lucknow Super Giants vs Sunrisers Hyderabad
-2024-05-07 - club - IPL - male - 1426294 - Delhi Capitals vs Rajasthan Royals
-2024-05-06 - club - IPL - male - 1426293 - Sunrisers Hyderabad vs Mumbai Indians
-2024-05-05 - club - IPL - male - 1426292 - Kolkata Knight Riders vs Lucknow Super Giants
-2024-05-05 - club - IPL - male - 1426291 - Chennai Super Kings vs Punjab Kings
-2024-05-04 - club - IPL - male - 1426290 - Gujarat Titans vs Royal Challengers Bengaluru
-2024-05-03 - club - IPL - male - 1426289 - Kolkata Knight Riders vs Mumbai Indians
-2024-05-02 - club - IPL - male - 1426288 - Sunrisers Hyderabad vs Rajasthan Royals
-2024-05-01 - club - IPL - male - 1426287 - Chennai Super Kings vs Punjab Kings
-2024-04-30 - club - IPL - male - 1426286 - Mumbai Indians vs Lucknow Super Giants
-2024-04-29 - club - IPL - male - 1426285 - Delhi Capitals vs Kolkata Knight Riders
-2024-04-28 - club - IPL - male - 1426284 - Chennai Super Kings vs Sunrisers Hyderabad
-2024-04-28 - club - IPL - male - 1426283 - Gujarat Titans vs Royal Challengers Bengaluru
-2024-04-27 - club - IPL - male - 1426282 - Lucknow Super Giants vs Rajasthan Royals
-2024-04-27 - club - IPL - male - 1426281 - Delhi Capitals vs Mumbai Indians
-2024-04-26 - club - IPL - male - 1426280 - Kolkata Knight Riders vs Punjab Kings
-2024-04-25 - club - IPL - male - 1426279 - Royal Challengers Bengaluru vs Sunrisers Hyderabad
-2024-04-24 - club - IPL - male - 1426278 - Delhi Capitals vs Gujarat Titans
-2024-04-23 - club - IPL - male - 1426277 - Chennai Super Kings vs Lucknow Super Giants
-2024-04-22 - club - IPL - male - 1426276 - Mumbai Indians vs Rajasthan Royals
-2024-04-21 - club - IPL - male - 1426275 - Punjab Kings vs Gujarat Titans
-2024-04-21 - club - IPL - male - 1426274 - Kolkata Knight Riders vs Royal Challengers Bengaluru
-2024-04-20 - club - IPL - male - 1426273 - Sunrisers Hyderabad vs Delhi Capitals
-2024-04-19 - club - IPL - male - 1426272 - Chennai Super Kings vs Lucknow Super Giants
-2024-04-18 - club - IPL - male - 1426271 - Mumbai Indians vs Punjab Kings
-2024-04-17 - club - IPL - male - 1426270 - Gujarat Titans vs Delhi Capitals
-2024-04-16 - club - IPL - male - 1426269 - Kolkata Knight Riders vs Rajasthan Royals
-2024-04-15 - club - IPL - male - 1426268 - Sunrisers Hyderabad vs Royal Challengers Bengaluru
-2024-04-14 - club - IPL - male - 1426267 - Chennai Super Kings vs Mumbai Indians
-2024-04-14 - club - IPL - male - 1426266 - Lucknow Super Giants vs Kolkata Knight Riders
-2024-04-13 - club - IPL - male - 1426265 - Punjab Kings vs Rajasthan Royals
-2024-04-12 - club - IPL - male - 1426264 - Lucknow Super Giants vs Delhi Capitals
-2024-04-11 - club - IPL - male - 1426263 - Royal Challengers Bengaluru vs Mumbai Indians
-2024-04-10 - club - IPL - male - 1426262 - Rajasthan Royals vs Gujarat Titans
-2024-04-09 - club - IPL - male - 1426261 - Sunrisers Hyderabad vs Punjab Kings
-2024-04-08 - club - IPL - male - 1426260 - Kolkata Knight Riders vs Chennai Super Kings
-2024-04-07 - club - IPL - male - 1422139 - Lucknow Super Giants vs Gujarat Titans
-2024-04-07 - club - IPL - male - 1422138 - Mumbai Indians vs Delhi Capitals
-2024-04-06 - club - IPL - male - 1422137 - Royal Challengers Bengaluru vs Rajasthan Royals
-2024-04-05 - club - IPL - male - 1422136 - Chennai Super Kings vs Sunrisers Hyderabad
-2024-04-04 - club - IPL - male - 1422135 - Gujarat Titans vs Punjab Kings
-2024-04-03 - club - IPL - male - 1422134 - Kolkata Knight Riders vs Delhi Capitals
-2024-04-02 - club - IPL - male - 1422133 - Lucknow Super Giants vs Royal Challengers Bengaluru
-2024-04-01 - club - IPL - male - 1422132 - Mumbai Indians vs Rajasthan Royals
-2024-03-31 - club - IPL - male - 1422131 - Delhi Capitals vs Chennai Super Kings
-2024-03-31 - club - IPL - male - 1422130 - Sunrisers Hyderabad vs Gujarat Titans
-2024-03-30 - club - IPL - male - 1422129 - Lucknow Super Giants vs Punjab Kings
-2024-03-29 - club - IPL - male - 1422128 - Royal Challengers Bengaluru vs Kolkata Knight Riders
-2024-03-28 - club - IPL - male - 1422127 - Rajasthan Royals vs Delhi Capitals
-2024-03-27 - club - IPL - male - 1422126 - Sunrisers Hyderabad vs Mumbai Indians
-2024-03-26 - club - IPL - male - 1422125 - Chennai Super Kings vs Gujarat Titans
-2024-03-25 - club - IPL - male - 1422124 - Punjab Kings vs Royal Challengers Bengaluru
-2024-03-24 - club - IPL - male - 1422123 - Gujarat Titans vs Mumbai Indians
-2024-03-24 - club - IPL - male - 1422122 - Rajasthan Royals vs Lucknow Super Giants
-2024-03-23 - club - IPL - male - 1422121 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2024-03-23 - club - IPL - male - 1422120 - Delhi Capitals vs Punjab Kings
-2024-03-22 - club - IPL - male - 1422119 - Royal Challengers Bengaluru vs Chennai Super Kings
-2023-05-29 - club - IPL - male - 1370353 - Gujarat Titans vs Chennai Super Kings
-2023-05-26 - club - IPL - male - 1370352 - Gujarat Titans vs Mumbai Indians
-2023-05-24 - club - IPL - male - 1370351 - Mumbai Indians vs Lucknow Super Giants
-2023-05-23 - club - IPL - male - 1370350 - Chennai Super Kings vs Gujarat Titans
-2023-05-21 - club - IPL - male - 1359544 - Royal Challengers Bangalore vs Gujarat Titans
-2023-05-21 - club - IPL - male - 1359543 - Sunrisers Hyderabad vs Mumbai Indians
-2023-05-20 - club - IPL - male - 1359542 - Lucknow Super Giants vs Kolkata Knight Riders
-2023-05-20 - club - IPL - male - 1359541 - Chennai Super Kings vs Delhi Capitals
-2023-05-19 - club - IPL - male - 1359540 - Punjab Kings vs Rajasthan Royals
-2023-05-18 - club - IPL - male - 1359539 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2023-05-17 - club - IPL - male - 1359538 - Delhi Capitals vs Punjab Kings
-2023-05-16 - club - IPL - male - 1359537 - Lucknow Super Giants vs Mumbai Indians
-2023-05-15 - club - IPL - male - 1359536 - Gujarat Titans vs Sunrisers Hyderabad
-2023-05-14 - club - IPL - male - 1359535 - Chennai Super Kings vs Kolkata Knight Riders
-2023-05-14 - club - IPL - male - 1359534 - Royal Challengers Bangalore vs Rajasthan Royals
-2023-05-13 - club - IPL - male - 1359533 - Punjab Kings vs Delhi Capitals
-2023-05-13 - club - IPL - male - 1359532 - Sunrisers Hyderabad vs Lucknow Super Giants
-2023-05-12 - club - IPL - male - 1359531 - Mumbai Indians vs Gujarat Titans
-2023-05-11 - club - IPL - male - 1359530 - Kolkata Knight Riders vs Rajasthan Royals
-2023-05-10 - club - IPL - male - 1359529 - Chennai Super Kings vs Delhi Capitals
-2023-05-09 - club - IPL - male - 1359528 - Royal Challengers Bangalore vs Mumbai Indians
-2023-05-08 - club - IPL - male - 1359527 - Punjab Kings vs Kolkata Knight Riders
-2023-05-07 - club - IPL - male - 1359526 - Rajasthan Royals vs Sunrisers Hyderabad
-2023-05-07 - club - IPL - male - 1359525 - Gujarat Titans vs Lucknow Super Giants
-2023-05-06 - club - IPL - male - 1359524 - Royal Challengers Bangalore vs Delhi Capitals
-2023-05-06 - club - IPL - male - 1359523 - Mumbai Indians vs Chennai Super Kings
-2023-05-05 - club - IPL - male - 1359522 - Rajasthan Royals vs Gujarat Titans
-2023-05-04 - club - IPL - male - 1359521 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2023-05-03 - club - IPL - male - 1359520 - Punjab Kings vs Mumbai Indians
-2023-05-03 - club - IPL - male - 1359519 - Lucknow Super Giants vs Chennai Super Kings
-2023-05-02 - club - IPL - male - 1359518 - Delhi Capitals vs Gujarat Titans
-2023-05-01 - club - IPL - male - 1359517 - Royal Challengers Bangalore vs Lucknow Super Giants
-2023-04-30 - club - IPL - male - 1359516 - Rajasthan Royals vs Mumbai Indians
-2023-04-30 - club - IPL - male - 1359515 - Chennai Super Kings vs Punjab Kings
-2023-04-29 - club - IPL - male - 1359514 - Sunrisers Hyderabad vs Delhi Capitals
-2023-04-29 - club - IPL - male - 1359513 - Kolkata Knight Riders vs Gujarat Titans
-2023-04-28 - club - IPL - male - 1359512 - Lucknow Super Giants vs Punjab Kings
-2023-04-27 - club - IPL - male - 1359511 - Rajasthan Royals vs Chennai Super Kings
-2023-04-26 - club - IPL - male - 1359510 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2023-04-25 - club - IPL - male - 1359509 - Gujarat Titans vs Mumbai Indians
-2023-04-24 - club - IPL - male - 1359508 - Delhi Capitals vs Sunrisers Hyderabad
-2023-04-23 - club - IPL - male - 1359507 - Chennai Super Kings vs Kolkata Knight Riders
-2023-04-23 - club - IPL - male - 1359506 - Royal Challengers Bangalore vs Rajasthan Royals
-2023-04-22 - club - IPL - male - 1359505 - Punjab Kings vs Mumbai Indians
-2023-04-22 - club - IPL - male - 1359504 - Gujarat Titans vs Lucknow Super Giants
-2023-04-21 - club - IPL - male - 1359503 - Sunrisers Hyderabad vs Chennai Super Kings
-2023-04-20 - club - IPL - male - 1359502 - Kolkata Knight Riders vs Delhi Capitals
-2023-04-20 - club - IPL - male - 1359501 - Royal Challengers Bangalore vs Punjab Kings
-2023-04-19 - club - IPL - male - 1359500 - Lucknow Super Giants vs Rajasthan Royals
-2023-04-18 - club - IPL - male - 1359499 - Mumbai Indians vs Sunrisers Hyderabad
-2023-04-17 - club - IPL - male - 1359498 - Chennai Super Kings vs Royal Challengers Bangalore
-2023-04-16 - club - IPL - male - 1359497 - Gujarat Titans vs Rajasthan Royals
-2023-04-16 - club - IPL - male - 1359496 - Kolkata Knight Riders vs Mumbai Indians
-2023-04-15 - club - IPL - male - 1359495 - Lucknow Super Giants vs Punjab Kings
-2023-04-15 - club - IPL - male - 1359494 - Royal Challengers Bangalore vs Delhi Capitals
-2023-04-14 - club - IPL - male - 1359493 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2023-04-13 - club - IPL - male - 1359492 - Punjab Kings vs Gujarat Titans
-2023-04-12 - club - IPL - male - 1359491 - Rajasthan Royals vs Chennai Super Kings
-2023-04-11 - club - IPL - male - 1359490 - Delhi Capitals vs Mumbai Indians
-2023-04-10 - club - IPL - male - 1359489 - Royal Challengers Bangalore vs Lucknow Super Giants
-2023-04-09 - club - IPL - male - 1359488 - Punjab Kings vs Sunrisers Hyderabad
-2023-04-09 - club - IPL - male - 1359487 - Gujarat Titans vs Kolkata Knight Riders
-2023-04-08 - club - IPL - male - 1359486 - Mumbai Indians vs Chennai Super Kings
-2023-04-08 - club - IPL - male - 1359485 - Rajasthan Royals vs Delhi Capitals
-2023-04-07 - club - IPL - male - 1359484 - Sunrisers Hyderabad vs Lucknow Super Giants
-2023-04-06 - club - IPL - male - 1359483 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2023-04-05 - club - IPL - male - 1359482 - Punjab Kings vs Rajasthan Royals
-2023-04-04 - club - IPL - male - 1359481 - Delhi Capitals vs Gujarat Titans
-2023-04-03 - club - IPL - male - 1359480 - Chennai Super Kings vs Lucknow Super Giants
-2023-04-02 - club - IPL - male - 1359479 - Mumbai Indians vs Royal Challengers Bangalore
-2023-04-02 - club - IPL - male - 1359478 - Rajasthan Royals vs Sunrisers Hyderabad
-2023-04-01 - club - IPL - male - 1359477 - Lucknow Super Giants vs Delhi Capitals
-2023-04-01 - club - IPL - male - 1359476 - Punjab Kings vs Kolkata Knight Riders
-2023-03-31 - club - IPL - male - 1359475 - Chennai Super Kings vs Gujarat Titans
-2022-05-29 - club - IPL - male - 1312200 - Rajasthan Royals vs Gujarat Titans
-2022-05-27 - club - IPL - male - 1312199 - Royal Challengers Bangalore vs Rajasthan Royals
-2022-05-25 - club - IPL - male - 1312198 - Royal Challengers Bangalore vs Lucknow Super Giants
-2022-05-24 - club - IPL - male - 1312197 - Rajasthan Royals vs Gujarat Titans
-2022-05-22 - club - IPL - male - 1304116 - Sunrisers Hyderabad vs Punjab Kings
-2022-05-21 - club - IPL - male - 1304115 - Delhi Capitals vs Mumbai Indians
-2022-05-20 - club - IPL - male - 1304114 - Chennai Super Kings vs Rajasthan Royals
-2022-05-19 - club - IPL - male - 1304113 - Gujarat Titans vs Royal Challengers Bangalore
-2022-05-18 - club - IPL - male - 1304112 - Lucknow Super Giants vs Kolkata Knight Riders
-2022-05-17 - club - IPL - male - 1304111 - Sunrisers Hyderabad vs Mumbai Indians
-2022-05-16 - club - IPL - male - 1304110 - Delhi Capitals vs Punjab Kings
-2022-05-15 - club - IPL - male - 1304109 - Rajasthan Royals vs Lucknow Super Giants
-2022-05-15 - club - IPL - male - 1304108 - Chennai Super Kings vs Gujarat Titans
-2022-05-14 - club - IPL - male - 1304107 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2022-05-13 - club - IPL - male - 1304106 - Punjab Kings vs Royal Challengers Bangalore
-2022-05-12 - club - IPL - male - 1304105 - Chennai Super Kings vs Mumbai Indians
-2022-05-11 - club - IPL - male - 1304104 - Rajasthan Royals vs Delhi Capitals
-2022-05-10 - club - IPL - male - 1304103 - Gujarat Titans vs Lucknow Super Giants
-2022-05-09 - club - IPL - male - 1304102 - Kolkata Knight Riders vs Mumbai Indians
-2022-05-08 - club - IPL - male - 1304101 - Chennai Super Kings vs Delhi Capitals
-2022-05-08 - club - IPL - male - 1304100 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2022-05-07 - club - IPL - male - 1304099 - Lucknow Super Giants vs Kolkata Knight Riders
-2022-05-07 - club - IPL - male - 1304098 - Punjab Kings vs Rajasthan Royals
-2022-05-06 - club - IPL - male - 1304097 - Mumbai Indians vs Gujarat Titans
-2022-05-05 - club - IPL - male - 1304096 - Delhi Capitals vs Sunrisers Hyderabad
-2022-05-04 - club - IPL - male - 1304095 - Royal Challengers Bangalore vs Chennai Super Kings
-2022-05-03 - club - IPL - male - 1304094 - Gujarat Titans vs Punjab Kings
-2022-05-02 - club - IPL - male - 1304093 - Rajasthan Royals vs Kolkata Knight Riders
-2022-05-01 - club - IPL - male - 1304092 - Chennai Super Kings vs Sunrisers Hyderabad
-2022-05-01 - club - IPL - male - 1304091 - Lucknow Super Giants vs Delhi Capitals
-2022-04-30 - club - IPL - male - 1304090 - Rajasthan Royals vs Mumbai Indians
-2022-04-30 - club - IPL - male - 1304089 - Royal Challengers Bangalore vs Gujarat Titans
-2022-04-29 - club - IPL - male - 1304088 - Lucknow Super Giants vs Punjab Kings
-2022-04-28 - club - IPL - male - 1304087 - Kolkata Knight Riders vs Delhi Capitals
-2022-04-27 - club - IPL - male - 1304086 - Sunrisers Hyderabad vs Gujarat Titans
-2022-04-26 - club - IPL - male - 1304085 - Rajasthan Royals vs Royal Challengers Bangalore
-2022-04-25 - club - IPL - male - 1304084 - Punjab Kings vs Chennai Super Kings
-2022-04-24 - club - IPL - male - 1304083 - Lucknow Super Giants vs Mumbai Indians
-2022-04-23 - club - IPL - male - 1304082 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2022-04-23 - club - IPL - male - 1304081 - Gujarat Titans vs Kolkata Knight Riders
-2022-04-22 - club - IPL - male - 1304080 - Rajasthan Royals vs Delhi Capitals
-2022-04-21 - club - IPL - male - 1304079 - Mumbai Indians vs Chennai Super Kings
-2022-04-20 - club - IPL - male - 1304078 - Punjab Kings vs Delhi Capitals
-2022-04-19 - club - IPL - male - 1304077 - Royal Challengers Bangalore vs Lucknow Super Giants
-2022-04-18 - club - IPL - male - 1304076 - Rajasthan Royals vs Kolkata Knight Riders
-2022-04-17 - club - IPL - male - 1304075 - Chennai Super Kings vs Gujarat Titans
-2022-04-17 - club - IPL - male - 1304074 - Punjab Kings vs Sunrisers Hyderabad
-2022-04-16 - club - IPL - male - 1304073 - Royal Challengers Bangalore vs Delhi Capitals
-2022-04-16 - club - IPL - male - 1304072 - Lucknow Super Giants vs Mumbai Indians
-2022-04-15 - club - IPL - male - 1304071 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2022-04-14 - club - IPL - male - 1304070 - Gujarat Titans vs Rajasthan Royals
-2022-04-13 - club - IPL - male - 1304069 - Punjab Kings vs Mumbai Indians
-2022-04-12 - club - IPL - male - 1304068 - Chennai Super Kings vs Royal Challengers Bangalore
-2022-04-11 - club - IPL - male - 1304067 - Gujarat Titans vs Sunrisers Hyderabad
-2022-04-10 - club - IPL - male - 1304066 - Rajasthan Royals vs Lucknow Super Giants
-2022-04-10 - club - IPL - male - 1304065 - Delhi Capitals vs Kolkata Knight Riders
-2022-04-09 - club - IPL - male - 1304064 - Mumbai Indians vs Royal Challengers Bangalore
-2022-04-09 - club - IPL - male - 1304063 - Chennai Super Kings vs Sunrisers Hyderabad
-2022-04-08 - club - IPL - male - 1304062 - Punjab Kings vs Gujarat Titans
-2022-04-07 - club - IPL - male - 1304061 - Delhi Capitals vs Lucknow Super Giants
-2022-04-06 - club - IPL - male - 1304060 - Mumbai Indians vs Kolkata Knight Riders
-2022-04-05 - club - IPL - male - 1304059 - Rajasthan Royals vs Royal Challengers Bangalore
-2022-04-04 - club - IPL - male - 1304058 - Lucknow Super Giants vs Sunrisers Hyderabad
-2022-04-03 - club - IPL - male - 1304057 - Punjab Kings vs Chennai Super Kings
-2022-04-02 - club - IPL - male - 1304056 - Gujarat Titans vs Delhi Capitals
-2022-04-02 - club - IPL - male - 1304055 - Rajasthan Royals vs Mumbai Indians
-2022-04-01 - club - IPL - male - 1304054 - Punjab Kings vs Kolkata Knight Riders
-2022-03-31 - club - IPL - male - 1304053 - Chennai Super Kings vs Lucknow Super Giants
-2022-03-30 - club - IPL - male - 1304052 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2022-03-29 - club - IPL - male - 1304051 - Rajasthan Royals vs Sunrisers Hyderabad
-2022-03-28 - club - IPL - male - 1304050 - Lucknow Super Giants vs Gujarat Titans
-2022-03-27 - club - IPL - male - 1304049 - Royal Challengers Bangalore vs Punjab Kings
-2022-03-27 - club - IPL - male - 1304048 - Mumbai Indians vs Delhi Capitals
-2022-03-26 - club - IPL - male - 1304047 - Chennai Super Kings vs Kolkata Knight Riders
-2021-10-15 - club - IPL - male - 1254117 - Chennai Super Kings vs Kolkata Knight Riders
-2021-10-13 - club - IPL - male - 1254116 - Delhi Capitals vs Kolkata Knight Riders
-2021-10-11 - club - IPL - male - 1254115 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2021-10-10 - club - IPL - male - 1254114 - Delhi Capitals vs Chennai Super Kings
-2021-10-08 - club - IPL - male - 1254101 - Delhi Capitals vs Royal Challengers Bangalore
-2021-10-08 - club - IPL - male - 1254088 - Mumbai Indians vs Sunrisers Hyderabad
-2021-10-07 - club - IPL - male - 1254106 - Kolkata Knight Riders vs Rajasthan Royals
-2021-10-07 - club - IPL - male - 1254094 - Chennai Super Kings vs Punjab Kings
-2021-10-06 - club - IPL - male - 1254095 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2021-10-05 - club - IPL - male - 1254093 - Rajasthan Royals vs Mumbai Indians
-2021-10-04 - club - IPL - male - 1254110 - Chennai Super Kings vs Delhi Capitals
-2021-10-03 - club - IPL - male - 1254109 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2021-10-03 - club - IPL - male - 1254090 - Royal Challengers Bangalore vs Punjab Kings
-2021-10-02 - club - IPL - male - 1254112 - Mumbai Indians vs Delhi Capitals
-2021-10-02 - club - IPL - male - 1254089 - Chennai Super Kings vs Rajasthan Royals
-2021-10-01 - club - IPL - male - 1254102 - Kolkata Knight Riders vs Punjab Kings
-2021-09-30 - club - IPL - male - 1254091 - Sunrisers Hyderabad vs Chennai Super Kings
-2021-09-29 - club - IPL - male - 1254103 - Rajasthan Royals vs Royal Challengers Bangalore
-2021-09-28 - club - IPL - male - 1254099 - Punjab Kings vs Mumbai Indians
-2021-09-28 - club - IPL - male - 1254092 - Delhi Capitals vs Kolkata Knight Riders
-2021-09-27 - club - IPL - male - 1254100 - Rajasthan Royals vs Sunrisers Hyderabad
-2021-09-26 - club - IPL - male - 1254108 - Royal Challengers Bangalore vs Mumbai Indians
-2021-09-26 - club - IPL - male - 1254098 - Kolkata Knight Riders vs Chennai Super Kings
-2021-09-25 - club - IPL - male - 1254107 - Punjab Kings vs Sunrisers Hyderabad
-2021-09-25 - club - IPL - male - 1254097 - Delhi Capitals vs Rajasthan Royals
-2021-09-24 - club - IPL - male - 1254113 - Royal Challengers Bangalore vs Chennai Super Kings
-2021-09-23 - club - IPL - male - 1254096 - Mumbai Indians vs Kolkata Knight Riders
-2021-09-22 - club - IPL - male - 1254105 - Sunrisers Hyderabad vs Delhi Capitals
-2021-09-21 - club - IPL - male - 1254111 - Rajasthan Royals vs Punjab Kings
-2021-09-20 - club - IPL - male - 1254087 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2021-09-19 - club - IPL - male - 1254104 - Chennai Super Kings vs Mumbai Indians
-2021-05-02 - club - IPL - male - 1254086 - Punjab Kings vs Delhi Capitals
-2021-05-02 - club - IPL - male - 1254085 - Rajasthan Royals vs Sunrisers Hyderabad
-2021-05-01 - club - IPL - male - 1254084 - Chennai Super Kings vs Mumbai Indians
-2021-04-30 - club - IPL - male - 1254083 - Punjab Kings vs Royal Challengers Bangalore
-2021-04-29 - club - IPL - male - 1254082 - Kolkata Knight Riders vs Delhi Capitals
-2021-04-29 - club - IPL - male - 1254081 - Rajasthan Royals vs Mumbai Indians
-2021-04-28 - club - IPL - male - 1254080 - Sunrisers Hyderabad vs Chennai Super Kings
-2021-04-27 - club - IPL - male - 1254079 - Royal Challengers Bangalore vs Delhi Capitals
-2021-04-26 - club - IPL - male - 1254078 - Punjab Kings vs Kolkata Knight Riders
-2021-04-25 - club - IPL - male - 1254077 - Delhi Capitals vs Sunrisers Hyderabad
-2021-04-25 - club - IPL - male - 1254076 - Chennai Super Kings vs Royal Challengers Bangalore
-2021-04-24 - club - IPL - male - 1254075 - Kolkata Knight Riders vs Rajasthan Royals
-2021-04-23 - club - IPL - male - 1254074 - Mumbai Indians vs Punjab Kings
-2021-04-22 - club - IPL - male - 1254073 - Rajasthan Royals vs Royal Challengers Bangalore
-2021-04-21 - club - IPL - male - 1254072 - Chennai Super Kings vs Kolkata Knight Riders
-2021-04-21 - club - IPL - male - 1254071 - Punjab Kings vs Sunrisers Hyderabad
-2021-04-20 - club - IPL - male - 1254070 - Mumbai Indians vs Delhi Capitals
-2021-04-19 - club - IPL - male - 1254069 - Chennai Super Kings vs Rajasthan Royals
-2021-04-18 - club - IPL - male - 1254068 - Punjab Kings vs Delhi Capitals
-2021-04-18 - club - IPL - male - 1254067 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2021-04-17 - club - IPL - male - 1254066 - Mumbai Indians vs Sunrisers Hyderabad
-2021-04-16 - club - IPL - male - 1254065 - Punjab Kings vs Chennai Super Kings
-2021-04-15 - club - IPL - male - 1254064 - Delhi Capitals vs Rajasthan Royals
-2021-04-14 - club - IPL - male - 1254063 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2021-04-13 - club - IPL - male - 1254062 - Mumbai Indians vs Kolkata Knight Riders
-2021-04-12 - club - IPL - male - 1254061 - Punjab Kings vs Rajasthan Royals
-2021-04-11 - club - IPL - male - 1254060 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2021-04-10 - club - IPL - male - 1254059 - Chennai Super Kings vs Delhi Capitals
-2021-04-09 - club - IPL - male - 1254058 - Mumbai Indians vs Royal Challengers Bangalore
-2020-11-10 - club - IPL - male - 1237181 - Delhi Capitals vs Mumbai Indians
-2020-11-08 - club - IPL - male - 1237180 - Delhi Capitals vs Sunrisers Hyderabad
-2020-11-06 - club - IPL - male - 1237178 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2020-11-05 - club - IPL - male - 1237177 - Mumbai Indians vs Delhi Capitals
-2020-11-03 - club - IPL - male - 1216495 - Mumbai Indians vs Sunrisers Hyderabad
-2020-11-02 - club - IPL - male - 1216505 - Royal Challengers Bangalore vs Delhi Capitals
-2020-11-01 - club - IPL - male - 1216530 - Kolkata Knight Riders vs Rajasthan Royals
-2020-11-01 - club - IPL - male - 1216506 - Kings XI Punjab vs Chennai Super Kings
-2020-10-31 - club - IPL - male - 1216535 - Delhi Capitals vs Mumbai Indians
-2020-10-31 - club - IPL - male - 1216502 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2020-10-30 - club - IPL - male - 1216537 - Kings XI Punjab vs Rajasthan Royals
-2020-10-29 - club - IPL - male - 1216536 - Kolkata Knight Riders vs Chennai Super Kings
-2020-10-28 - club - IPL - male - 1216499 - Royal Challengers Bangalore vs Mumbai Indians
-2020-10-27 - club - IPL - male - 1216524 - Sunrisers Hyderabad vs Delhi Capitals
-2020-10-26 - club - IPL - male - 1216520 - Kolkata Knight Riders vs Kings XI Punjab
-2020-10-25 - club - IPL - male - 1216544 - Royal Challengers Bangalore vs Chennai Super Kings
-2020-10-25 - club - IPL - male - 1216541 - Mumbai Indians vs Rajasthan Royals
-2020-10-24 - club - IPL - male - 1216498 - Kings XI Punjab vs Sunrisers Hyderabad
-2020-10-24 - club - IPL - male - 1216497 - Kolkata Knight Riders vs Delhi Capitals
-2020-10-23 - club - IPL - male - 1216521 - Chennai Super Kings vs Mumbai Indians
-2020-10-22 - club - IPL - male - 1216518 - Rajasthan Royals vs Sunrisers Hyderabad
-2020-10-21 - club - IPL - male - 1216494 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2020-10-20 - club - IPL - male - 1216546 - Delhi Capitals vs Kings XI Punjab
-2020-10-19 - club - IPL - male - 1216533 - Chennai Super Kings vs Rajasthan Royals
-2020-10-18 - club - IPL - male - 1216517 - Mumbai Indians vs Kings XI Punjab
-2020-10-18 - club - IPL - male - 1216512 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2020-10-17 - club - IPL - male - 1216522 - Rajasthan Royals vs Royal Challengers Bangalore
-2020-10-17 - club - IPL - male - 1216509 - Chennai Super Kings vs Delhi Capitals
-2020-10-16 - club - IPL - male - 1216526 - Kolkata Knight Riders vs Mumbai Indians
-2020-10-15 - club - IPL - male - 1216531 - Royal Challengers Bangalore vs Kings XI Punjab
-2020-10-14 - club - IPL - male - 1216543 - Delhi Capitals vs Rajasthan Royals
-2020-10-13 - club - IPL - male - 1216528 - Chennai Super Kings vs Sunrisers Hyderabad
-2020-10-12 - club - IPL - male - 1216540 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2020-10-11 - club - IPL - male - 1216529 - Delhi Capitals vs Mumbai Indians
-2020-10-11 - club - IPL - male - 1216507 - Sunrisers Hyderabad vs Rajasthan Royals
-2020-10-10 - club - IPL - male - 1216525 - Royal Challengers Bangalore vs Chennai Super Kings
-2020-10-10 - club - IPL - male - 1216523 - Kolkata Knight Riders vs Kings XI Punjab
-2020-10-09 - club - IPL - male - 1216500 - Delhi Capitals vs Rajasthan Royals
-2020-10-08 - club - IPL - male - 1216542 - Sunrisers Hyderabad vs Kings XI Punjab
-2020-10-07 - club - IPL - male - 1216501 - Kolkata Knight Riders vs Chennai Super Kings
-2020-10-06 - club - IPL - male - 1216511 - Mumbai Indians vs Rajasthan Royals
-2020-10-05 - club - IPL - male - 1216519 - Delhi Capitals vs Royal Challengers Bangalore
-2020-10-04 - club - IPL - male - 1216538 - Mumbai Indians vs Sunrisers Hyderabad
-2020-10-04 - club - IPL - male - 1216513 - Kings XI Punjab vs Chennai Super Kings
-2020-10-03 - club - IPL - male - 1216515 - Delhi Capitals vs Kolkata Knight Riders
-2020-10-03 - club - IPL - male - 1216514 - Rajasthan Royals vs Royal Challengers Bangalore
-2020-10-02 - club - IPL - male - 1216516 - Sunrisers Hyderabad vs Chennai Super Kings
-2020-10-01 - club - IPL - male - 1216503 - Mumbai Indians vs Kings XI Punjab
-2020-09-30 - club - IPL - male - 1216504 - Kolkata Knight Riders vs Rajasthan Royals
-2020-09-29 - club - IPL - male - 1216532 - Sunrisers Hyderabad vs Delhi Capitals
-2020-09-28 - club - IPL - male - 1216547 - Royal Challengers Bangalore vs Mumbai Indians
-2020-09-27 - club - IPL - male - 1216527 - Kings XI Punjab vs Rajasthan Royals
-2020-09-26 - club - IPL - male - 1216545 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2020-09-25 - club - IPL - male - 1216539 - Delhi Capitals vs Chennai Super Kings
-2020-09-24 - club - IPL - male - 1216510 - Kings XI Punjab vs Royal Challengers Bangalore
-2020-09-23 - club - IPL - male - 1216508 - Mumbai Indians vs Kolkata Knight Riders
-2020-09-22 - club - IPL - male - 1216496 - Rajasthan Royals vs Chennai Super Kings
-2020-09-21 - club - IPL - male - 1216534 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2020-09-20 - club - IPL - male - 1216493 - Delhi Capitals vs Kings XI Punjab
-2020-09-19 - club - IPL - male - 1216492 - Mumbai Indians vs Chennai Super Kings
-2019-05-12 - club - IPL - male - 1181768 - Mumbai Indians vs Chennai Super Kings
-2019-05-10 - club - IPL - male - 1181767 - Chennai Super Kings vs Delhi Capitals
-2019-05-08 - club - IPL - male - 1181766 - Delhi Capitals vs Sunrisers Hyderabad
-2019-05-07 - club - IPL - male - 1181764 - Mumbai Indians vs Chennai Super Kings
-2019-05-05 - club - IPL - male - 1178431 - Mumbai Indians vs Kolkata Knight Riders
-2019-05-05 - club - IPL - male - 1178430 - Kings XI Punjab vs Chennai Super Kings
-2019-05-04 - club - IPL - male - 1178429 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2019-05-04 - club - IPL - male - 1178428 - Delhi Capitals vs Rajasthan Royals
-2019-05-03 - club - IPL - male - 1178427 - Kings XI Punjab vs Kolkata Knight Riders
-2019-05-02 - club - IPL - male - 1178426 - Mumbai Indians vs Sunrisers Hyderabad
-2019-05-01 - club - IPL - male - 1178425 - Chennai Super Kings vs Delhi Capitals
-2019-04-30 - club - IPL - male - 1178424 - Royal Challengers Bangalore vs Rajasthan Royals
-2019-04-29 - club - IPL - male - 1178423 - Sunrisers Hyderabad vs Kings XI Punjab
-2019-04-28 - club - IPL - male - 1178422 - Kolkata Knight Riders vs Mumbai Indians
-2019-04-28 - club - IPL - male - 1178421 - Delhi Capitals vs Royal Challengers Bangalore
-2019-04-27 - club - IPL - male - 1178420 - Rajasthan Royals vs Sunrisers Hyderabad
-2019-04-26 - club - IPL - male - 1178419 - Chennai Super Kings vs Mumbai Indians
-2019-04-25 - club - IPL - male - 1178418 - Kolkata Knight Riders vs Rajasthan Royals
-2019-04-24 - club - IPL - male - 1178417 - Royal Challengers Bangalore vs Kings XI Punjab
-2019-04-23 - club - IPL - male - 1178416 - Chennai Super Kings vs Sunrisers Hyderabad
-2019-04-22 - club - IPL - male - 1178415 - Rajasthan Royals vs Delhi Capitals
-2019-04-21 - club - IPL - male - 1178414 - Royal Challengers Bangalore vs Chennai Super Kings
-2019-04-21 - club - IPL - male - 1178413 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2019-04-20 - club - IPL - male - 1178412 - Delhi Capitals vs Kings XI Punjab
-2019-04-20 - club - IPL - male - 1178411 - Rajasthan Royals vs Mumbai Indians
-2019-04-19 - club - IPL - male - 1178410 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2019-04-18 - club - IPL - male - 1178409 - Delhi Capitals vs Mumbai Indians
-2019-04-17 - club - IPL - male - 1178408 - Sunrisers Hyderabad vs Chennai Super Kings
-2019-04-16 - club - IPL - male - 1178407 - Kings XI Punjab vs Rajasthan Royals
-2019-04-15 - club - IPL - male - 1178406 - Mumbai Indians vs Royal Challengers Bangalore
-2019-04-14 - club - IPL - male - 1178405 - Sunrisers Hyderabad vs Delhi Capitals
-2019-04-14 - club - IPL - male - 1178404 - Kolkata Knight Riders vs Chennai Super Kings
-2019-04-13 - club - IPL - male - 1178403 - Kings XI Punjab vs Royal Challengers Bangalore
-2019-04-13 - club - IPL - male - 1178402 - Mumbai Indians vs Rajasthan Royals
-2019-04-12 - club - IPL - male - 1178401 - Kolkata Knight Riders vs Delhi Capitals
-2019-04-11 - club - IPL - male - 1178400 - Rajasthan Royals vs Chennai Super Kings
-2019-04-10 - club - IPL - male - 1178399 - Mumbai Indians vs Kings XI Punjab
-2019-04-09 - club - IPL - male - 1178398 - Chennai Super Kings vs Kolkata Knight Riders
-2019-04-08 - club - IPL - male - 1178397 - Kings XI Punjab vs Sunrisers Hyderabad
-2019-04-07 - club - IPL - male - 1178396 - Rajasthan Royals vs Kolkata Knight Riders
-2019-04-07 - club - IPL - male - 1178395 - Royal Challengers Bangalore vs Delhi Capitals
-2019-04-06 - club - IPL - male - 1178394 - Sunrisers Hyderabad vs Mumbai Indians
-2019-04-06 - club - IPL - male - 1178393 - Chennai Super Kings vs Kings XI Punjab
-2019-04-05 - club - IPL - male - 1175372 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2019-04-04 - club - IPL - male - 1175371 - Delhi Capitals vs Sunrisers Hyderabad
-2019-04-03 - club - IPL - male - 1175370 - Mumbai Indians vs Chennai Super Kings
-2019-04-02 - club - IPL - male - 1175369 - Rajasthan Royals vs Royal Challengers Bangalore
-2019-04-01 - club - IPL - male - 1175368 - Kings XI Punjab vs Delhi Capitals
-2019-03-31 - club - IPL - male - 1175367 - Chennai Super Kings vs Rajasthan Royals
-2019-03-31 - club - IPL - male - 1175366 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2019-03-30 - club - IPL - male - 1175365 - Delhi Capitals vs Kolkata Knight Riders
-2019-03-30 - club - IPL - male - 1175364 - Kings XI Punjab vs Mumbai Indians
-2019-03-29 - club - IPL - male - 1175363 - Sunrisers Hyderabad vs Rajasthan Royals
-2019-03-28 - club - IPL - male - 1175362 - Royal Challengers Bangalore vs Mumbai Indians
-2019-03-27 - club - IPL - male - 1175361 - Kolkata Knight Riders vs Kings XI Punjab
-2019-03-26 - club - IPL - male - 1175360 - Delhi Capitals vs Chennai Super Kings
-2019-03-25 - club - IPL - male - 1175359 - Rajasthan Royals vs Kings XI Punjab
-2019-03-24 - club - IPL - male - 1175358 - Mumbai Indians vs Delhi Capitals
-2019-03-24 - club - IPL - male - 1175357 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2019-03-23 - club - IPL - male - 1175356 - Chennai Super Kings vs Royal Challengers Bangalore
-2018-05-27 - club - IPL - male - 1136620 - Chennai Super Kings vs Sunrisers Hyderabad
-2018-05-25 - club - IPL - male - 1136619 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2018-05-23 - club - IPL - male - 1136618 - Kolkata Knight Riders vs Rajasthan Royals
-2018-05-22 - club - IPL - male - 1136617 - Sunrisers Hyderabad vs Chennai Super Kings
-2018-05-20 - club - IPL - male - 1136616 - Chennai Super Kings vs Kings XI Punjab
-2018-05-20 - club - IPL - male - 1136615 - Delhi Daredevils vs Mumbai Indians
-2018-05-19 - club - IPL - male - 1136614 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2018-05-19 - club - IPL - male - 1136613 - Rajasthan Royals vs Royal Challengers Bangalore
-2018-05-18 - club - IPL - male - 1136612 - Delhi Daredevils vs Chennai Super Kings
-2018-05-17 - club - IPL - male - 1136611 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2018-05-16 - club - IPL - male - 1136610 - Mumbai Indians vs Kings XI Punjab
-2018-05-15 - club - IPL - male - 1136609 - Kolkata Knight Riders vs Rajasthan Royals
-2018-05-14 - club - IPL - male - 1136608 - Kings XI Punjab vs Royal Challengers Bangalore
-2018-05-13 - club - IPL - male - 1136607 - Mumbai Indians vs Rajasthan Royals
-2018-05-13 - club - IPL - male - 1136606 - Chennai Super Kings vs Sunrisers Hyderabad
-2018-05-12 - club - IPL - male - 1136605 - Delhi Daredevils vs Royal Challengers Bangalore
-2018-05-12 - club - IPL - male - 1136604 - Kings XI Punjab vs Kolkata Knight Riders
-2018-05-11 - club - IPL - male - 1136603 - Rajasthan Royals vs Chennai Super Kings
-2018-05-10 - club - IPL - male - 1136602 - Delhi Daredevils vs Sunrisers Hyderabad
-2018-05-09 - club - IPL - male - 1136601 - Kolkata Knight Riders vs Mumbai Indians
-2018-05-08 - club - IPL - male - 1136600 - Rajasthan Royals vs Kings XI Punjab
-2018-05-07 - club - IPL - male - 1136599 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2018-05-06 - club - IPL - male - 1136598 - Kings XI Punjab vs Rajasthan Royals
-2018-05-06 - club - IPL - male - 1136597 - Mumbai Indians vs Kolkata Knight Riders
-2018-05-05 - club - IPL - male - 1136596 - Sunrisers Hyderabad vs Delhi Daredevils
-2018-05-05 - club - IPL - male - 1136595 - Chennai Super Kings vs Royal Challengers Bangalore
-2018-05-04 - club - IPL - male - 1136594 - Kings XI Punjab vs Mumbai Indians
-2018-05-03 - club - IPL - male - 1136593 - Kolkata Knight Riders vs Chennai Super Kings
-2018-05-02 - club - IPL - male - 1136592 - Delhi Daredevils vs Rajasthan Royals
-2018-05-01 - club - IPL - male - 1136591 - Royal Challengers Bangalore vs Mumbai Indians
-2018-04-30 - club - IPL - male - 1136590 - Chennai Super Kings vs Delhi Daredevils
-2018-04-29 - club - IPL - male - 1136589 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2018-04-29 - club - IPL - male - 1136588 - Rajasthan Royals vs Sunrisers Hyderabad
-2018-04-28 - club - IPL - male - 1136587 - Chennai Super Kings vs Mumbai Indians
-2018-04-27 - club - IPL - male - 1136586 - Delhi Daredevils vs Kolkata Knight Riders
-2018-04-26 - club - IPL - male - 1136585 - Sunrisers Hyderabad vs Kings XI Punjab
-2018-04-25 - club - IPL - male - 1136584 - Royal Challengers Bangalore vs Chennai Super Kings
-2018-04-24 - club - IPL - male - 1136583 - Mumbai Indians vs Sunrisers Hyderabad
-2018-04-23 - club - IPL - male - 1136582 - Delhi Daredevils vs Kings XI Punjab
-2018-04-22 - club - IPL - male - 1136581 - Rajasthan Royals vs Mumbai Indians
-2018-04-22 - club - IPL - male - 1136580 - Sunrisers Hyderabad vs Chennai Super Kings
-2018-04-21 - club - IPL - male - 1136579 - Royal Challengers Bangalore vs Delhi Daredevils
-2018-04-21 - club - IPL - male - 1136578 - Kolkata Knight Riders vs Kings XI Punjab
-2018-04-20 - club - IPL - male - 1136577 - Chennai Super Kings vs Rajasthan Royals
-2018-04-19 - club - IPL - male - 1136576 - Kings XI Punjab vs Sunrisers Hyderabad
-2018-04-18 - club - IPL - male - 1136575 - Rajasthan Royals vs Kolkata Knight Riders
-2018-04-17 - club - IPL - male - 1136574 - Mumbai Indians vs Royal Challengers Bangalore
-2018-04-16 - club - IPL - male - 1136573 - Kolkata Knight Riders vs Delhi Daredevils
-2018-04-15 - club - IPL - male - 1136572 - Kings XI Punjab vs Chennai Super Kings
-2018-04-15 - club - IPL - male - 1136571 - Royal Challengers Bangalore vs Rajasthan Royals
-2018-04-14 - club - IPL - male - 1136570 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2018-04-14 - club - IPL - male - 1136569 - Mumbai Indians vs Delhi Daredevils
-2018-04-13 - club - IPL - male - 1136568 - Royal Challengers Bangalore vs Kings XI Punjab
-2018-04-12 - club - IPL - male - 1136567 - Sunrisers Hyderabad vs Mumbai Indians
-2018-04-11 - club - IPL - male - 1136566 - Rajasthan Royals vs Delhi Daredevils
-2018-04-10 - club - IPL - male - 1136565 - Chennai Super Kings vs Kolkata Knight Riders
-2018-04-09 - club - IPL - male - 1136564 - Sunrisers Hyderabad vs Rajasthan Royals
-2018-04-08 - club - IPL - male - 1136563 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2018-04-08 - club - IPL - male - 1136562 - Kings XI Punjab vs Delhi Daredevils
-2018-04-07 - club - IPL - male - 1136561 - Mumbai Indians vs Chennai Super Kings
-2017-05-21 - club - IPL - male - 1082650 - Mumbai Indians vs Rising Pune Supergiant
-2017-05-19 - club - IPL - male - 1082649 - Mumbai Indians vs Kolkata Knight Riders
-2017-05-17 - club - IPL - male - 1082648 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2017-05-16 - club - IPL - male - 1082647 - Mumbai Indians vs Rising Pune Supergiant
-2017-05-14 - club - IPL - male - 1082646 - Delhi Daredevils vs Royal Challengers Bangalore
-2017-05-14 - club - IPL - male - 1082645 - Rising Pune Supergiant vs Kings XI Punjab
-2017-05-13 - club - IPL - male - 1082644 - Kolkata Knight Riders vs Mumbai Indians
-2017-05-13 - club - IPL - male - 1082643 - Gujarat Lions vs Sunrisers Hyderabad
-2017-05-12 - club - IPL - male - 1082642 - Delhi Daredevils vs Rising Pune Supergiant
-2017-05-11 - club - IPL - male - 1082641 - Mumbai Indians vs Kings XI Punjab
-2017-05-10 - club - IPL - male - 1082640 - Gujarat Lions vs Delhi Daredevils
-2017-05-09 - club - IPL - male - 1082639 - Kings XI Punjab vs Kolkata Knight Riders
-2017-05-08 - club - IPL - male - 1082638 - Sunrisers Hyderabad vs Mumbai Indians
-2017-05-07 - club - IPL - male - 1082637 - Kings XI Punjab vs Gujarat Lions
-2017-05-07 - club - IPL - male - 1082636 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2017-05-06 - club - IPL - male - 1082635 - Delhi Daredevils vs Mumbai Indians
-2017-05-06 - club - IPL - male - 1082634 - Sunrisers Hyderabad vs Rising Pune Supergiant
-2017-05-05 - club - IPL - male - 1082633 - Royal Challengers Bangalore vs Kings XI Punjab
-2017-05-04 - club - IPL - male - 1082632 - Delhi Daredevils vs Gujarat Lions
-2017-05-03 - club - IPL - male - 1082631 - Kolkata Knight Riders vs Rising Pune Supergiant
-2017-05-02 - club - IPL - male - 1082630 - Delhi Daredevils vs Sunrisers Hyderabad
-2017-05-01 - club - IPL - male - 1082629 - Rising Pune Supergiant vs Gujarat Lions
-2017-05-01 - club - IPL - male - 1082628 - Mumbai Indians vs Royal Challengers Bangalore
-2017-04-30 - club - IPL - male - 1082627 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2017-04-30 - club - IPL - male - 1082626 - Kings XI Punjab vs Delhi Daredevils
-2017-04-29 - club - IPL - male - 1082625 - Gujarat Lions vs Mumbai Indians
-2017-04-29 - club - IPL - male - 1082624 - Rising Pune Supergiant vs Royal Challengers Bangalore
-2017-04-28 - club - IPL - male - 1082623 - Kings XI Punjab vs Sunrisers Hyderabad
-2017-04-28 - club - IPL - male - 1082622 - Kolkata Knight Riders vs Delhi Daredevils
-2017-04-27 - club - IPL - male - 1082621 - Royal Challengers Bangalore vs Gujarat Lions
-2017-04-26 - club - IPL - male - 1082620 - Rising Pune Supergiant vs Kolkata Knight Riders
-2017-04-24 - club - IPL - male - 1082618 - Mumbai Indians vs Rising Pune Supergiant
-2017-04-23 - club - IPL - male - 1082617 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2017-04-23 - club - IPL - male - 1082616 - Gujarat Lions vs Kings XI Punjab
-2017-04-22 - club - IPL - male - 1082615 - Rising Pune Supergiant vs Sunrisers Hyderabad
-2017-04-22 - club - IPL - male - 1082614 - Mumbai Indians vs Delhi Daredevils
-2017-04-21 - club - IPL - male - 1082613 - Kolkata Knight Riders vs Gujarat Lions
-2017-04-20 - club - IPL - male - 1082612 - Kings XI Punjab vs Mumbai Indians
-2017-04-19 - club - IPL - male - 1082611 - Sunrisers Hyderabad vs Delhi Daredevils
-2017-04-18 - club - IPL - male - 1082610 - Gujarat Lions vs Royal Challengers Bangalore
-2017-04-17 - club - IPL - male - 1082609 - Sunrisers Hyderabad vs Kings XI Punjab
-2017-04-17 - club - IPL - male - 1082608 - Delhi Daredevils vs Kolkata Knight Riders
-2017-04-16 - club - IPL - male - 1082607 - Royal Challengers Bangalore vs Rising Pune Supergiant
-2017-04-16 - club - IPL - male - 1082606 - Mumbai Indians vs Gujarat Lions
-2017-04-15 - club - IPL - male - 1082605 - Delhi Daredevils vs Kings XI Punjab
-2017-04-15 - club - IPL - male - 1082604 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2017-04-14 - club - IPL - male - 1082603 - Gujarat Lions vs Rising Pune Supergiant
-2017-04-14 - club - IPL - male - 1082602 - Royal Challengers Bangalore vs Mumbai Indians
-2017-04-13 - club - IPL - male - 1082601 - Kolkata Knight Riders vs Kings XI Punjab
-2017-04-12 - club - IPL - male - 1082600 - Mumbai Indians vs Sunrisers Hyderabad
-2017-04-11 - club - IPL - male - 1082599 - Rising Pune Supergiant vs Delhi Daredevils
-2017-04-10 - club - IPL - male - 1082598 - Kings XI Punjab vs Royal Challengers Bangalore
-2017-04-09 - club - IPL - male - 1082597 - Mumbai Indians vs Kolkata Knight Riders
-2017-04-09 - club - IPL - male - 1082596 - Sunrisers Hyderabad vs Gujarat Lions
-2017-04-08 - club - IPL - male - 1082595 - Royal Challengers Bangalore vs Delhi Daredevils
-2017-04-08 - club - IPL - male - 1082594 - Kings XI Punjab vs Rising Pune Supergiant
-2017-04-07 - club - IPL - male - 1082593 - Gujarat Lions vs Kolkata Knight Riders
-2017-04-06 - club - IPL - male - 1082592 - Rising Pune Supergiant vs Mumbai Indians
-2017-04-05 - club - IPL - male - 1082591 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2016-05-29 - club - IPL - male - 981019 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2016-05-27 - club - IPL - male - 981017 - Gujarat Lions vs Sunrisers Hyderabad
-2016-05-25 - club - IPL - male - 981015 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2016-05-24 - club - IPL - male - 981013 - Gujarat Lions vs Royal Challengers Bangalore
-2016-05-22 - club - IPL - male - 981011 - Delhi Daredevils vs Royal Challengers Bangalore
-2016-05-22 - club - IPL - male - 981009 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2016-05-21 - club - IPL - male - 981007 - Gujarat Lions vs Mumbai Indians
-2016-05-21 - club - IPL - male - 981005 - Rising Pune Supergiants vs Kings XI Punjab
-2016-05-20 - club - IPL - male - 981003 - Delhi Daredevils vs Sunrisers Hyderabad
-2016-05-19 - club - IPL - male - 981001 - Gujarat Lions vs Kolkata Knight Riders
-2016-05-18 - club - IPL - male - 980999 - Royal Challengers Bangalore vs Kings XI Punjab
-2016-05-17 - club - IPL - male - 980997 - Rising Pune Supergiants vs Delhi Daredevils
-2016-05-16 - club - IPL - male - 980995 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2016-05-15 - club - IPL - male - 980993 - Mumbai Indians vs Delhi Daredevils
-2016-05-15 - club - IPL - male - 980991 - Kings XI Punjab vs Sunrisers Hyderabad
-2016-05-14 - club - IPL - male - 980989 - Kolkata Knight Riders vs Rising Pune Supergiants
-2016-05-14 - club - IPL - male - 980987 - Royal Challengers Bangalore vs Gujarat Lions
-2016-05-13 - club - IPL - male - 980985 - Mumbai Indians vs Kings XI Punjab
-2016-05-12 - club - IPL - male - 980983 - Sunrisers Hyderabad vs Delhi Daredevils
-2016-05-11 - club - IPL - male - 980981 - Royal Challengers Bangalore vs Mumbai Indians
-2016-05-10 - club - IPL - male - 980979 - Rising Pune Supergiants vs Sunrisers Hyderabad
-2016-05-09 - club - IPL - male - 980977 - Kings XI Punjab vs Royal Challengers Bangalore
-2016-05-08 - club - IPL - male - 980975 - Kolkata Knight Riders vs Gujarat Lions
-2016-05-08 - club - IPL - male - 980973 - Mumbai Indians vs Sunrisers Hyderabad
-2016-05-07 - club - IPL - male - 980971 - Kings XI Punjab vs Delhi Daredevils
-2016-05-07 - club - IPL - male - 980969 - Royal Challengers Bangalore vs Rising Pune Supergiants
-2016-05-06 - club - IPL - male - 980967 - Sunrisers Hyderabad vs Gujarat Lions
-2016-05-05 - club - IPL - male - 980965 - Delhi Daredevils vs Rising Pune Supergiants
-2016-05-04 - club - IPL - male - 980963 - Kolkata Knight Riders vs Kings XI Punjab
-2016-05-03 - club - IPL - male - 980961 - Gujarat Lions vs Delhi Daredevils
-2016-05-02 - club - IPL - male - 980959 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2016-05-01 - club - IPL - male - 980957 - Rising Pune Supergiants vs Mumbai Indians
-2016-05-01 - club - IPL - male - 980955 - Gujarat Lions vs Kings XI Punjab
-2016-04-30 - club - IPL - male - 980953 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2016-04-30 - club - IPL - male - 980951 - Delhi Daredevils vs Kolkata Knight Riders
-2016-04-29 - club - IPL - male - 980949 - Rising Pune Supergiants vs Gujarat Lions
-2016-04-28 - club - IPL - male - 980947 - Mumbai Indians vs Kolkata Knight Riders
-2016-04-27 - club - IPL - male - 980945 - Delhi Daredevils vs Gujarat Lions
-2016-04-26 - club - IPL - male - 980943 - Sunrisers Hyderabad vs Rising Pune Supergiants
-2016-04-25 - club - IPL - male - 980941 - Kings XI Punjab vs Mumbai Indians
-2016-04-24 - club - IPL - male - 980939 - Rising Pune Supergiants vs Kolkata Knight Riders
-2016-04-24 - club - IPL - male - 980937 - Gujarat Lions vs Royal Challengers Bangalore
-2016-04-23 - club - IPL - male - 980935 - Sunrisers Hyderabad vs Kings XI Punjab
-2016-04-23 - club - IPL - male - 980933 - Delhi Daredevils vs Mumbai Indians
-2016-04-22 - club - IPL - male - 980931 - Rising Pune Supergiants vs Royal Challengers Bangalore
-2016-04-21 - club - IPL - male - 980929 - Gujarat Lions vs Sunrisers Hyderabad
-2016-04-20 - club - IPL - male - 980927 - Mumbai Indians vs Royal Challengers Bangalore
-2016-04-19 - club - IPL - male - 980925 - Kings XI Punjab vs Kolkata Knight Riders
-2016-04-18 - club - IPL - male - 980923 - Sunrisers Hyderabad vs Mumbai Indians
-2016-04-17 - club - IPL - male - 980921 - Royal Challengers Bangalore vs Delhi Daredevils
-2016-04-17 - club - IPL - male - 980919 - Kings XI Punjab vs Rising Pune Supergiants
-2016-04-16 - club - IPL - male - 980917 - Mumbai Indians vs Gujarat Lions
-2016-04-16 - club - IPL - male - 980915 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2016-04-15 - club - IPL - male - 980913 - Delhi Daredevils vs Kings XI Punjab
-2016-04-14 - club - IPL - male - 980911 - Gujarat Lions vs Rising Pune Supergiants
-2016-04-13 - club - IPL - male - 980909 - Kolkata Knight Riders vs Mumbai Indians
-2016-04-12 - club - IPL - male - 980907 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2016-04-11 - club - IPL - male - 980905 - Kings XI Punjab vs Gujarat Lions
-2016-04-10 - club - IPL - male - 980903 - Kolkata Knight Riders vs Delhi Daredevils
-2016-04-09 - club - IPL - male - 980901 - Mumbai Indians vs Rising Pune Supergiants
-2015-05-24 - club - IPL - male - 829823 - Mumbai Indians vs Chennai Super Kings
-2015-05-22 - club - IPL - male - 829821 - Chennai Super Kings vs Royal Challengers Bangalore
-2015-05-20 - club - IPL - male - 829819 - Royal Challengers Bangalore vs Rajasthan Royals
-2015-05-19 - club - IPL - male - 829817 - Chennai Super Kings vs Mumbai Indians
-2015-05-17 - club - IPL - male - 829815 - Sunrisers Hyderabad vs Mumbai Indians
-2015-05-17 - club - IPL - male - 829813 - Royal Challengers Bangalore vs Delhi Daredevils
-2015-05-16 - club - IPL - male - 829811 - Rajasthan Royals vs Kolkata Knight Riders
-2015-05-16 - club - IPL - male - 829809 - Kings XI Punjab vs Chennai Super Kings
-2015-05-15 - club - IPL - male - 829807 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2015-05-14 - club - IPL - male - 829805 - Mumbai Indians vs Kolkata Knight Riders
-2015-05-13 - club - IPL - male - 829803 - Kings XI Punjab vs Royal Challengers Bangalore
-2015-05-12 - club - IPL - male - 829801 - Delhi Daredevils vs Chennai Super Kings
-2015-05-11 - club - IPL - male - 829799 - Sunrisers Hyderabad vs Kings XI Punjab
-2015-05-10 - club - IPL - male - 829797 - Chennai Super Kings vs Rajasthan Royals
-2015-05-10 - club - IPL - male - 829795 - Mumbai Indians vs Royal Challengers Bangalore
-2015-05-09 - club - IPL - male - 829793 - Delhi Daredevils vs Sunrisers Hyderabad
-2015-05-09 - club - IPL - male - 829791 - Kolkata Knight Riders vs Kings XI Punjab
-2015-05-08 - club - IPL - male - 829789 - Chennai Super Kings vs Mumbai Indians
-2015-05-07 - club - IPL - male - 829787 - Rajasthan Royals vs Sunrisers Hyderabad
-2015-05-07 - club - IPL - male - 829761 - Kolkata Knight Riders vs Delhi Daredevils
-2015-05-06 - club - IPL - male - 829785 - Royal Challengers Bangalore vs Kings XI Punjab
-2015-05-05 - club - IPL - male - 829783 - Mumbai Indians vs Delhi Daredevils
-2015-05-04 - club - IPL - male - 829781 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2015-05-04 - club - IPL - male - 829779 - Chennai Super Kings vs Royal Challengers Bangalore
-2015-05-03 - club - IPL - male - 829777 - Rajasthan Royals vs Delhi Daredevils
-2015-05-03 - club - IPL - male - 829775 - Kings XI Punjab vs Mumbai Indians
-2015-05-02 - club - IPL - male - 829773 - Sunrisers Hyderabad vs Chennai Super Kings
-2015-05-02 - club - IPL - male - 829771 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2015-05-01 - club - IPL - male - 829769 - Mumbai Indians vs Rajasthan Royals
-2015-05-01 - club - IPL - male - 829767 - Delhi Daredevils vs Kings XI Punjab
-2015-04-30 - club - IPL - male - 829723 - Kolkata Knight Riders vs Chennai Super Kings
-2015-04-29 - club - IPL - male - 829763 - Royal Challengers Bangalore vs Rajasthan Royals
-2015-04-28 - club - IPL - male - 829765 - Chennai Super Kings vs Kolkata Knight Riders
-2015-04-27 - club - IPL - male - 829759 - Kings XI Punjab vs Sunrisers Hyderabad
-2015-04-26 - club - IPL - male - 829757 - Delhi Daredevils vs Royal Challengers Bangalore
-2015-04-25 - club - IPL - male - 829753 - Chennai Super Kings vs Kings XI Punjab
-2015-04-25 - club - IPL - male - 829751 - Mumbai Indians vs Sunrisers Hyderabad
-2015-04-24 - club - IPL - male - 829749 - Rajasthan Royals vs Royal Challengers Bangalore
-2015-04-23 - club - IPL - male - 829747 - Delhi Daredevils vs Mumbai Indians
-2015-04-22 - club - IPL - male - 829745 - Royal Challengers Bangalore vs Chennai Super Kings
-2015-04-22 - club - IPL - male - 829743 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2015-04-21 - club - IPL - male - 829741 - Rajasthan Royals vs Kings XI Punjab
-2015-04-20 - club - IPL - male - 829739 - Delhi Daredevils vs Kolkata Knight Riders
-2015-04-19 - club - IPL - male - 829737 - Royal Challengers Bangalore vs Mumbai Indians
-2015-04-19 - club - IPL - male - 829735 - Rajasthan Royals vs Chennai Super Kings
-2015-04-18 - club - IPL - male - 829733 - Kings XI Punjab vs Kolkata Knight Riders
-2015-04-18 - club - IPL - male - 829731 - Sunrisers Hyderabad vs Delhi Daredevils
-2015-04-17 - club - IPL - male - 829729 - Mumbai Indians vs Chennai Super Kings
-2015-04-16 - club - IPL - male - 829727 - Sunrisers Hyderabad vs Rajasthan Royals
-2015-04-15 - club - IPL - male - 829725 - Kings XI Punjab vs Delhi Daredevils
-2015-04-14 - club - IPL - male - 829721 - Rajasthan Royals vs Mumbai Indians
-2015-04-13 - club - IPL - male - 829719 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2015-04-12 - club - IPL - male - 829717 - Mumbai Indians vs Kings XI Punjab
-2015-04-12 - club - IPL - male - 829715 - Delhi Daredevils vs Rajasthan Royals
-2015-04-11 - club - IPL - male - 829713 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2015-04-11 - club - IPL - male - 829711 - Chennai Super Kings vs Sunrisers Hyderabad
-2015-04-10 - club - IPL - male - 829709 - Kings XI Punjab vs Rajasthan Royals
-2015-04-09 - club - IPL - male - 829707 - Chennai Super Kings vs Delhi Daredevils
-2015-04-08 - club - IPL - male - 829705 - Kolkata Knight Riders vs Mumbai Indians
-2014-06-01 - club - IPL - male - 734049 - Kolkata Knight Riders vs Kings XI Punjab
-2014-05-30 - club - IPL - male - 734047 - Chennai Super Kings vs Kings XI Punjab
-2014-05-28 - club - IPL - male - 734045 - Chennai Super Kings vs Mumbai Indians
-2014-05-27 - club - IPL - male - 734043 - Kings XI Punjab vs Kolkata Knight Riders
-2014-05-25 - club - IPL - male - 734041 - Mumbai Indians vs Rajasthan Royals
-2014-05-25 - club - IPL - male - 734039 - Kings XI Punjab vs Delhi Daredevils
-2014-05-24 - club - IPL - male - 734037 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2014-05-24 - club - IPL - male - 734035 - Royal Challengers Bangalore vs Chennai Super Kings
-2014-05-23 - club - IPL - male - 734033 - Kings XI Punjab vs Rajasthan Royals
-2014-05-23 - club - IPL - male - 734031 - Mumbai Indians vs Delhi Daredevils
-2014-05-22 - club - IPL - male - 734029 - Chennai Super Kings vs Sunrisers Hyderabad
-2014-05-22 - club - IPL - male - 734027 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2014-05-21 - club - IPL - male - 734025 - Kings XI Punjab vs Mumbai Indians
-2014-05-20 - club - IPL - male - 734023 - Kolkata Knight Riders vs Chennai Super Kings
-2014-05-20 - club - IPL - male - 734021 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2014-05-19 - club - IPL - male - 734019 - Delhi Daredevils vs Kings XI Punjab
-2014-05-19 - club - IPL - male - 734017 - Rajasthan Royals vs Mumbai Indians
-2014-05-18 - club - IPL - male - 734015 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2014-05-18 - club - IPL - male - 734013 - Chennai Super Kings vs Royal Challengers Bangalore
-2014-05-15 - club - IPL - male - 734011 - Rajasthan Royals vs Delhi Daredevils
-2014-05-14 - club - IPL - male - 734009 - Kolkata Knight Riders vs Mumbai Indians
-2014-05-14 - club - IPL - male - 734007 - Sunrisers Hyderabad vs Kings XI Punjab
-2014-05-13 - club - IPL - male - 734005 - Royal Challengers Bangalore vs Delhi Daredevils
-2014-05-13 - club - IPL - male - 734003 - Chennai Super Kings vs Rajasthan Royals
-2014-05-12 - club - IPL - male - 734001 - Sunrisers Hyderabad vs Mumbai Indians
-2014-05-11 - club - IPL - male - 733999 - Royal Challengers Bangalore vs Rajasthan Royals
-2014-05-11 - club - IPL - male - 733997 - Kings XI Punjab vs Kolkata Knight Riders
-2014-05-10 - club - IPL - male - 733995 - Mumbai Indians vs Chennai Super Kings
-2014-05-10 - club - IPL - male - 733993 - Delhi Daredevils vs Sunrisers Hyderabad
-2014-05-09 - club - IPL - male - 733991 - Royal Challengers Bangalore vs Kings XI Punjab
-2014-05-08 - club - IPL - male - 733989 - Rajasthan Royals vs Sunrisers Hyderabad
-2014-05-07 - club - IPL - male - 733987 - Kings XI Punjab vs Chennai Super Kings
-2014-05-07 - club - IPL - male - 733985 - Delhi Daredevils vs Kolkata Knight Riders
-2014-05-06 - club - IPL - male - 733983 - Mumbai Indians vs Royal Challengers Bangalore
-2014-05-05 - club - IPL - male - 733981 - Delhi Daredevils vs Chennai Super Kings
-2014-05-05 - club - IPL - male - 733979 - Rajasthan Royals vs Kolkata Knight Riders
-2014-05-04 - club - IPL - male - 733977 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2014-05-03 - club - IPL - male - 733975 - Delhi Daredevils vs Rajasthan Royals
-2014-05-03 - club - IPL - male - 733973 - Mumbai Indians vs Kings XI Punjab
-2014-05-02 - club - IPL - male - 733971 - Chennai Super Kings vs Kolkata Knight Riders
-2014-04-30 - club - IPL - male - 729317 - Mumbai Indians vs Sunrisers Hyderabad
-2014-04-29 - club - IPL - male - 729315 - Kolkata Knight Riders vs Rajasthan Royals
-2014-04-28 - club - IPL - male - 729313 - Kings XI Punjab vs Royal Challengers Bangalore
-2014-04-27 - club - IPL - male - 729311 - Sunrisers Hyderabad vs Chennai Super Kings
-2014-04-27 - club - IPL - male - 729309 - Delhi Daredevils vs Mumbai Indians
-2014-04-26 - club - IPL - male - 729307 - Kolkata Knight Riders vs Kings XI Punjab
-2014-04-26 - club - IPL - male - 729305 - Rajasthan Royals vs Royal Challengers Bangalore
-2014-04-25 - club - IPL - male - 729303 - Chennai Super Kings vs Mumbai Indians
-2014-04-25 - club - IPL - male - 729301 - Sunrisers Hyderabad vs Delhi Daredevils
-2014-04-24 - club - IPL - male - 729299 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2014-04-23 - club - IPL - male - 729297 - Rajasthan Royals vs Chennai Super Kings
-2014-04-22 - club - IPL - male - 729295 - Kings XI Punjab vs Sunrisers Hyderabad
-2014-04-21 - club - IPL - male - 729293 - Chennai Super Kings vs Delhi Daredevils
-2014-04-20 - club - IPL - male - 729291 - Rajasthan Royals vs Kings XI Punjab
-2014-04-19 - club - IPL - male - 729289 - Kolkata Knight Riders vs Delhi Daredevils
-2014-04-19 - club - IPL - male - 729287 - Royal Challengers Bangalore vs Mumbai Indians
-2014-04-18 - club - IPL - male - 729285 - Sunrisers Hyderabad vs Rajasthan Royals
-2014-04-18 - club - IPL - male - 729283 - Chennai Super Kings vs Kings XI Punjab
-2014-04-17 - club - IPL - male - 729281 - Delhi Daredevils vs Royal Challengers Bangalore
-2014-04-16 - club - IPL - male - 729279 - Mumbai Indians vs Kolkata Knight Riders
-2013-05-26 - club - IPL - male - 598073 - Chennai Super Kings vs Mumbai Indians
-2013-05-24 - club - IPL - male - 598072 - Mumbai Indians vs Rajasthan Royals
-2013-05-22 - club - IPL - male - 598071 - Rajasthan Royals vs Sunrisers Hyderabad
-2013-05-21 - club - IPL - male - 598070 - Chennai Super Kings vs Mumbai Indians
-2013-05-19 - club - IPL - male - 598069 - Sunrisers Hyderabad vs Kolkata Knight Riders
-2013-05-19 - club - IPL - male - 598067 - Pune Warriors vs Delhi Daredevils
-2013-05-18 - club - IPL - male - 598068 - Royal Challengers Bangalore vs Chennai Super Kings
-2013-05-18 - club - IPL - male - 598066 - Kings XI Punjab vs Mumbai Indians
-2013-05-17 - club - IPL - male - 598065 - Sunrisers Hyderabad vs Rajasthan Royals
-2013-05-16 - club - IPL - male - 598028 - Kings XI Punjab vs Delhi Daredevils
-2013-05-15 - club - IPL - male - 598063 - Mumbai Indians vs Rajasthan Royals
-2013-05-15 - club - IPL - male - 598061 - Kolkata Knight Riders vs Pune Warriors
-2013-05-14 - club - IPL - male - 598062 - Chennai Super Kings vs Delhi Daredevils
-2013-05-14 - club - IPL - male - 598045 - Royal Challengers Bangalore vs Kings XI Punjab
-2013-05-13 - club - IPL - male - 598060 - Mumbai Indians vs Sunrisers Hyderabad
-2013-05-12 - club - IPL - male - 598058 - Rajasthan Royals vs Chennai Super Kings
-2013-05-12 - club - IPL - male - 598057 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2013-05-11 - club - IPL - male - 598056 - Kings XI Punjab vs Sunrisers Hyderabad
-2013-05-11 - club - IPL - male - 598055 - Pune Warriors vs Mumbai Indians
-2013-05-10 - club - IPL - male - 598054 - Delhi Daredevils vs Royal Challengers Bangalore
-2013-05-09 - club - IPL - male - 598053 - Pune Warriors vs Kolkata Knight Riders
-2013-05-09 - club - IPL - male - 598052 - Kings XI Punjab vs Rajasthan Royals
-2013-05-08 - club - IPL - male - 598051 - Sunrisers Hyderabad vs Chennai Super Kings
-2013-05-07 - club - IPL - male - 598050 - Mumbai Indians vs Kolkata Knight Riders
-2013-05-07 - club - IPL - male - 598049 - Rajasthan Royals vs Delhi Daredevils
-2013-05-06 - club - IPL - male - 598064 - Kings XI Punjab vs Royal Challengers Bangalore
-2013-05-05 - club - IPL - male - 598047 - Rajasthan Royals vs Pune Warriors
-2013-05-05 - club - IPL - male - 598046 - Mumbai Indians vs Chennai Super Kings
-2013-05-04 - club - IPL - male - 598044 - Sunrisers Hyderabad vs Delhi Daredevils
-2013-05-03 - club - IPL - male - 598043 - Kolkata Knight Riders vs Rajasthan Royals
-2013-05-02 - club - IPL - male - 598042 - Pune Warriors vs Royal Challengers Bangalore
-2013-05-02 - club - IPL - male - 598041 - Chennai Super Kings vs Kings XI Punjab
-2013-05-01 - club - IPL - male - 598040 - Delhi Daredevils vs Kolkata Knight Riders
-2013-05-01 - club - IPL - male - 598039 - Sunrisers Hyderabad vs Mumbai Indians
-2013-04-30 - club - IPL - male - 598038 - Pune Warriors vs Chennai Super Kings
-2013-04-29 - club - IPL - male - 598037 - Mumbai Indians vs Kings XI Punjab
-2013-04-29 - club - IPL - male - 598036 - Rajasthan Royals vs Royal Challengers Bangalore
-2013-04-28 - club - IPL - male - 598035 - Delhi Daredevils vs Pune Warriors
-2013-04-28 - club - IPL - male - 598034 - Chennai Super Kings vs Kolkata Knight Riders
-2013-04-27 - club - IPL - male - 598033 - Mumbai Indians vs Royal Challengers Bangalore
-2013-04-27 - club - IPL - male - 598032 - Rajasthan Royals vs Sunrisers Hyderabad
-2013-04-26 - club - IPL - male - 598031 - Kolkata Knight Riders vs Kings XI Punjab
-2013-04-25 - club - IPL - male - 598030 - Chennai Super Kings vs Sunrisers Hyderabad
-2013-04-24 - club - IPL - male - 598029 - Kolkata Knight Riders vs Mumbai Indians
-2013-04-23 - club - IPL - male - 598059 - Delhi Daredevils vs Kings XI Punjab
-2013-04-23 - club - IPL - male - 598027 - Royal Challengers Bangalore vs Pune Warriors
-2013-04-22 - club - IPL - male - 598026 - Chennai Super Kings vs Rajasthan Royals
-2013-04-21 - club - IPL - male - 598025 - Kings XI Punjab vs Pune Warriors
-2013-04-21 - club - IPL - male - 598024 - Delhi Daredevils vs Mumbai Indians
-2013-04-20 - club - IPL - male - 598023 - Royal Challengers Bangalore vs Rajasthan Royals
-2013-04-20 - club - IPL - male - 598022 - Kolkata Knight Riders vs Chennai Super Kings
-2013-04-19 - club - IPL - male - 598021 - Sunrisers Hyderabad vs Kings XI Punjab
-2013-04-18 - club - IPL - male - 598020 - Delhi Daredevils vs Chennai Super Kings
-2013-04-17 - club - IPL - male - 598019 - Rajasthan Royals vs Mumbai Indians
-2013-04-17 - club - IPL - male - 598018 - Pune Warriors vs Sunrisers Hyderabad
-2013-04-16 - club - IPL - male - 598017 - Royal Challengers Bangalore vs Delhi Daredevils
-2013-04-16 - club - IPL - male - 598016 - Kings XI Punjab vs Kolkata Knight Riders
-2013-04-15 - club - IPL - male - 598015 - Chennai Super Kings vs Pune Warriors
-2013-04-14 - club - IPL - male - 598014 - Rajasthan Royals vs Kings XI Punjab
-2013-04-14 - club - IPL - male - 598013 - Kolkata Knight Riders vs Sunrisers Hyderabad
-2013-04-13 - club - IPL - male - 598012 - Chennai Super Kings vs Royal Challengers Bangalore
-2013-04-13 - club - IPL - male - 598011 - Mumbai Indians vs Pune Warriors
-2013-04-12 - club - IPL - male - 598010 - Delhi Daredevils vs Sunrisers Hyderabad
-2013-04-11 - club - IPL - male - 598009 - Pune Warriors vs Rajasthan Royals
-2013-04-11 - club - IPL - male - 598008 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2013-04-10 - club - IPL - male - 598007 - Kings XI Punjab vs Chennai Super Kings
-2013-04-09 - club - IPL - male - 598048 - Royal Challengers Bangalore vs Sunrisers Hyderabad
-2013-04-09 - club - IPL - male - 598006 - Mumbai Indians vs Delhi Daredevils
-2013-04-08 - club - IPL - male - 598005 - Rajasthan Royals vs Kolkata Knight Riders
-2013-04-07 - club - IPL - male - 598004 - Sunrisers Hyderabad vs Royal Challengers Bangalore
-2013-04-07 - club - IPL - male - 598003 - Pune Warriors vs Kings XI Punjab
-2013-04-06 - club - IPL - male - 598002 - Chennai Super Kings vs Mumbai Indians
-2013-04-06 - club - IPL - male - 598001 - Delhi Daredevils vs Rajasthan Royals
-2013-04-05 - club - IPL - male - 598000 - Sunrisers Hyderabad vs Pune Warriors
-2013-04-04 - club - IPL - male - 597999 - Royal Challengers Bangalore vs Mumbai Indians
-2013-04-03 - club - IPL - male - 597998 - Kolkata Knight Riders vs Delhi Daredevils
-2012-05-27 - club - IPL - male - 548381 - Kolkata Knight Riders vs Chennai Super Kings
-2012-05-25 - club - IPL - male - 548380 - Delhi Daredevils vs Chennai Super Kings
-2012-05-23 - club - IPL - male - 548379 - Chennai Super Kings vs Mumbai Indians
-2012-05-22 - club - IPL - male - 548378 - Delhi Daredevils vs Kolkata Knight Riders
-2012-05-20 - club - IPL - male - 548377 - Rajasthan Royals vs Mumbai Indians
-2012-05-20 - club - IPL - male - 548376 - Deccan Chargers vs Royal Challengers Bangalore
-2012-05-19 - club - IPL - male - 548375 - Pune Warriors vs Kolkata Knight Riders
-2012-05-19 - club - IPL - male - 548374 - Kings XI Punjab vs Delhi Daredevils
-2012-05-18 - club - IPL - male - 548373 - Deccan Chargers vs Rajasthan Royals
-2012-05-17 - club - IPL - male - 548372 - Delhi Daredevils vs Royal Challengers Bangalore
-2012-05-17 - club - IPL - male - 548371 - Kings XI Punjab vs Chennai Super Kings
-2012-05-16 - club - IPL - male - 548370 - Mumbai Indians vs Kolkata Knight Riders
-2012-05-15 - club - IPL - male - 548369 - Delhi Daredevils vs Kings XI Punjab
-2012-05-14 - club - IPL - male - 548368 - Kolkata Knight Riders vs Chennai Super Kings
-2012-05-14 - club - IPL - male - 548367 - Royal Challengers Bangalore vs Mumbai Indians
-2012-05-13 - club - IPL - male - 548366 - Kings XI Punjab vs Deccan Chargers
-2012-05-13 - club - IPL - male - 548365 - Rajasthan Royals vs Pune Warriors
-2012-05-12 - club - IPL - male - 548364 - Chennai Super Kings vs Delhi Daredevils
-2012-05-12 - club - IPL - male - 548363 - Kolkata Knight Riders vs Mumbai Indians
-2012-05-11 - club - IPL - male - 548362 - Pune Warriors vs Royal Challengers Bangalore
-2012-05-10 - club - IPL - male - 548361 - Rajasthan Royals vs Chennai Super Kings
-2012-05-10 - club - IPL - male - 548329 - Deccan Chargers vs Delhi Daredevils
-2012-05-09 - club - IPL - male - 548360 - Mumbai Indians vs Royal Challengers Bangalore
-2012-05-08 - club - IPL - male - 548359 - Deccan Chargers vs Kings XI Punjab
-2012-05-08 - club - IPL - male - 548358 - Pune Warriors vs Rajasthan Royals
-2012-05-07 - club - IPL - male - 548357 - Delhi Daredevils vs Kolkata Knight Riders
-2012-05-06 - club - IPL - male - 548356 - Royal Challengers Bangalore vs Deccan Chargers
-2012-05-06 - club - IPL - male - 548355 - Mumbai Indians vs Chennai Super Kings
-2012-05-05 - club - IPL - male - 548354 - Kings XI Punjab vs Rajasthan Royals
-2012-05-05 - club - IPL - male - 548353 - Kolkata Knight Riders vs Pune Warriors
-2012-05-04 - club - IPL - male - 548352 - Chennai Super Kings vs Deccan Chargers
-2012-05-03 - club - IPL - male - 548351 - Pune Warriors vs Mumbai Indians
-2012-05-02 - club - IPL - male - 548350 - Royal Challengers Bangalore vs Kings XI Punjab
-2012-05-01 - club - IPL - male - 548349 - Rajasthan Royals vs Delhi Daredevils
-2012-05-01 - club - IPL - male - 548348 - Deccan Chargers vs Pune Warriors
-2012-04-30 - club - IPL - male - 548347 - Chennai Super Kings vs Kolkata Knight Riders
-2012-04-29 - club - IPL - male - 548346 - Mumbai Indians vs Deccan Chargers
-2012-04-29 - club - IPL - male - 548345 - Delhi Daredevils vs Rajasthan Royals
-2012-04-28 - club - IPL - male - 548344 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2012-04-28 - club - IPL - male - 548343 - Chennai Super Kings vs Kings XI Punjab
-2012-04-27 - club - IPL - male - 548342 - Delhi Daredevils vs Mumbai Indians
-2012-04-26 - club - IPL - male - 548341 - Pune Warriors vs Deccan Chargers
-2012-04-25 - club - IPL - male - 548339 - Kings XI Punjab vs Mumbai Indians
-2012-04-24 - club - IPL - male - 548337 - Pune Warriors vs Delhi Daredevils
-2012-04-23 - club - IPL - male - 548336 - Rajasthan Royals vs Royal Challengers Bangalore
-2012-04-22 - club - IPL - male - 548335 - Deccan Chargers vs Kolkata Knight Riders
-2012-04-22 - club - IPL - male - 548334 - Mumbai Indians vs Kings XI Punjab
-2012-04-21 - club - IPL - male - 548333 - Delhi Daredevils vs Pune Warriors
-2012-04-21 - club - IPL - male - 548332 - Chennai Super Kings vs Rajasthan Royals
-2012-04-20 - club - IPL - male - 548331 - Kings XI Punjab vs Royal Challengers Bangalore
-2012-04-19 - club - IPL - male - 548330 - Chennai Super Kings vs Pune Warriors
-2012-04-19 - club - IPL - male - 548321 - Delhi Daredevils vs Deccan Chargers
-2012-04-18 - club - IPL - male - 548328 - Kings XI Punjab vs Kolkata Knight Riders
-2012-04-17 - club - IPL - male - 548327 - Royal Challengers Bangalore vs Pune Warriors
-2012-04-17 - club - IPL - male - 548326 - Rajasthan Royals vs Deccan Chargers
-2012-04-16 - club - IPL - male - 548325 - Mumbai Indians vs Delhi Daredevils
-2012-04-15 - club - IPL - male - 548324 - Royal Challengers Bangalore vs Rajasthan Royals
-2012-04-15 - club - IPL - male - 548323 - Kolkata Knight Riders vs Kings XI Punjab
-2012-04-14 - club - IPL - male - 548322 - Pune Warriors vs Chennai Super Kings
-2012-04-13 - club - IPL - male - 548320 - Kolkata Knight Riders vs Rajasthan Royals
-2012-04-12 - club - IPL - male - 548319 - Kings XI Punjab vs Pune Warriors
-2012-04-12 - club - IPL - male - 548318 - Chennai Super Kings vs Royal Challengers Bangalore
-2012-04-11 - club - IPL - male - 548317 - Mumbai Indians vs Rajasthan Royals
-2012-04-10 - club - IPL - male - 548316 - Delhi Daredevils vs Chennai Super Kings
-2012-04-10 - club - IPL - male - 548315 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2012-04-09 - club - IPL - male - 548314 - Deccan Chargers vs Mumbai Indians
-2012-04-08 - club - IPL - male - 548313 - Pune Warriors vs Kings XI Punjab
-2012-04-08 - club - IPL - male - 548312 - Rajasthan Royals vs Kolkata Knight Riders
-2012-04-07 - club - IPL - male - 548311 - Deccan Chargers vs Chennai Super Kings
-2012-04-07 - club - IPL - male - 548310 - Royal Challengers Bangalore vs Delhi Daredevils
-2012-04-06 - club - IPL - male - 548309 - Rajasthan Royals vs Kings XI Punjab
-2012-04-06 - club - IPL - male - 548308 - Mumbai Indians vs Pune Warriors
-2012-04-05 - club - IPL - male - 548307 - Kolkata Knight Riders vs Delhi Daredevils
-2012-04-04 - club - IPL - male - 548306 - Chennai Super Kings vs Mumbai Indians
-2011-05-28 - club - IPL - male - 501271 - Chennai Super Kings vs Royal Challengers Bangalore
-2011-05-27 - club - IPL - male - 501270 - Royal Challengers Bangalore vs Mumbai Indians
-2011-05-25 - club - IPL - male - 501269 - Mumbai Indians vs Kolkata Knight Riders
-2011-05-24 - club - IPL - male - 501268 - Royal Challengers Bangalore vs Chennai Super Kings
-2011-05-22 - club - IPL - male - 501267 - Kolkata Knight Riders vs Mumbai Indians
-2011-05-22 - club - IPL - male - 501266 - Royal Challengers Bangalore vs Chennai Super Kings
-2011-05-21 - club - IPL - male - 501265 - Delhi Daredevils vs Pune Warriors
-2011-05-21 - club - IPL - male - 501264 - Kings XI Punjab vs Deccan Chargers
-2011-05-20 - club - IPL - male - 501263 - Mumbai Indians vs Rajasthan Royals
-2011-05-19 - club - IPL - male - 501262 - Pune Warriors vs Kolkata Knight Riders
-2011-05-18 - club - IPL - male - 501261 - Chennai Super Kings vs Kochi Tuskers Kerala
-2011-05-17 - club - IPL - male - 501260 - Kings XI Punjab vs Royal Challengers Bangalore
-2011-05-16 - club - IPL - male - 501259 - Pune Warriors vs Deccan Chargers
-2011-05-15 - club - IPL - male - 501258 - Kochi Tuskers Kerala vs Rajasthan Royals
-2011-05-15 - club - IPL - male - 501257 - Kings XI Punjab vs Delhi Daredevils
-2011-05-14 - club - IPL - male - 501256 - Mumbai Indians vs Deccan Chargers
-2011-05-14 - club - IPL - male - 501255 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2011-05-13 - club - IPL - male - 501254 - Kochi Tuskers Kerala vs Kings XI Punjab
-2011-05-12 - club - IPL - male - 501253 - Chennai Super Kings vs Delhi Daredevils
-2011-05-11 - club - IPL - male - 501252 - Rajasthan Royals vs Royal Challengers Bangalore
-2011-05-10 - club - IPL - male - 501251 - Kings XI Punjab vs Mumbai Indians
-2011-05-10 - club - IPL - male - 501250 - Deccan Chargers vs Pune Warriors
-2011-05-09 - club - IPL - male - 501249 - Rajasthan Royals vs Chennai Super Kings
-2011-05-08 - club - IPL - male - 501248 - Kings XI Punjab vs Pune Warriors
-2011-05-08 - club - IPL - male - 501247 - Royal Challengers Bangalore vs Kochi Tuskers Kerala
-2011-05-07 - club - IPL - male - 501246 - Mumbai Indians vs Delhi Daredevils
-2011-05-07 - club - IPL - male - 501245 - Kolkata Knight Riders vs Chennai Super Kings
-2011-05-06 - club - IPL - male - 501244 - Royal Challengers Bangalore vs Kings XI Punjab
-2011-05-05 - club - IPL - male - 501243 - Deccan Chargers vs Delhi Daredevils
-2011-05-05 - club - IPL - male - 501242 - Kochi Tuskers Kerala vs Kolkata Knight Riders
-2011-05-04 - club - IPL - male - 501241 - Pune Warriors vs Mumbai Indians
-2011-05-04 - club - IPL - male - 501240 - Chennai Super Kings vs Rajasthan Royals
-2011-05-03 - club - IPL - male - 501239 - Deccan Chargers vs Kolkata Knight Riders
-2011-05-02 - club - IPL - male - 501238 - Delhi Daredevils vs Kochi Tuskers Kerala
-2011-05-02 - club - IPL - male - 501237 - Mumbai Indians vs Kings XI Punjab
-2011-05-01 - club - IPL - male - 501236 - Chennai Super Kings vs Deccan Chargers
-2011-05-01 - club - IPL - male - 501235 - Rajasthan Royals vs Pune Warriors
-2011-04-30 - club - IPL - male - 501234 - Kolkata Knight Riders vs Kings XI Punjab
-2011-04-30 - club - IPL - male - 501233 - Kochi Tuskers Kerala vs Delhi Daredevils
-2011-04-29 - club - IPL - male - 501232 - Royal Challengers Bangalore vs Pune Warriors
-2011-04-29 - club - IPL - male - 501231 - Rajasthan Royals vs Mumbai Indians
-2011-04-28 - club - IPL - male - 501230 - Delhi Daredevils vs Kolkata Knight Riders
-2011-04-27 - club - IPL - male - 501229 - Kochi Tuskers Kerala vs Deccan Chargers
-2011-04-27 - club - IPL - male - 501228 - Pune Warriors vs Chennai Super Kings
-2011-04-26 - club - IPL - male - 501227 - Delhi Daredevils vs Royal Challengers Bangalore
-2011-04-25 - club - IPL - male - 501226 - Chennai Super Kings vs Pune Warriors
-2011-04-24 - club - IPL - male - 501225 - Rajasthan Royals vs Kochi Tuskers Kerala
-2011-04-24 - club - IPL - male - 501224 - Deccan Chargers vs Mumbai Indians
-2011-04-23 - club - IPL - male - 501223 - Delhi Daredevils vs Kings XI Punjab
-2011-04-22 - club - IPL - male - 501222 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2011-04-22 - club - IPL - male - 501221 - Mumbai Indians vs Chennai Super Kings
-2011-04-21 - club - IPL - male - 501220 - Kings XI Punjab vs Rajasthan Royals
-2011-04-20 - club - IPL - male - 501219 - Kolkata Knight Riders vs Kochi Tuskers Kerala
-2011-04-20 - club - IPL - male - 501218 - Mumbai Indians vs Pune Warriors
-2011-04-19 - club - IPL - male - 501216 - Delhi Daredevils vs Deccan Chargers
-2011-04-18 - club - IPL - male - 501215 - Kochi Tuskers Kerala vs Chennai Super Kings
-2011-04-17 - club - IPL - male - 501214 - Kolkata Knight Riders vs Rajasthan Royals
-2011-04-17 - club - IPL - male - 501213 - Pune Warriors vs Delhi Daredevils
-2011-04-16 - club - IPL - male - 501212 - Deccan Chargers vs Kings XI Punjab
-2011-04-16 - club - IPL - male - 501211 - Chennai Super Kings vs Royal Challengers Bangalore
-2011-04-15 - club - IPL - male - 501210 - Mumbai Indians vs Kochi Tuskers Kerala
-2011-04-15 - club - IPL - male - 501209 - Rajasthan Royals vs Kolkata Knight Riders
-2011-04-14 - club - IPL - male - 501208 - Deccan Chargers vs Royal Challengers Bangalore
-2011-04-13 - club - IPL - male - 501207 - Pune Warriors vs Kochi Tuskers Kerala
-2011-04-13 - club - IPL - male - 501206 - Kings XI Punjab vs Chennai Super Kings
-2011-04-12 - club - IPL - male - 501205 - Royal Challengers Bangalore vs Mumbai Indians
-2011-04-12 - club - IPL - male - 501204 - Rajasthan Royals vs Delhi Daredevils
-2011-04-11 - club - IPL - male - 501203 - Kolkata Knight Riders vs Deccan Chargers
-2011-04-10 - club - IPL - male - 501202 - Pune Warriors vs Kings XI Punjab
-2011-04-10 - club - IPL - male - 501201 - Delhi Daredevils vs Mumbai Indians
-2011-04-09 - club - IPL - male - 501200 - Kochi Tuskers Kerala vs Royal Challengers Bangalore
-2011-04-09 - club - IPL - male - 501199 - Deccan Chargers vs Rajasthan Royals
-2011-04-08 - club - IPL - male - 501198 - Chennai Super Kings vs Kolkata Knight Riders
-2010-04-25 - club - IPL - male - 419165 - Chennai Super Kings vs Mumbai Indians
-2010-04-24 - club - IPL - male - 419164 - Royal Challengers Bangalore vs Deccan Chargers
-2010-04-22 - club - IPL - male - 419163 - Chennai Super Kings vs Deccan Chargers
-2010-04-21 - club - IPL - male - 419162 - Royal Challengers Bangalore vs Mumbai Indians
-2010-04-19 - club - IPL - male - 419161 - Kolkata Knight Riders vs Mumbai Indians
-2010-04-18 - club - IPL - male - 419160 - Delhi Daredevils vs Deccan Chargers
-2010-04-18 - club - IPL - male - 419159 - Kings XI Punjab vs Chennai Super Kings
-2010-04-17 - club - IPL - male - 419158 - Kolkata Knight Riders vs Rajasthan Royals
-2010-04-17 - club - IPL - male - 419157 - Royal Challengers Bangalore vs Mumbai Indians
-2010-04-16 - club - IPL - male - 419156 - Kings XI Punjab vs Deccan Chargers
-2010-04-15 - club - IPL - male - 419155 - Chennai Super Kings vs Delhi Daredevils
-2010-04-14 - club - IPL - male - 419154 - Rajasthan Royals vs Royal Challengers Bangalore
-2010-04-13 - club - IPL - male - 419153 - Chennai Super Kings vs Kolkata Knight Riders
-2010-04-13 - club - IPL - male - 419152 - Mumbai Indians vs Delhi Daredevils
-2010-04-12 - club - IPL - male - 419151 - Deccan Chargers vs Royal Challengers Bangalore
-2010-04-11 - club - IPL - male - 419150 - Rajasthan Royals vs Mumbai Indians
-2010-04-11 - club - IPL - male - 419149 - Delhi Daredevils vs Kings XI Punjab
-2010-04-10 - club - IPL - male - 419148 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2010-04-10 - club - IPL - male - 419147 - Deccan Chargers vs Chennai Super Kings
-2010-04-09 - club - IPL - male - 419146 - Kings XI Punjab vs Mumbai Indians
-2010-04-08 - club - IPL - male - 419145 - Royal Challengers Bangalore vs Deccan Chargers
-2010-04-07 - club - IPL - male - 419144 - Kolkata Knight Riders vs Delhi Daredevils
-2010-04-07 - club - IPL - male - 419143 - Rajasthan Royals vs Kings XI Punjab
-2010-04-06 - club - IPL - male - 419142 - Chennai Super Kings vs Mumbai Indians
-2010-04-05 - club - IPL - male - 419141 - Deccan Chargers vs Rajasthan Royals
-2010-04-04 - club - IPL - male - 419140 - Delhi Daredevils vs Royal Challengers Bangalore
-2010-04-04 - club - IPL - male - 419139 - Kolkata Knight Riders vs Kings XI Punjab
-2010-04-03 - club - IPL - male - 419138 - Mumbai Indians vs Deccan Chargers
-2010-04-03 - club - IPL - male - 419137 - Chennai Super Kings vs Rajasthan Royals
-2010-04-02 - club - IPL - male - 419136 - Kings XI Punjab vs Royal Challengers Bangalore
-2010-04-01 - club - IPL - male - 419135 - Kolkata Knight Riders vs Deccan Chargers
-2010-03-31 - club - IPL - male - 419134 - Delhi Daredevils vs Rajasthan Royals
-2010-03-31 - club - IPL - male - 419133 - Chennai Super Kings vs Royal Challengers Bangalore
-2010-03-30 - club - IPL - male - 419132 - Mumbai Indians vs Kings XI Punjab
-2010-03-29 - club - IPL - male - 419131 - Delhi Daredevils vs Kolkata Knight Riders
-2010-03-28 - club - IPL - male - 419130 - Deccan Chargers vs Mumbai Indians
-2010-03-28 - club - IPL - male - 419129 - Rajasthan Royals vs Chennai Super Kings
-2010-03-27 - club - IPL - male - 419127 - Kings XI Punjab vs Kolkata Knight Riders
-2010-03-26 - club - IPL - male - 419126 - Rajasthan Royals vs Deccan Chargers
-2010-03-25 - club - IPL - male - 419128 - Royal Challengers Bangalore vs Delhi Daredevils
-2010-03-25 - club - IPL - male - 419125 - Chennai Super Kings vs Mumbai Indians
-2010-03-24 - club - IPL - male - 419124 - Kings XI Punjab vs Rajasthan Royals
-2010-03-23 - club - IPL - male - 419123 - Royal Challengers Bangalore vs Chennai Super Kings
-2010-03-22 - club - IPL - male - 419122 - Mumbai Indians vs Kolkata Knight Riders
-2010-03-21 - club - IPL - male - 419121 - Chennai Super Kings vs Kings XI Punjab
-2010-03-21 - club - IPL - male - 419120 - Deccan Chargers vs Delhi Daredevils
-2010-03-20 - club - IPL - male - 419119 - Mumbai Indians vs Royal Challengers Bangalore
-2010-03-20 - club - IPL - male - 419118 - Rajasthan Royals vs Kolkata Knight Riders
-2010-03-19 - club - IPL - male - 419117 - Deccan Chargers vs Kings XI Punjab
-2010-03-19 - club - IPL - male - 419116 - Delhi Daredevils vs Chennai Super Kings
-2010-03-18 - club - IPL - male - 419115 - Royal Challengers Bangalore vs Rajasthan Royals
-2010-03-17 - club - IPL - male - 419114 - Delhi Daredevils vs Mumbai Indians
-2010-03-16 - club - IPL - male - 419113 - Kolkata Knight Riders vs Chennai Super Kings
-2010-03-16 - club - IPL - male - 419112 - Royal Challengers Bangalore vs Kings XI Punjab
-2010-03-15 - club - IPL - male - 419111 - Rajasthan Royals vs Delhi Daredevils
-2010-03-14 - club - IPL - male - 419110 - Chennai Super Kings vs Deccan Chargers
-2010-03-14 - club - IPL - male - 419109 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2010-03-13 - club - IPL - male - 419108 - Kings XI Punjab vs Delhi Daredevils
-2010-03-13 - club - IPL - male - 419107 - Mumbai Indians vs Rajasthan Royals
-2010-03-12 - club - IPL - male - 419106 - Deccan Chargers vs Kolkata Knight Riders
-2009-05-24 - club - IPL - male - 392239 - Royal Challengers Bangalore vs Deccan Chargers
-2009-05-23 - club - IPL - male - 392238 - Royal Challengers Bangalore vs Chennai Super Kings
-2009-05-22 - club - IPL - male - 392237 - Delhi Daredevils vs Deccan Chargers
-2009-05-21 - club - IPL - male - 392236 - Royal Challengers Bangalore vs Deccan Chargers
-2009-05-21 - club - IPL - male - 392235 - Delhi Daredevils vs Mumbai Indians
-2009-05-20 - club - IPL - male - 392234 - Chennai Super Kings vs Kings XI Punjab
-2009-05-20 - club - IPL - male - 392233 - Kolkata Knight Riders vs Rajasthan Royals
-2009-05-19 - club - IPL - male - 392232 - Royal Challengers Bangalore vs Delhi Daredevils
-2009-05-18 - club - IPL - male - 392231 - Chennai Super Kings vs Kolkata Knight Riders
-2009-05-17 - club - IPL - male - 392230 - Delhi Daredevils vs Rajasthan Royals
-2009-05-17 - club - IPL - male - 392229 - Deccan Chargers vs Kings XI Punjab
-2009-05-16 - club - IPL - male - 392228 - Deccan Chargers vs Kolkata Knight Riders
-2009-05-16 - club - IPL - male - 392227 - Chennai Super Kings vs Mumbai Indians
-2009-05-15 - club - IPL - male - 392226 - Delhi Daredevils vs Kings XI Punjab
-2009-05-14 - club - IPL - male - 392225 - Mumbai Indians vs Rajasthan Royals
-2009-05-14 - club - IPL - male - 392224 - Royal Challengers Bangalore vs Chennai Super Kings
-2009-05-13 - club - IPL - male - 392223 - Deccan Chargers vs Delhi Daredevils
-2009-05-12 - club - IPL - male - 392222 - Kings XI Punjab vs Mumbai Indians
-2009-05-12 - club - IPL - male - 392221 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2009-05-11 - club - IPL - male - 392220 - Deccan Chargers vs Rajasthan Royals
-2009-05-10 - club - IPL - male - 392219 - Delhi Daredevils vs Kolkata Knight Riders
-2009-05-10 - club - IPL - male - 392218 - Royal Challengers Bangalore vs Mumbai Indians
-2009-05-09 - club - IPL - male - 392217 - Chennai Super Kings vs Rajasthan Royals
-2009-05-09 - club - IPL - male - 392216 - Deccan Chargers vs Kings XI Punjab
-2009-05-08 - club - IPL - male - 392215 - Delhi Daredevils vs Mumbai Indians
-2009-05-07 - club - IPL - male - 392214 - Chennai Super Kings vs Kings XI Punjab
-2009-05-07 - club - IPL - male - 392213 - Royal Challengers Bangalore vs Rajasthan Royals
-2009-05-06 - club - IPL - male - 392212 - Deccan Chargers vs Mumbai Indians
-2009-05-05 - club - IPL - male - 392211 - Delhi Daredevils vs Kolkata Knight Riders
-2009-05-05 - club - IPL - male - 392210 - Kings XI Punjab vs Rajasthan Royals
-2009-05-04 - club - IPL - male - 392209 - Chennai Super Kings vs Deccan Chargers
-2009-05-03 - club - IPL - male - 392208 - Royal Challengers Bangalore vs Mumbai Indians
-2009-05-03 - club - IPL - male - 392207 - Kings XI Punjab vs Kolkata Knight Riders
-2009-05-02 - club - IPL - male - 392206 - Chennai Super Kings vs Delhi Daredevils
-2009-05-02 - club - IPL - male - 392205 - Deccan Chargers vs Rajasthan Royals
-2009-05-01 - club - IPL - male - 392204 - Royal Challengers Bangalore vs Kings XI Punjab
-2009-05-01 - club - IPL - male - 392203 - Kolkata Knight Riders vs Mumbai Indians
-2009-04-30 - club - IPL - male - 392202 - Chennai Super Kings vs Rajasthan Royals
-2009-04-30 - club - IPL - male - 392201 - Deccan Chargers vs Delhi Daredevils
-2009-04-29 - club - IPL - male - 392200 - Kings XI Punjab vs Mumbai Indians
-2009-04-29 - club - IPL - male - 392199 - Royal Challengers Bangalore vs Kolkata Knight Riders
-2009-04-28 - club - IPL - male - 392198 - Delhi Daredevils vs Rajasthan Royals
-2009-04-27 - club - IPL - male - 392197 - Kolkata Knight Riders vs Mumbai Indians
-2009-04-27 - club - IPL - male - 392196 - Chennai Super Kings vs Deccan Chargers
-2009-04-26 - club - IPL - male - 392195 - Kings XI Punjab vs Rajasthan Royals
-2009-04-26 - club - IPL - male - 392194 - Royal Challengers Bangalore vs Delhi Daredevils
-2009-04-25 - club - IPL - male - 392192 - Deccan Chargers vs Mumbai Indians
-2009-04-24 - club - IPL - male - 392191 - Royal Challengers Bangalore vs Kings XI Punjab
-2009-04-23 - club - IPL - male - 392190 - Kolkata Knight Riders vs Rajasthan Royals
-2009-04-23 - club - IPL - male - 392189 - Chennai Super Kings vs Delhi Daredevils
-2009-04-22 - club - IPL - male - 392188 - Royal Challengers Bangalore vs Deccan Chargers
-2009-04-21 - club - IPL - male - 392186 - Kings XI Punjab vs Kolkata Knight Riders
-2009-04-20 - club - IPL - male - 392185 - Royal Challengers Bangalore vs Chennai Super Kings
-2009-04-19 - club - IPL - male - 392184 - Deccan Chargers vs Kolkata Knight Riders
-2009-04-19 - club - IPL - male - 392183 - Delhi Daredevils vs Kings XI Punjab
-2009-04-18 - club - IPL - male - 392182 - Royal Challengers Bangalore vs Rajasthan Royals
-2009-04-18 - club - IPL - male - 392181 - Chennai Super Kings vs Mumbai Indians
-2008-06-01 - club - IPL - male - 336040 - Chennai Super Kings vs Rajasthan Royals
-2008-05-31 - club - IPL - male - 336039 - Chennai Super Kings vs Kings XI Punjab
-2008-05-30 - club - IPL - male - 336038 - Delhi Daredevils vs Rajasthan Royals
-2008-05-28 - club - IPL - male - 336019 - Kings XI Punjab vs Rajasthan Royals
-2008-05-28 - club - IPL - male - 336012 - Royal Challengers Bangalore vs Mumbai Indians
-2008-05-27 - club - IPL - male - 336037 - Deccan Chargers vs Chennai Super Kings
-2008-05-26 - club - IPL - male - 336036 - Rajasthan Royals vs Mumbai Indians
-2008-05-25 - club - IPL - male - 336035 - Kolkata Knight Riders vs Kings XI Punjab
-2008-05-25 - club - IPL - male - 336002 - Deccan Chargers vs Royal Challengers Bangalore
-2008-05-24 - club - IPL - male - 336033 - Chennai Super Kings vs Rajasthan Royals
-2008-05-24 - club - IPL - male - 336032 - Delhi Daredevils vs Mumbai Indians
-2008-05-23 - club - IPL - male - 336031 - Kings XI Punjab vs Deccan Chargers
-2008-05-21 - club - IPL - male - 336029 - Chennai Super Kings vs Royal Challengers Bangalore
-2008-05-21 - club - IPL - male - 336028 - Mumbai Indians vs Kings XI Punjab
-2008-05-20 - club - IPL - male - 336027 - Kolkata Knight Riders vs Rajasthan Royals
-2008-05-19 - club - IPL - male - 336026 - Royal Challengers Bangalore vs Delhi Daredevils
-2008-05-18 - club - IPL - male - 336025 - Kolkata Knight Riders vs Chennai Super Kings
-2008-05-18 - club - IPL - male - 336024 - Deccan Chargers vs Mumbai Indians
-2008-05-17 - club - IPL - male - 336023 - Rajasthan Royals vs Royal Challengers Bangalore
-2008-05-17 - club - IPL - male - 336022 - Delhi Daredevils vs Kings XI Punjab
-2008-05-16 - club - IPL - male - 336021 - Mumbai Indians vs Kolkata Knight Riders
-2008-05-15 - club - IPL - male - 336020 - Delhi Daredevils vs Deccan Chargers
-2008-05-14 - club - IPL - male - 336018 - Mumbai Indians vs Chennai Super Kings
-2008-05-13 - club - IPL - male - 336017 - Kolkata Knight Riders vs Delhi Daredevils
-2008-05-12 - club - IPL - male - 336016 - Kings XI Punjab vs Royal Challengers Bangalore
-2008-05-11 - club - IPL - male - 336015 - Rajasthan Royals vs Delhi Daredevils
-2008-05-11 - club - IPL - male - 336014 - Deccan Chargers vs Kolkata Knight Riders
-2008-05-10 - club - IPL - male - 336013 - Chennai Super Kings vs Kings XI Punjab
-2008-05-09 - club - IPL - male - 336011 - Rajasthan Royals vs Deccan Chargers
-2008-05-08 - club - IPL - male - 336010 - Kolkata Knight Riders vs Royal Challengers Bangalore
-2008-05-08 - club - IPL - male - 336009 - Delhi Daredevils vs Chennai Super Kings
-2008-05-07 - club - IPL - male - 336008 - Mumbai Indians vs Rajasthan Royals
-2008-05-06 - club - IPL - male - 336007 - Chennai Super Kings vs Deccan Chargers
-2008-05-05 - club - IPL - male - 336006 - Royal Challengers Bangalore vs Kings XI Punjab
-2008-05-04 - club - IPL - male - 336005 - Rajasthan Royals vs Chennai Super Kings
-2008-05-04 - club - IPL - male - 336004 - Mumbai Indians vs Delhi Daredevils
-2008-05-03 - club - IPL - male - 336034 - Royal Challengers Bangalore vs Deccan Chargers
-2008-05-03 - club - IPL - male - 336003 - Kings XI Punjab vs Kolkata Knight Riders
-2008-05-02 - club - IPL - male - 336001 - Chennai Super Kings vs Delhi Daredevils
-2008-05-01 - club - IPL - male - 336000 - Rajasthan Royals vs Kolkata Knight Riders
-2008-05-01 - club - IPL - male - 335999 - Deccan Chargers vs Kings XI Punjab
-2008-04-30 - club - IPL - male - 335998 - Delhi Daredevils vs Royal Challengers Bangalore
-2008-04-29 - club - IPL - male - 335997 - Kolkata Knight Riders vs Mumbai Indians
-2008-04-28 - club - IPL - male - 335996 - Royal Challengers Bangalore vs Chennai Super Kings
-2008-04-27 - club - IPL - male - 335995 - Kings XI Punjab vs Delhi Daredevils
-2008-04-27 - club - IPL - male - 335994 - Mumbai Indians vs Deccan Chargers
-2008-04-26 - club - IPL - male - 335993 - Chennai Super Kings vs Kolkata Knight Riders
-2008-04-26 - club - IPL - male - 335992 - Royal Challengers Bangalore vs Rajasthan Royals
-2008-04-25 - club - IPL - male - 335991 - Kings XI Punjab vs Mumbai Indians
-2008-04-24 - club - IPL - male - 335990 - Deccan Chargers vs Rajasthan Royals
-2008-04-23 - club - IPL - male - 335989 - Chennai Super Kings vs Mumbai Indians
-2008-04-22 - club - IPL - male - 335988 - Deccan Chargers vs Delhi Daredevils
-2008-04-21 - club - IPL - male - 335987 - Rajasthan Royals vs Kings XI Punjab
-2008-04-20 - club - IPL - male - 335986 - Kolkata Knight Riders vs Deccan Chargers
-2008-04-20 - club - IPL - male - 335985 - Mumbai Indians vs Royal Challengers Bangalore
-2008-04-19 - club - IPL - male - 335984 - Delhi Daredevils vs Rajasthan Royals
-2008-04-19 - club - IPL - male - 335983 - Kings XI Punjab vs Chennai Super Kings
-2008-04-18 - club - IPL - male - 335982 - Royal Challengers Bangalore vs Kolkata Knight Riders
+2024-12-15 - club - SMA - male - 1446107 - Madhya Pradesh vs Mumbai
+2024-12-13 - club - SMA - male - 1446106 - Delhi vs Madhya Pradesh
+2024-12-13 - club - SMA - male - 1446105 - Baroda vs Mumbai
+2024-12-11 - club - SMA - male - 1446104 - Vidarbha vs Mumbai
+2024-12-11 - club - SMA - male - 1446103 - Saurashtra vs Madhya Pradesh
+2024-12-11 - club - SMA - male - 1446102 - Delhi vs Uttar Pradesh
+2024-12-11 - club - SMA - male - 1446101 - Baroda vs Bengal
+2024-12-09 - club - SMA - male - 1446099 - Bengal vs Chandigarh
+2023-11-06 - club - SMA - male - 1383568 - Punjab vs Baroda
+2023-11-04 - club - SMA - male - 1383567 - Assam vs Baroda
+2023-11-04 - club - SMA - male - 1383566 - Delhi vs Punjab
+2023-11-02 - club - SMA - male - 1383563 - Kerala vs Assam
+2023-11-02 - club - SMA - male - 1383562 - Uttar Pradesh vs Punjab
+2023-10-31 - club - SMA - male - 1383561 - Bengal vs Assam
+2023-10-31 - club - SMA - male - 1383560 - Gujarat vs Uttar Pradesh
+2023-10-25 - club - SMA - male - 1383541 - Tamil Nadu vs Madhya Pradesh
+2023-10-25 - club - SMA - male - 1383539 - Uttar Pradesh vs Karnataka
+2023-10-25 - club - SMA - male - 1383534 - Railways vs Gujarat
+2023-10-25 - club - SMA - male - 1383527 - Jammu & Kashmir vs Mizoram
+2023-10-25 - club - SMA - male - 1383526 - Chhattisgarh vs Baroda
+2023-10-23 - club - SMA - male - 1383523 - Uttar Pradesh vs Tripura
+2023-10-23 - club - SMA - male - 1383522 - Delhi vs Tamil Nadu
+2023-10-23 - club - SMA - male - 1383517 - Andhra vs Manipur
+2023-10-23 - club - SMA - male - 1383515 - Arunachal Pradesh vs Saurashtra
+2023-10-23 - club - SMA - male - 1383509 - Meghalaya vs Jammu & Kashmir
+2023-10-23 - club - SMA - male - 1383507 - Haryana vs Mizoram
+2023-10-21 - club - SMA - male - 1383504 - Uttar Pradesh vs Nagaland
+2023-10-21 - club - SMA - male - 1383503 - Karnataka vs Delhi
+2023-10-21 - club - SMA - male - 1383499 - Arunachal Pradesh vs Goa
+2023-10-21 - club - SMA - male - 1383496 - Manipur vs Punjab
+2023-10-21 - club - SMA - male - 1383491 - Mizoram vs Hyderabad (India)
+2023-10-21 - club - SMA - male - 1383488 - Mumbai vs Jammu & Kashmir
+2023-10-19 - club - SMA - male - 1383487 - Tripura vs Tamil Nadu
+2023-10-19 - club - SMA - male - 1383485 - Madhya Pradesh vs Karnataka
+2023-10-19 - club - SMA - male - 1383480 - Gujarat vs Goa
+2023-10-19 - club - SMA - male - 1383478 - Punjab vs Railways
+2023-10-19 - club - SMA - male - 1383472 - Chhattisgarh vs Hyderabad (India)
+2023-10-17 - club - SMA - male - 1383469 - Nagaland vs Tripura
+2023-10-17 - club - SMA - male - 1383467 - Madhya Pradesh vs Delhi
+2023-10-17 - club - SMA - male - 1383461 - Saurashtra vs Gujarat
+2023-10-17 - club - SMA - male - 1383460 - Punjab vs Andhra
+2023-10-17 - club - SMA - male - 1383453 - Haryana vs Chhattisgarh
+2023-10-17 - club - SMA - male - 1383452 - Meghalaya vs Mumbai
+2023-10-16 - club - SMA - male - 1383445 - Manipur vs Railways
+2023-10-16 - club - SMA - male - 1383442 - Saurashtra vs Punjab
+2023-10-16 - club - SMA - male - 1383437 - Baroda vs Jammu & Kashmir
+2023-10-16 - club - SMA - male - 1383434 - Haryana vs Mumbai
+2022-11-05 - club - SMA - male - 1333055 - Himachal Pradesh vs Mumbai
+2022-11-03 - club - SMA - male - 1333054 - Vidarbha vs Mumbai
+2022-11-03 - club - SMA - male - 1333053 - Himachal Pradesh vs Punjab
+2022-11-01 - club - SMA - male - 1333052 - Saurashtra vs Mumbai
+2022-11-01 - club - SMA - male - 1333050 - Vidarbha vs Delhi
+2022-11-01 - club - SMA - male - 1333049 - Punjab vs Karnataka
+2022-10-30 - club - SMA - male - 1333048 - Saurashtra vs Kerala
+2022-10-30 - club - SMA - male - 1333047 - Chhattisgarh vs Vidarbha
+2022-10-30 - club - SMA - male - 1333046 - Punjab vs Haryana
+2022-10-22 - club - SMA - male - 1333041 - Nagaland vs Himachal Pradesh
+2022-10-22 - club - SMA - male - 1333040 - Bihar vs Gujarat
+2022-10-22 - club - SMA - male - 1333035 - Railways vs Vidarbha
+2022-10-22 - club - SMA - male - 1333033 - Madhya Pradesh vs Assam
+2022-10-22 - club - SMA - male - 1333031 - Puducherry vs Goa
+2022-10-22 - club - SMA - male - 1333029 - Uttar Pradesh vs Punjab
+2022-10-20 - club - SMA - male - 1333024 - Baroda vs Himachal Pradesh
+2022-10-20 - club - SMA - male - 1333022 - Andhra vs Gujarat
+2022-10-20 - club - SMA - male - 1333017 - Uttarakhand vs Mizoram
+2022-10-20 - club - SMA - male - 1333016 - Mumbai vs Railways
+2022-10-20 - club - SMA - male - 1333013 - Manipur vs Tripura
+2022-10-20 - club - SMA - male - 1333012 - Goa vs Delhi
+2022-10-18 - club - SMA - male - 1333006 - Bihar vs Andhra
+2022-10-18 - club - SMA - male - 1333005 - Himachal Pradesh vs Saurashtra
+2022-10-18 - club - SMA - male - 1332999 - Vidarbha vs Uttarakhand
+2022-10-18 - club - SMA - male - 1332997 - Mizoram vs Madhya Pradesh
+2022-10-18 - club - SMA - male - 1332995 - Tripura vs Puducherry
+2022-10-18 - club - SMA - male - 1332993 - Manipur vs Punjab
+2022-10-16 - club - SMA - male - 1332987 - Nagaland vs Andhra
+2022-10-16 - club - SMA - male - 1332986 - Gujarat vs Saurashtra
+2022-10-16 - club - SMA - male - 1332981 - Mizoram vs Assam
+2022-10-16 - club - SMA - male - 1332978 - Rajasthan vs Uttarakhand
+2022-10-14 - club - SMA - male - 1332968 - Baroda vs Gujarat
+2022-10-14 - club - SMA - male - 1332962 - Mumbai vs Assam
+2022-10-14 - club - SMA - male - 1332960 - Rajasthan vs Railways
+2022-10-14 - club - SMA - male - 1332958 - Delhi vs Uttar Pradesh
+2022-10-14 - club - SMA - male - 1332956 - Hyderabad (India) vs Goa
+2022-10-12 - club - SMA - male - 1332952 - Nagaland vs Bihar
+2022-10-12 - club - SMA - male - 1332950 - Baroda vs Saurashtra
+2022-10-12 - club - SMA - male - 1332943 - Madhya Pradesh vs Mumbai
+2022-10-12 - club - SMA - male - 1332939 - Delhi vs Punjab
+2022-10-12 - club - SMA - male - 1332938 - Hyderabad (India) vs Puducherry
+2022-10-11 - club - SMA - male - 1332934 - Nagaland vs Baroda
+2022-10-11 - club - SMA - male - 1332927 - Railways vs Uttarakhand
+2022-10-11 - club - SMA - male - 1332920 - Punjab vs Hyderabad (India)
+2021-11-22 - club - SMA - male - 1280302 - Karnataka vs Tamil Nadu
+2021-11-20 - club - SMA - male - 1280301 - Karnataka vs Vidarbha
+2021-11-20 - club - SMA - male - 1280300 - Hyderabad (India) vs Tamil Nadu
+2021-11-18 - club - SMA - male - 1280299 - Hyderabad (India) vs Gujarat
+2021-11-18 - club - SMA - male - 1280298 - Rajasthan vs Vidarbha
+2021-11-18 - club - SMA - male - 1280297 - Karnataka vs Bengal
+2021-11-18 - club - SMA - male - 1280296 - Kerala vs Tamil Nadu
+2021-11-16 - club - SMA - male - 1280295 - Himachal vs Kerala
+2021-11-16 - club - SMA - male - 1280294 - Saurashtra vs Karnataka
+2021-11-16 - club - SMA - male - 1280293 - Maharashtra vs Vidarbha
+2021-11-09 - club - SMA - male - 1280292 - Meghalaya vs Arunachal Pradesh
+2021-11-09 - club - SMA - male - 1280291 - Vidarbha vs Sikkim
+2021-11-09 - club - SMA - male - 1280290 - Manipur vs Mizoram
+2021-11-09 - club - SMA - male - 1280289 - Nagaland vs Tripura
+2021-11-09 - club - SMA - male - 1280288 - Hyderabad (India) vs Uttar Pradesh
+2021-11-09 - club - SMA - male - 1280287 - Saurashtra vs Delhi
+2021-11-09 - club - SMA - male - 1280286 - Uttarakhand vs Chandigarh
+2021-11-09 - club - SMA - male - 1280285 - Railways vs Assam
+2021-11-09 - club - SMA - male - 1280284 - Madhya Pradesh vs Kerala
+2021-11-09 - club - SMA - male - 1280283 - Bihar vs Gujarat
+2021-11-09 - club - SMA - male - 1280282 - Jammu & Kashmir vs Jharkhand
+2021-11-09 - club - SMA - male - 1280281 - Rajasthan vs Haryana
+2021-11-09 - club - SMA - male - 1280280 - Himachal vs Andhra
+2021-11-09 - club - SMA - male - 1280279 - Karnataka vs Bengal
+2021-11-09 - club - SMA - male - 1280278 - Chhattisgarh vs Services
+2021-11-09 - club - SMA - male - 1280277 - Mumbai vs Baroda
+2021-11-09 - club - SMA - male - 1280276 - Punjab vs Tamil Nadu
+2021-11-09 - club - SMA - male - 1280275 - Maharashtra vs Goa
+2021-11-09 - club - SMA - male - 1280274 - Odisha vs Puducherry
+2021-11-08 - club - SMA - male - 1280273 - Vidarbha vs Manipur
+2021-11-08 - club - SMA - male - 1280272 - Tripura vs Meghalaya
+2021-11-08 - club - SMA - male - 1280271 - Nagaland vs Arunachal Pradesh
+2021-11-08 - club - SMA - male - 1280270 - Mizoram vs Sikkim
+2021-11-08 - club - SMA - male - 1280269 - Saurashtra vs Chandigarh
+2021-11-08 - club - SMA - male - 1280266 - Bihar vs Madhya Pradesh
+2021-11-08 - club - SMA - male - 1280264 - Assam vs Kerala
+2021-11-08 - club - SMA - male - 1280263 - Rajasthan vs Andhra
+2021-11-08 - club - SMA - male - 1280260 - Chhattisgarh vs Mumbai
+2021-11-08 - club - SMA - male - 1280259 - Baroda vs Karnataka
+2021-11-08 - club - SMA - male - 1280258 - Services vs Bengal
+2021-11-08 - club - SMA - male - 1280257 - Maharashtra vs Puducherry
+2021-11-08 - club - SMA - male - 1280255 - Tamil Nadu vs Goa
+2021-11-06 - club - SMA - male - 1280252 - Meghalaya vs Vidarbha
+2021-11-06 - club - SMA - male - 1280251 - Tripura vs Manipur
+2021-11-06 - club - SMA - male - 1280250 - Saurashtra vs Uttarakhand
+2021-11-06 - club - SMA - male - 1280249 - Chandigarh vs Hyderabad (India)
+2021-11-06 - club - SMA - male - 1280247 - Gujarat vs Madhya Pradesh
+2021-11-06 - club - SMA - male - 1280246 - Bihar vs Assam
+2021-11-06 - club - SMA - male - 1280245 - Railways vs Kerala
+2021-11-06 - club - SMA - male - 1280243 - Andhra vs Jharkhand
+2021-11-06 - club - SMA - male - 1280242 - Haryana vs Jammu & Kashmir
+2021-11-06 - club - SMA - male - 1280241 - Chhattisgarh vs Baroda
+2021-11-06 - club - SMA - male - 1280240 - Mumbai vs Bengal
+2021-11-06 - club - SMA - male - 1280239 - Karnataka vs Services
+2021-11-06 - club - SMA - male - 1280238 - Maharashtra vs Odisha
+2021-11-06 - club - SMA - male - 1280237 - Puducherry vs Tamil Nadu
+2021-11-06 - club - SMA - male - 1280236 - Punjab vs Goa
+2021-11-05 - club - SMA - male - 1280235 - Tripura vs Mizoram
+2021-11-05 - club - SMA - male - 1280234 - Arunachal Pradesh vs Manipur
+2021-11-05 - club - SMA - male - 1280233 - Nagaland vs Vidarbha
+2021-11-05 - club - SMA - male - 1280232 - Sikkim vs Meghalaya
+2021-11-05 - club - SMA - male - 1280231 - Chandigarh vs Delhi
+2021-11-05 - club - SMA - male - 1280230 - Hyderabad (India) vs Uttarakhand
+2021-11-05 - club - SMA - male - 1280229 - Saurashtra vs Uttar Pradesh
+2021-11-05 - club - SMA - male - 1280228 - Bihar vs Kerala
+2021-11-05 - club - SMA - male - 1280227 - Gujarat vs Assam
+2021-11-05 - club - SMA - male - 1280226 - Railways vs Madhya Pradesh
+2021-11-05 - club - SMA - male - 1280225 - Andhra vs Haryana
+2021-11-05 - club - SMA - male - 1280224 - Himachal vs Jharkhand
+2021-11-05 - club - SMA - male - 1280223 - Jammu & Kashmir vs Rajasthan
+2021-11-05 - club - SMA - male - 1280221 - Bengal vs Baroda
+2021-11-05 - club - SMA - male - 1280220 - Chhattisgarh vs Karnataka
+2021-11-05 - club - SMA - male - 1280219 - Goa vs Puducherry
+2021-11-05 - club - SMA - male - 1280217 - Punjab vs Maharashtra
+2021-11-04 - club - SMA - male - 1280216 - Mizoram vs Meghalaya
+2021-11-04 - club - SMA - male - 1280214 - Tripura vs Sikkim
+2021-11-04 - club - SMA - male - 1280213 - Vidarbha vs Arunachal Pradesh
+2021-11-04 - club - SMA - male - 1280212 - Delhi vs Uttarakhand
+2021-11-04 - club - SMA - male - 1280211 - Uttar Pradesh vs Chandigarh
+2021-11-04 - club - SMA - male - 1280210 - Saurashtra vs Hyderabad (India)
+2021-11-04 - club - SMA - male - 1280209 - Kerala vs Gujarat
+2021-11-04 - club - SMA - male - 1280208 - Bihar vs Railways
+2021-11-04 - club - SMA - male - 1280207 - Assam vs Madhya Pradesh
+2021-11-04 - club - SMA - male - 1280204 - Himachal vs Haryana
+2021-11-04 - club - SMA - male - 1280203 - Baroda vs Services
+2021-11-04 - club - SMA - male - 1280202 - Karnataka vs Mumbai
+2021-11-04 - club - SMA - male - 1280201 - Chhattisgarh vs Bengal
+2021-11-04 - club - SMA - male - 1280200 - Goa vs Odisha
+2021-11-04 - club - SMA - male - 1280198 - Tamil Nadu vs Maharashtra
+2021-01-31 - club - SMA - male - 1244407 - Baroda vs Tamil Nadu
+2021-01-29 - club - SMA - male - 1244406 - Baroda vs Punjab
+2021-01-29 - club - SMA - male - 1244405 - Rajasthan vs Tamil Nadu
+2021-01-27 - club - SMA - male - 1244403 - Haryana vs Baroda
+2021-01-26 - club - SMA - male - 1244402 - Himachal vs Tamil Nadu
+2021-01-26 - club - SMA - male - 1244401 - Karnataka vs Punjab
+2021-01-19 - club - SMA - male - 1244400 - Manipur vs Nagaland
+2021-01-19 - club - SMA - male - 1244399 - Mizoram vs Bihar
+2021-01-19 - club - SMA - male - 1244398 - Sikkim vs Meghalaya
+2021-01-19 - club - SMA - male - 1244396 - Andhra vs Mumbai
+2021-01-19 - club - SMA - male - 1244395 - Delhi vs Puducherry
+2021-01-19 - club - SMA - male - 1244394 - Haryana vs Kerala
+2021-01-19 - club - SMA - male - 1244393 - Rajasthan vs Saurashtra
+2021-01-19 - club - SMA - male - 1244391 - Madhya Pradesh vs Services
+2021-01-18 - club - SMA - male - 1244390 - Maharashtra vs Himachal
+2021-01-18 - club - SMA - male - 1244389 - Uttarakhand vs Chhattisgarh
+2021-01-18 - club - SMA - male - 1244388 - Baroda vs Gujarat
+2021-01-18 - club - SMA - male - 1244387 - Bengal vs Tamil Nadu
+2021-01-18 - club - SMA - male - 1244386 - Hyderabad (India) vs Jharkhand
+2021-01-18 - club - SMA - male - 1244385 - Assam vs Odisha
+2021-01-18 - club - SMA - male - 1244383 - Punjab vs Tripura
+2021-01-18 - club - SMA - male - 1244382 - Railways vs Jammu & Kashmir
+2021-01-17 - club - SMA - male - 1244381 - Nagaland vs Mizoram
+2021-01-17 - club - SMA - male - 1244380 - Chandigarh vs Sikkim
+2021-01-17 - club - SMA - male - 1244379 - Arunachal Pradesh vs Meghalaya
+2021-01-17 - club - SMA - male - 1244378 - Manipur vs Bihar
+2021-01-17 - club - SMA - male - 1244377 - Delhi vs Haryana
+2021-01-17 - club - SMA - male - 1244376 - Kerala vs Andhra
+2021-01-17 - club - SMA - male - 1244375 - Mumbai vs Puducherry
+2021-01-17 - club - SMA - male - 1244374 - Vidarbha vs Services
+2021-01-17 - club - SMA - male - 1244373 - Saurashtra vs Madhya Pradesh
+2021-01-17 - club - SMA - male - 1244372 - Goa vs Rajasthan
+2021-01-16 - club - SMA - male - 1244371 - Chhattisgarh vs Gujarat
+2021-01-16 - club - SMA - male - 1244370 - Baroda vs Maharashtra
+2021-01-16 - club - SMA - male - 1244369 - Uttarakhand vs Himachal
+2021-01-16 - club - SMA - male - 1244368 - Jharkhand vs Odisha
+2021-01-16 - club - SMA - male - 1244367 - Assam vs Bengal
+2021-01-16 - club - SMA - male - 1244366 - Hyderabad (India) vs Tamil Nadu
+2021-01-16 - club - SMA - male - 1244365 - Jammu & Kashmir vs Punjab
+2021-01-16 - club - SMA - male - 1244364 - Railways vs Karnataka
+2021-01-16 - club - SMA - male - 1244363 - Tripura vs Uttar Pradesh
+2021-01-15 - club - SMA - male - 1244362 - Manipur vs Arunachal Pradesh
+2021-01-15 - club - SMA - male - 1244361 - Nagaland vs Sikkim
+2021-01-15 - club - SMA - male - 1244360 - Chandigarh vs Mizoram
+2021-01-15 - club - SMA - male - 1244359 - Meghalaya vs Bihar
+2021-01-15 - club - SMA - male - 1244358 - Andhra vs Puducherry
+2021-01-15 - club - SMA - male - 1244357 - Mumbai vs Haryana
+2021-01-15 - club - SMA - male - 1244356 - Delhi vs Kerala
+2021-01-15 - club - SMA - male - 1244355 - Saurashtra vs Goa
+2021-01-15 - club - SMA - male - 1244353 - Madhya Pradesh vs Vidarbha
+2021-01-14 - club - SMA - male - 1244352 - Maharashtra vs Uttarakhand
+2021-01-14 - club - SMA - male - 1244351 - Himachal vs Gujarat
+2021-01-14 - club - SMA - male - 1244350 - Chhattisgarh vs Baroda
+2021-01-14 - club - SMA - male - 1244349 - Hyderabad (India) vs Bengal
+2021-01-14 - club - SMA - male - 1244348 - Odisha vs Tamil Nadu
+2021-01-14 - club - SMA - male - 1244347 - Jharkhand vs Assam
+2021-01-14 - club - SMA - male - 1244346 - Karnataka vs Tripura
+2021-01-14 - club - SMA - male - 1244344 - Punjab vs Railways
+2021-01-13 - club - SMA - male - 1244343 - Arunachal Pradesh vs Nagaland
+2021-01-13 - club - SMA - male - 1244342 - Sikkim vs Bihar
+2021-01-13 - club - SMA - male - 1244341 - Chandigarh vs Manipur
+2021-01-13 - club - SMA - male - 1244340 - Meghalaya vs Mizoram
+2021-01-13 - club - SMA - male - 1244338 - Puducherry vs Haryana
+2021-01-13 - club - SMA - male - 1244337 - Andhra vs Delhi
+2021-01-13 - club - SMA - male - 1244336 - Rajasthan vs Madhya Pradesh
+2021-01-13 - club - SMA - male - 1244335 - Services vs Goa
+2021-01-13 - club - SMA - male - 1244334 - Saurashtra vs Vidarbha
+2021-01-12 - club - SMA - male - 1244333 - Himachal vs Baroda
+2021-01-12 - club - SMA - male - 1244332 - Gujarat vs Uttarakhand
+2021-01-12 - club - SMA - male - 1244331 - Chhattisgarh vs Maharashtra
+2021-01-12 - club - SMA - male - 1244330 - Assam vs Tamil Nadu
+2021-01-12 - club - SMA - male - 1244327 - Uttar Pradesh vs Railways
+2021-01-12 - club - SMA - male - 1244326 - Tripura vs Jammu & Kashmir
+2021-01-12 - club - SMA - male - 1244325 - Karnataka vs Punjab
+2021-01-11 - club - SMA - male - 1244324 - Mizoram vs Sikkim
+2021-01-11 - club - SMA - male - 1244323 - Bihar vs Arunachal Pradesh
+2021-01-11 - club - SMA - male - 1244322 - Meghalaya vs Manipur
+2021-01-11 - club - SMA - male - 1244320 - Puducherry vs Kerala
+2021-01-11 - club - SMA - male - 1244319 - Delhi vs Mumbai
+2021-01-11 - club - SMA - male - 1244318 - Andhra vs Haryana
+2021-01-11 - club - SMA - male - 1244317 - Madhya Pradesh vs Goa
+2021-01-11 - club - SMA - male - 1244316 - Vidarbha vs Rajasthan
+2021-01-11 - club - SMA - male - 1244315 - Services vs Saurashtra
+2021-01-10 - club - SMA - male - 1244314 - Baroda vs Uttarakhand
+2021-01-10 - club - SMA - male - 1244313 - Himachal vs Chhattisgarh
+2021-01-10 - club - SMA - male - 1244312 - Gujarat vs Maharashtra
+2021-01-10 - club - SMA - male - 1244311 - Assam vs Hyderabad (India)
+2021-01-10 - club - SMA - male - 1244310 - Tamil Nadu vs Jharkhand
+2021-01-10 - club - SMA - male - 1244309 - Odisha vs Bengal
+2021-01-10 - club - SMA - male - 1244308 - Tripura vs Railways
+2021-01-10 - club - SMA - male - 1244307 - Punjab vs Uttar Pradesh
+2021-01-10 - club - SMA - male - 1244306 - Karnataka vs Jammu & Kashmir
+2019-12-01 - club - SMA - male - 1205862 - Karnataka vs Tamil Nadu
+2019-11-29 - club - SMA - male - 1205861 - Haryana vs Karnataka
+2019-11-27 - club - SMA - male - 1205859 - Mumbai vs Punjab
+2019-11-27 - club - SMA - male - 1205858 - Jharkhand vs Tamil Nadu
+2019-11-27 - club - SMA - male - 1205857 - Maharashtra vs Haryana
+2019-11-27 - club - SMA - male - 1205856 - Rajasthan vs Delhi
+2019-11-25 - club - SMA - male - 1205855 - Punjab vs Tamil Nadu
+2019-11-25 - club - SMA - male - 1205854 - Karnataka vs Mumbai
+2019-11-25 - club - SMA - male - 1205853 - Maharashtra vs Rajasthan
+2019-11-25 - club - SMA - male - 1205852 - Baroda vs Haryana
+2019-11-24 - club - SMA - male - 1205851 - Jharkhand vs Mumbai
+2019-11-24 - club - SMA - male - 1205850 - Punjab vs Karnataka
+2019-11-24 - club - SMA - male - 1205849 - Haryana vs Delhi
+2019-11-24 - club - SMA - male - 1205848 - Maharashtra vs Baroda
+2019-11-22 - club - SMA - male - 1205847 - Mumbai vs Tamil Nadu
+2019-11-22 - club - SMA - male - 1205846 - Karnataka vs Jharkhand
+2019-11-22 - club - SMA - male - 1205845 - Rajasthan vs Haryana
+2019-11-22 - club - SMA - male - 1205844 - Baroda vs Delhi
+2019-11-21 - club - SMA - male - 1205842 - Tamil Nadu vs Karnataka
+2019-11-21 - club - SMA - male - 1205841 - Delhi vs Maharashtra
+2019-11-18 - club - SMA - male - 1205835 - Himachal vs Railways
+2019-11-18 - club - SMA - male - 1205827 - Maharashtra vs Punjab
+2019-11-18 - club - SMA - male - 1205741 - Jammu & Kashmir vs Gujarat
+2019-11-18 - club - SMA - male - 1205729 - Assam vs Bengal
+2019-11-18 - club - SMA - male - 1205728 - Madhya Pradesh vs Puducherry
+2019-11-18 - club - SMA - male - 1205720 - Haryana vs Meghalaya
+2019-11-17 - club - SMA - male - 1205839 - Odisha vs Nagaland
+2019-11-17 - club - SMA - male - 1205837 - Madhya Pradesh vs Haryana
+2019-11-17 - club - SMA - male - 1205836 - Meghalaya vs Mizoram
+2019-11-17 - club - SMA - male - 1205833 - Tamil Nadu vs Vidarbha
+2019-11-17 - club - SMA - male - 1205832 - Andhra vs Services
+2019-11-17 - club - SMA - male - 1205831 - Saurashtra vs Jammu & Kashmir
+2019-11-17 - club - SMA - male - 1205830 - Sikkim vs Delhi
+2019-11-17 - club - SMA - male - 1205829 - Bengal vs Puducherry
+2019-11-17 - club - SMA - male - 1205828 - Mumbai vs Assam
+2019-11-17 - club - SMA - male - 1205826 - Arunachal Pradesh vs Chandigarh
+2019-11-17 - club - SMA - male - 1205825 - Tripura vs Rajasthan
+2019-11-17 - club - SMA - male - 1205824 - Kerala vs Uttar Pradesh
+2019-11-17 - club - SMA - male - 1205823 - Karnataka vs Goa
+2019-11-17 - club - SMA - male - 1205822 - Bihar vs Uttarakhand
+2019-11-15 - club - SMA - male - 1205821 - Sikkim vs Saurashtra
+2019-11-15 - club - SMA - male - 1205820 - Nagaland vs Jammu & Kashmir
+2019-11-15 - club - SMA - male - 1205819 - Assam vs Puducherry
+2019-11-15 - club - SMA - male - 1205818 - Mumbai vs Meghalaya
+2019-11-15 - club - SMA - male - 1205817 - Railways vs Chandigarh
+2019-11-15 - club - SMA - male - 1205816 - Himachal vs Maharashtra
+2019-11-15 - club - SMA - male - 1205815 - Tripura vs Tamil Nadu
+2019-11-15 - club - SMA - male - 1205814 - Bihar vs Karnataka
+2019-11-15 - club - SMA - male - 1205813 - Odisha vs Gujarat
+2019-11-15 - club - SMA - male - 1205812 - Delhi vs Jharkhand
+2019-11-15 - club - SMA - male - 1205811 - Madhya Pradesh vs Bengal
+2019-11-15 - club - SMA - male - 1205810 - Mizoram vs Haryana
+2019-11-15 - club - SMA - male - 1205809 - Punjab vs Chhattisgarh
+2019-11-15 - club - SMA - male - 1205808 - Arunachal Pradesh vs Hyderabad (India)
+2019-11-15 - club - SMA - male - 1205807 - Manipur vs Uttar Pradesh
+2019-11-15 - club - SMA - male - 1205806 - Kerala vs Rajasthan
+2019-11-15 - club - SMA - male - 1205805 - Baroda vs Services
+2019-11-15 - club - SMA - male - 1205804 - Goa vs Andhra
+2019-11-14 - club - SMA - male - 1205802 - Nagaland vs Jharkhand
+2019-11-14 - club - SMA - male - 1205801 - Madhya Pradesh vs Meghalaya
+2019-11-14 - club - SMA - male - 1205800 - Mizoram vs Assam
+2019-11-14 - club - SMA - male - 1205799 - Hyderabad (India) vs Maharashtra
+2019-11-14 - club - SMA - male - 1205798 - Arunachal Pradesh vs Himachal
+2019-11-14 - club - SMA - male - 1205797 - Manipur vs Tamil Nadu
+2019-11-14 - club - SMA - male - 1205796 - Bihar vs Baroda
+2019-11-14 - club - SMA - male - 1205795 - Sikkim vs Gujarat
+2019-11-14 - club - SMA - male - 1205793 - Puducherry vs Haryana
+2019-11-14 - club - SMA - male - 1205792 - Bengal vs Mumbai
+2019-11-14 - club - SMA - male - 1205791 - Railways vs Punjab
+2019-11-14 - club - SMA - male - 1205790 - Chhattisgarh vs Chandigarh
+2019-11-14 - club - SMA - male - 1205788 - Kerala vs Vidarbha
+2019-11-14 - club - SMA - male - 1205787 - Uttarakhand vs Andhra
+2019-11-14 - club - SMA - male - 1205786 - Services vs Goa
+2019-11-12 - club - SMA - male - 1205785 - Sikkim vs Jharkhand
+2019-11-12 - club - SMA - male - 1205784 - Jammu & Kashmir vs Odisha
+2019-11-12 - club - SMA - male - 1205783 - Mumbai vs Puducherry
+2019-11-12 - club - SMA - male - 1205782 - Bengal vs Haryana
+2019-11-12 - club - SMA - male - 1205781 - Chandigarh vs Hyderabad (India)
+2019-11-12 - club - SMA - male - 1205780 - Himachal vs Punjab
+2019-11-12 - club - SMA - male - 1205779 - Vidarbha vs Rajasthan
+2019-11-12 - club - SMA - male - 1205778 - Goa vs Uttarakhand
+2019-11-12 - club - SMA - male - 1205776 - Saurashtra vs Delhi
+2019-11-12 - club - SMA - male - 1205775 - Madhya Pradesh vs Mizoram
+2019-11-12 - club - SMA - male - 1205774 - Assam vs Meghalaya
+2019-11-12 - club - SMA - male - 1205773 - Chhattisgarh vs Maharashtra
+2019-11-12 - club - SMA - male - 1205772 - Arunachal Pradesh vs Railways
+2019-11-12 - club - SMA - male - 1205771 - Tripura vs Uttar Pradesh
+2019-11-12 - club - SMA - male - 1205770 - Kerala vs Manipur
+2019-11-12 - club - SMA - male - 1205769 - Karnataka vs Services
+2019-11-12 - club - SMA - male - 1205768 - Andhra vs Baroda
+2019-11-11 - club - SMA - male - 1205767 - Sikkim vs Odisha
+2019-11-11 - club - SMA - male - 1205765 - Assam vs Haryana
+2019-11-11 - club - SMA - male - 1205764 - Madhya Pradesh vs Mumbai
+2019-11-11 - club - SMA - male - 1205763 - Chandigarh vs Punjab
+2019-11-11 - club - SMA - male - 1205762 - Arunachal Pradesh vs Maharashtra
+2019-11-11 - club - SMA - male - 1205761 - Kerala vs Tripura
+2019-11-11 - club - SMA - male - 1205759 - Saurashtra vs Gujarat
+2019-11-11 - club - SMA - male - 1205758 - Nagaland vs Delhi
+2019-11-11 - club - SMA - male - 1205757 - Puducherry vs Mizoram
+2019-11-11 - club - SMA - male - 1205756 - Bengal vs Meghalaya
+2019-11-11 - club - SMA - male - 1205755 - Himachal vs Hyderabad (India)
+2019-11-11 - club - SMA - male - 1205754 - Chhattisgarh vs Railways
+2019-11-11 - club - SMA - male - 1205753 - Tamil Nadu vs Uttar Pradesh
+2019-11-11 - club - SMA - male - 1205752 - Vidarbha vs Manipur
+2019-11-11 - club - SMA - male - 1205751 - Services vs Bihar
+2019-11-11 - club - SMA - male - 1205750 - Baroda vs Uttarakhand
+2019-11-09 - club - SMA - male - 1205749 - Sikkim vs Nagaland
+2019-11-09 - club - SMA - male - 1205748 - Saurashtra vs Jharkhand
+2019-11-09 - club - SMA - male - 1205747 - Haryana vs Mumbai
+2019-11-09 - club - SMA - male - 1205746 - Mizoram vs Bengal
+2019-11-09 - club - SMA - male - 1205745 - Hyderabad (India) vs Railways
+2019-11-09 - club - SMA - male - 1205743 - Uttar Pradesh vs Vidarbha
+2019-11-09 - club - SMA - male - 1205742 - Uttarakhand vs Services
+2019-11-09 - club - SMA - male - 1205739 - Puducherry vs Meghalaya
+2019-11-09 - club - SMA - male - 1205737 - Himachal vs Chhattisgarh
+2019-11-09 - club - SMA - male - 1205736 - Arunachal Pradesh vs Punjab
+2019-11-09 - club - SMA - male - 1205735 - Tamil Nadu vs Rajasthan
+2019-11-09 - club - SMA - male - 1205734 - Manipur vs Tripura
+2019-11-09 - club - SMA - male - 1205733 - Goa vs Bihar
+2019-11-09 - club - SMA - male - 1205732 - Baroda vs Karnataka
+2019-11-08 - club - SMA - male - 1205731 - Nagaland vs Saurashtra
+2019-11-08 - club - SMA - male - 1205727 - Maharashtra vs Railways
+2019-11-08 - club - SMA - male - 1205725 - Rajasthan vs Manipur
+2019-11-08 - club - SMA - male - 1205724 - Baroda vs Goa
+2019-11-08 - club - SMA - male - 1205721 - Mizoram vs Mumbai
+2019-11-08 - club - SMA - male - 1205719 - Hyderabad (India) vs Punjab
+2019-11-08 - club - SMA - male - 1205718 - Arunachal Pradesh vs Chhattisgarh
+2019-11-08 - club - SMA - male - 1205717 - Tripura vs Vidarbha
+2019-11-08 - club - SMA - male - 1205716 - Tamil Nadu vs Kerala
+2019-11-08 - club - SMA - male - 1205715 - Bihar vs Andhra
+2019-11-08 - club - SMA - male - 1205714 - Uttarakhand vs Karnataka
+2019-03-14 - club - SMA - male - 1175045 - Maharashtra vs Karnataka
+2019-03-12 - club - SMA - male - 1175044 - Vidarbha vs Karnataka
+2019-03-12 - club - SMA - male - 1175043 - Gujarat vs Bengal
+2019-03-12 - club - SMA - male - 1175042 - Mumbai vs Uttar Pradesh
+2019-03-11 - club - SMA - male - 1175040 - Uttar Pradesh vs Delhi
+2019-03-11 - club - SMA - male - 1175038 - Vidarbha vs Mumbai
+2019-03-11 - club - SMA - male - 1175037 - Railways vs Gujarat
+2019-03-10 - club - SMA - male - 1175036 - Gujarat vs Maharashtra
+2019-03-10 - club - SMA - male - 1175035 - Jharkhand vs Bengal
+2019-03-10 - club - SMA - male - 1175034 - Vidarbha vs Uttar Pradesh
+2019-03-10 - club - SMA - male - 1175033 - Delhi vs Karnataka
+2019-03-09 - club - SMA - male - 1175032 - Karnataka vs Uttar Pradesh
+2019-03-09 - club - SMA - male - 1175031 - Railways vs Jharkhand
+2019-03-09 - club - SMA - male - 1175030 - Delhi vs Mumbai
+2019-03-09 - club - SMA - male - 1175029 - Bengal vs Maharashtra
+2019-03-08 - club - SMA - male - 1175028 - Mumbai vs Karnataka
+2019-03-08 - club - SMA - male - 1175027 - Railways vs Bengal
+2019-03-08 - club - SMA - male - 1175026 - Delhi vs Vidarbha
+2019-03-08 - club - SMA - male - 1175025 - Jharkhand vs Gujarat
+2019-03-02 - club - SMA - male - 1157209 - Services vs Puducherry
+2019-03-02 - club - SMA - male - 1157208 - Maharashtra vs Tripura
+2019-03-02 - club - SMA - male - 1157207 - Hyderabad (India) vs Uttarakhand
+2019-03-02 - club - SMA - male - 1157206 - Baroda vs Uttar Pradesh
+2019-03-02 - club - SMA - male - 1157205 - Odisha vs Bengal
+2019-03-02 - club - SMA - male - 1157204 - Karnataka vs Haryana
+2019-03-02 - club - SMA - male - 1157203 - Chhattisgarh vs Mizoram
+2019-03-02 - club - SMA - male - 1157202 - Arunachal Pradesh vs Assam
+2019-03-02 - club - SMA - male - 1157201 - Goa vs Saurashtra
+2019-03-02 - club - SMA - male - 1157200 - Railways vs Punjab
+2019-03-02 - club - SMA - male - 1157199 - Madhya Pradesh vs Sikkim
+2019-03-02 - club - SMA - male - 1157197 - Tamil Nadu vs Meghalaya
+2019-03-02 - club - SMA - male - 1157196 - Gujarat vs Vidarbha
+2019-03-02 - club - SMA - male - 1157195 - Andhra vs Manipur
+2019-03-02 - club - SMA - male - 1157194 - Kerala vs Jharkhand
+2019-03-02 - club - SMA - male - 1157193 - Nagaland vs Delhi
+2019-02-28 - club - SMA - male - 1157192 - Uttar Pradesh vs Uttarakhand
+2019-02-28 - club - SMA - male - 1157191 - Puducherry vs Tripura
+2019-02-28 - club - SMA - male - 1157190 - Hyderabad (India) vs Services
+2019-02-28 - club - SMA - male - 1157189 - Baroda vs Maharashtra
+2019-02-28 - club - SMA - male - 1157188 - Mizoram vs Arunachal Pradesh
+2019-02-28 - club - SMA - male - 1157187 - Karnataka vs Odisha
+2019-02-28 - club - SMA - male - 1157186 - Bengal vs Chhattisgarh
+2019-02-28 - club - SMA - male - 1157185 - Assam vs Haryana
+2019-02-28 - club - SMA - male - 1157183 - Sikkim vs Railways
+2019-02-28 - club - SMA - male - 1157182 - Punjab vs Goa
+2019-02-28 - club - SMA - male - 1157181 - Himachal vs Rajasthan
+2019-02-28 - club - SMA - male - 1157180 - Vidarbha vs Tamil Nadu
+2019-02-28 - club - SMA - male - 1157179 - Meghalaya vs Bihar
+2019-02-28 - club - SMA - male - 1157178 - Manipur vs Jammu & Kashmir
+2019-02-28 - club - SMA - male - 1157177 - Nagaland vs Kerala
+2019-02-28 - club - SMA - male - 1157176 - Andhra vs Jharkhand
+2019-02-27 - club - SMA - male - 1157175 - Uttar Pradesh vs Services
+2019-02-27 - club - SMA - male - 1157174 - Uttarakhand vs Maharashtra
+2019-02-27 - club - SMA - male - 1157172 - Puducherry vs Baroda
+2019-02-27 - club - SMA - male - 1157171 - Bengal vs Arunachal Pradesh
+2019-02-27 - club - SMA - male - 1157170 - Haryana vs Mizoram
+2019-02-27 - club - SMA - male - 1157169 - Chhattisgarh vs Karnataka
+2019-02-27 - club - SMA - male - 1157168 - Assam vs Odisha
+2019-02-27 - club - SMA - male - 1157167 - Railways vs Mumbai
+2019-02-27 - club - SMA - male - 1157166 - Sikkim vs Punjab
+2019-02-27 - club - SMA - male - 1157165 - Goa vs Madhya Pradesh
+2019-02-27 - club - SMA - male - 1157164 - Tamil Nadu vs Himachal
+2019-02-27 - club - SMA - male - 1157163 - Vidarbha vs Meghalaya
+2019-02-27 - club - SMA - male - 1157162 - Gujarat vs Bihar
+2019-02-27 - club - SMA - male - 1157161 - Kerala vs Jammu & Kashmir
+2019-02-27 - club - SMA - male - 1157160 - Jharkhand vs Nagaland
+2019-02-27 - club - SMA - male - 1157159 - Delhi vs Andhra
+2019-02-25 - club - SMA - male - 1157158 - Uttarakhand vs Tripura
+2019-02-25 - club - SMA - male - 1157157 - Uttar Pradesh vs Puducherry
+2019-02-25 - club - SMA - male - 1157156 - Hyderabad (India) vs Maharashtra
+2019-02-25 - club - SMA - male - 1157155 - Baroda vs Services
+2019-02-25 - club - SMA - male - 1157154 - Karnataka vs Mizoram
+2019-02-25 - club - SMA - male - 1157153 - Arunachal Pradesh vs Odisha
+2019-02-25 - club - SMA - male - 1157152 - Haryana vs Chhattisgarh
+2019-02-25 - club - SMA - male - 1157151 - Assam vs Bengal
+2019-02-25 - club - SMA - male - 1157150 - Sikkim vs Saurashtra
+2019-02-25 - club - SMA - male - 1157149 - Goa vs Mumbai
+2019-02-25 - club - SMA - male - 1157148 - Madhya Pradesh vs Railways
+2019-02-25 - club - SMA - male - 1157147 - Vidarbha vs Rajasthan
+2019-02-25 - club - SMA - male - 1157146 - Bihar vs Himachal
+2019-02-25 - club - SMA - male - 1157145 - Tamil Nadu vs Gujarat
+2019-02-25 - club - SMA - male - 1157144 - Nagaland vs Manipur
+2019-02-25 - club - SMA - male - 1157143 - Andhra vs Jammu & Kashmir
+2019-02-25 - club - SMA - male - 1157142 - Kerala vs Delhi
+2019-02-24 - club - SMA - male - 1157141 - Uttar Pradesh vs Tripura
+2019-02-24 - club - SMA - male - 1157140 - Uttarakhand vs Puducherry
+2019-02-24 - club - SMA - male - 1157139 - Maharashtra vs Services
+2019-02-24 - club - SMA - male - 1157138 - Hyderabad (India) vs Baroda
+2019-02-24 - club - SMA - male - 1157137 - Karnataka vs Arunachal Pradesh
+2019-02-24 - club - SMA - male - 1157136 - Mizoram vs Odisha
+2019-02-24 - club - SMA - male - 1157135 - Haryana vs Bengal
+2019-02-24 - club - SMA - male - 1157134 - Chhattisgarh vs Assam
+2019-02-24 - club - SMA - male - 1157133 - Goa vs Railways
+2019-02-24 - club - SMA - male - 1157132 - Punjab vs Saurashtra
+2019-02-24 - club - SMA - male - 1157131 - Madhya Pradesh vs Mumbai
+2019-02-24 - club - SMA - male - 1157130 - Bihar vs Tamil Nadu
+2019-02-24 - club - SMA - male - 1157129 - Rajasthan vs Meghalaya
+2019-02-24 - club - SMA - male - 1157128 - Gujarat vs Himachal
+2019-02-24 - club - SMA - male - 1157127 - Kerala vs Andhra
+2019-02-24 - club - SMA - male - 1157126 - Jharkhand vs Manipur
+2019-02-24 - club - SMA - male - 1157125 - Jammu & Kashmir vs Delhi
+2019-02-22 - club - SMA - male - 1157124 - Tripura vs Services
+2019-02-22 - club - SMA - male - 1157123 - Puducherry vs Maharashtra
+2019-02-22 - club - SMA - male - 1157122 - Hyderabad (India) vs Uttar Pradesh
+2019-02-22 - club - SMA - male - 1157121 - Baroda vs Uttarakhand
+2019-02-22 - club - SMA - male - 1157120 - Bengal vs Karnataka
+2019-02-22 - club - SMA - male - 1157119 - Haryana vs Odisha
+2019-02-22 - club - SMA - male - 1157117 - Assam vs Mizoram
+2019-02-22 - club - SMA - male - 1157116 - Sikkim vs Goa
+2019-02-22 - club - SMA - male - 1157115 - Mumbai vs Punjab
+2019-02-22 - club - SMA - male - 1157114 - Madhya Pradesh vs Saurashtra
+2019-02-22 - club - SMA - male - 1157113 - Bihar vs Vidarbha
+2019-02-22 - club - SMA - male - 1157112 - Himachal vs Meghalaya
+2019-02-22 - club - SMA - male - 1157110 - Andhra vs Nagaland
+2019-02-22 - club - SMA - male - 1157109 - Jammu & Kashmir vs Jharkhand
+2019-02-22 - club - SMA - male - 1157108 - Manipur vs Delhi
+2019-02-21 - club - SMA - male - 1157107 - Services vs Uttarakhand
+2019-02-21 - club - SMA - male - 1157106 - Maharashtra vs Uttar Pradesh
+2019-02-21 - club - SMA - male - 1157105 - Puducherry vs Hyderabad (India)
+2019-02-21 - club - SMA - male - 1157104 - Tripura vs Baroda
+2019-02-21 - club - SMA - male - 1157103 - Bengal vs Mizoram
+2019-02-21 - club - SMA - male - 1157102 - Arunachal Pradesh vs Haryana
+2019-02-21 - club - SMA - male - 1157101 - Odisha vs Chhattisgarh
+2019-02-21 - club - SMA - male - 1157099 - Mumbai vs Sikkim
+2019-02-21 - club - SMA - male - 1157098 - Saurashtra vs Railways
+2019-02-21 - club - SMA - male - 1157095 - Rajasthan vs Tamil Nadu
+2019-02-21 - club - SMA - male - 1157094 - Gujarat vs Meghalaya
+2019-02-21 - club - SMA - male - 1157093 - Nagaland vs Jammu & Kashmir
+2019-02-21 - club - SMA - male - 1157092 - Kerala vs Manipur
+2019-02-21 - club - SMA - male - 1157091 - Jharkhand vs Delhi
+2018-01-25 - club - SMA - male - 1133420 - Tamil Nadu vs Baroda
+2018-01-25 - club - SMA - male - 1133419 - Delhi vs Uttar Pradesh
+2018-01-25 - club - SMA - male - 1133418 - Mumbai vs Karnataka
+2018-01-25 - club - SMA - male - 1133417 - Punjab vs Rajasthan
+2018-01-24 - club - SMA - male - 1133416 - Tamil Nadu vs Bengal
+2018-01-24 - club - SMA - male - 1133415 - Baroda vs Uttar Pradesh
+2018-01-24 - club - SMA - male - 1133414 - Karnataka vs Jharkhand
+2018-01-24 - club - SMA - male - 1133413 - Rajasthan vs Mumbai
+2018-01-23 - club - SMA - male - 1133411 - Uttar Pradesh vs Tamil Nadu
+2018-01-23 - club - SMA - male - 1133409 - Rajasthan vs Karnataka
+2018-01-22 - club - SMA - male - 1133407 - Uttar Pradesh vs Bengal
+2018-01-22 - club - SMA - male - 1133406 - Mumbai vs Punjab
+2018-01-22 - club - SMA - male - 1133405 - Jharkhand vs Rajasthan
+2018-01-21 - club - SMA - male - 1133404 - Baroda vs Bengal
+2018-01-21 - club - SMA - male - 1133403 - Tamil Nadu vs Delhi
+2018-01-21 - club - SMA - male - 1133402 - Mumbai vs Jharkhand
+2018-01-21 - club - SMA - male - 1133401 - Karnataka vs Punjab
+2018-01-16 - club - SMA - male - 1130724 - Chhattisgarh vs Uttar Pradesh
+2018-01-16 - club - SMA - male - 1130722 - Delhi vs Services
+2018-01-16 - club - SMA - male - 1130697 - Assam vs Bengal
+2018-01-16 - club - SMA - male - 1130684 - Odisha vs Jharkhand
+2018-01-15 - club - SMA - male - 1130720 - Punjab vs Himachal
+2018-01-15 - club - SMA - male - 1130719 - Uttar Pradesh vs Vidarbha
+2018-01-15 - club - SMA - male - 1130718 - Services vs Haryana
+2018-01-15 - club - SMA - male - 1130717 - Madhya Pradesh vs Railways
+2018-01-14 - club - SMA - male - 1130725 - Assam vs Jharkhand
+2018-01-14 - club - SMA - male - 1130716 - Karnataka vs Kerala
+2018-01-14 - club - SMA - male - 1130715 - Andhra vs Goa
+2018-01-14 - club - SMA - male - 1130713 - Jammu & Kashmir vs Punjab
+2018-01-14 - club - SMA - male - 1130712 - Tamil Nadu vs Hyderabad (India)
+2018-01-14 - club - SMA - male - 1130710 - Himachal vs Delhi
+2018-01-14 - club - SMA - male - 1130709 - Chhattisgarh vs Madhya Pradesh
+2018-01-14 - club - SMA - male - 1130688 - Tripura vs Bengal
+2018-01-13 - club - SMA - male - 1130708 - Maharashtra vs Baroda
+2018-01-13 - club - SMA - male - 1130706 - Vidarbha vs Rajasthan
+2018-01-13 - club - SMA - male - 1130705 - Saurashtra vs Gujarat
+2018-01-13 - club - SMA - male - 1130704 - Himachal vs Services
+2018-01-13 - club - SMA - male - 1130703 - Railways vs Uttar Pradesh
+2018-01-12 - club - SMA - male - 1130723 - Odisha vs Tripura
+2018-01-12 - club - SMA - male - 1130711 - Jharkhand vs Bengal
+2018-01-12 - club - SMA - male - 1130702 - Karnataka vs Tamil Nadu
+2018-01-12 - club - SMA - male - 1130701 - Hyderabad (India) vs Andhra
+2018-01-12 - club - SMA - male - 1130699 - Punjab vs Haryana
+2018-01-12 - club - SMA - male - 1130698 - Chhattisgarh vs Rajasthan
+2018-01-12 - club - SMA - male - 1130696 - Goa vs Kerala
+2018-01-12 - club - SMA - male - 1130695 - Jammu & Kashmir vs Delhi
+2018-01-12 - club - SMA - male - 1130694 - Vidarbha vs Madhya Pradesh
+2018-01-11 - club - SMA - male - 1130693 - Saurashtra vs Baroda
+2018-01-11 - club - SMA - male - 1130692 - Tamil Nadu vs Goa
+2018-01-11 - club - SMA - male - 1130691 - Kerala vs Andhra
+2018-01-11 - club - SMA - male - 1130690 - Maharashtra vs Mumbai
+2018-01-11 - club - SMA - male - 1130689 - Karnataka vs Hyderabad (India)
+2018-01-10 - club - SMA - male - 1130714 - Odisha vs Assam
+2018-01-10 - club - SMA - male - 1130700 - Jharkhand vs Tripura
+2018-01-10 - club - SMA - male - 1130687 - Mumbai vs Saurashtra
+2018-01-10 - club - SMA - male - 1130686 - Services vs Punjab
+2018-01-10 - club - SMA - male - 1130685 - Chhattisgarh vs Railways
+2018-01-10 - club - SMA - male - 1130683 - Baroda vs Gujarat
+2018-01-10 - club - SMA - male - 1130681 - Uttar Pradesh vs Madhya Pradesh
+2018-01-09 - club - SMA - male - 1130680 - Karnataka vs Andhra
+2018-01-09 - club - SMA - male - 1130679 - Hyderabad (India) vs Goa
+2018-01-09 - club - SMA - male - 1130678 - Himachal vs Jammu & Kashmir
+2018-01-09 - club - SMA - male - 1130677 - Vidarbha vs Railways
+2018-01-09 - club - SMA - male - 1130676 - Tamil Nadu vs Kerala
+2018-01-09 - club - SMA - male - 1130675 - Punjab vs Delhi
+2018-01-09 - club - SMA - male - 1130674 - Uttar Pradesh vs Rajasthan
+2018-01-08 - club - SMA - male - 1130673 - Gujarat vs Mumbai
+2018-01-08 - club - SMA - male - 1130672 - Odisha vs Bengal
+2018-01-08 - club - SMA - male - 1130671 - Andhra vs Tamil Nadu
+2018-01-08 - club - SMA - male - 1130670 - Hyderabad (India) vs Kerala
+2018-01-08 - club - SMA - male - 1130669 - Jammu & Kashmir vs Services
+2018-01-08 - club - SMA - male - 1130668 - Vidarbha vs Chhattisgarh
+2018-01-08 - club - SMA - male - 1130667 - Saurashtra vs Maharashtra
+2018-01-08 - club - SMA - male - 1130666 - Tripura vs Assam
+2018-01-08 - club - SMA - male - 1130665 - Karnataka vs Goa
+2018-01-08 - club - SMA - male - 1130664 - Himachal vs Haryana
+2018-01-08 - club - SMA - male - 1130663 - Rajasthan vs Madhya Pradesh
+2018-01-07 - club - SMA - male - 1130662 - Gujarat vs Maharashtra
+2018-01-07 - club - SMA - male - 1130661 - Baroda vs Mumbai
+2016-01-20 - club - SMA - male - 955069 - Uttar Pradesh vs Baroda
+2016-01-18 - club - SMA - male - 955067 - Delhi vs Uttar Pradesh
+2016-01-18 - club - SMA - male - 955065 - Mumbai vs Baroda
+2016-01-18 - club - SMA - male - 955063 - Jharkhand vs Gujarat
+2016-01-18 - club - SMA - male - 955061 - Vidarbha vs Kerala
+2016-01-16 - club - SMA - male - 955059 - Gujarat vs Uttar Pradesh
+2016-01-16 - club - SMA - male - 955057 - Vidarbha vs Mumbai
+2016-01-16 - club - SMA - male - 955055 - Jharkhand vs Delhi
+2016-01-16 - club - SMA - male - 955053 - Baroda vs Kerala
+2016-01-15 - club - SMA - male - 955049 - Kerala vs Mumbai
+2016-01-15 - club - SMA - male - 955047 - Delhi vs Gujarat
+2016-01-15 - club - SMA - male - 955045 - Vidarbha vs Baroda
+2016-01-10 - club - SMA - male - 902241 - Baroda vs Delhi
+2016-01-10 - club - SMA - male - 902239 - Andhra vs Goa
+2016-01-10 - club - SMA - male - 902237 - Assam vs Madhya Pradesh
+2016-01-10 - club - SMA - male - 902235 - Kerala vs Jharkhand
+2016-01-10 - club - SMA - male - 902233 - Rajasthan vs Jammu & Kashmir
+2016-01-10 - club - SMA - male - 902231 - Saurashtra vs Punjab
+2016-01-10 - club - SMA - male - 902229 - Hyderabad (India) vs Tamil Nadu
+2016-01-10 - club - SMA - male - 902225 - Haryana vs Gujarat
+2016-01-09 - club - SMA - male - 902223 - Andhra vs Baroda
+2016-01-09 - club - SMA - male - 902221 - Railways vs Assam
+2016-01-09 - club - SMA - male - 902219 - Delhi vs Goa
+2016-01-09 - club - SMA - male - 902217 - Rajasthan vs Tripura
+2016-01-09 - club - SMA - male - 902215 - Saurashtra vs Jharkhand
+2016-01-09 - club - SMA - male - 902213 - Punjab vs Kerala
+2016-01-09 - club - SMA - male - 902209 - Haryana vs Bengal
+2016-01-09 - club - SMA - male - 902207 - Hyderabad (India) vs Vidarbha
+2016-01-08 - club - SMA - male - 902181 - Maharashtra vs Mumbai
+2016-01-08 - club - SMA - male - 902179 - Uttar Pradesh vs Services
+2016-01-08 - club - SMA - male - 902177 - Odisha vs Karnataka
+2016-01-07 - club - SMA - male - 902205 - Maharashtra vs Karnataka
+2016-01-07 - club - SMA - male - 902203 - Mumbai vs Uttar Pradesh
+2016-01-07 - club - SMA - male - 902201 - Odisha vs Services
+2016-01-07 - club - SMA - male - 902199 - Andhra vs Assam
+2016-01-07 - club - SMA - male - 902197 - Baroda vs Madhya Pradesh
+2016-01-07 - club - SMA - male - 902195 - Railways vs Goa
+2016-01-07 - club - SMA - male - 902193 - Saurashtra vs Rajasthan
+2016-01-07 - club - SMA - male - 902191 - Tripura vs Punjab
+2016-01-07 - club - SMA - male - 902189 - Jharkhand vs Jammu & Kashmir
+2016-01-07 - club - SMA - male - 902185 - Gujarat vs Tamil Nadu
+2016-01-07 - club - SMA - male - 902183 - Bengal vs Vidarbha
+2016-01-06 - club - SMA - male - 902175 - Baroda vs Goa
+2016-01-06 - club - SMA - male - 902173 - Railways vs Madhya Pradesh
+2016-01-06 - club - SMA - male - 902171 - Assam vs Delhi
+2016-01-06 - club - SMA - male - 902169 - Jammu & Kashmir vs Tripura
+2016-01-06 - club - SMA - male - 902167 - Jharkhand vs Punjab
+2016-01-06 - club - SMA - male - 902165 - Kerala vs Saurashtra
+2016-01-06 - club - SMA - male - 902161 - Bengal vs Gujarat
+2016-01-04 - club - SMA - male - 902157 - Odisha vs Maharashtra
+2016-01-04 - club - SMA - male - 902155 - Services vs Mumbai
+2016-01-04 - club - SMA - male - 902153 - Karnataka vs Uttar Pradesh
+2016-01-04 - club - SMA - male - 902151 - Railways vs Andhra
+2016-01-04 - club - SMA - male - 902149 - Madhya Pradesh vs Delhi
+2016-01-04 - club - SMA - male - 902147 - Goa vs Assam
+2016-01-04 - club - SMA - male - 902143 - Tripura vs Kerala
+2016-01-04 - club - SMA - male - 902141 - Saurashtra vs Jammu & Kashmir
+2016-01-04 - club - SMA - male - 902139 - Bengal vs Himachal
+2016-01-04 - club - SMA - male - 902137 - Hyderabad (India) vs Gujarat
+2016-01-04 - club - SMA - male - 902135 - Haryana vs Vidarbha
+2016-01-03 - club - SMA - male - 902133 - Maharashtra vs Services
+2016-01-03 - club - SMA - male - 902131 - Karnataka vs Mumbai
+2016-01-03 - club - SMA - male - 902129 - Uttar Pradesh vs Odisha
+2016-01-03 - club - SMA - male - 902127 - Baroda vs Railways
+2016-01-03 - club - SMA - male - 902125 - Delhi vs Andhra
+2016-01-03 - club - SMA - male - 902123 - Goa vs Madhya Pradesh
+2016-01-03 - club - SMA - male - 902121 - Tripura vs Jharkhand
+2016-01-03 - club - SMA - male - 902119 - Kerala vs Rajasthan
+2016-01-03 - club - SMA - male - 902117 - Jammu & Kashmir vs Punjab
+2016-01-03 - club - SMA - male - 902115 - Tamil Nadu vs Bengal
+2016-01-03 - club - SMA - male - 902113 - Hyderabad (India) vs Himachal
+2016-01-03 - club - SMA - male - 902111 - Gujarat vs Vidarbha
+2016-01-02 - club - SMA - male - 902109 - Maharashtra vs Uttar Pradesh
+2016-01-02 - club - SMA - male - 902107 - Karnataka vs Services
+2016-01-02 - club - SMA - male - 902105 - Odisha vs Mumbai
+2016-01-02 - club - SMA - male - 902101 - Railways vs Delhi
+2016-01-02 - club - SMA - male - 902099 - Andhra vs Madhya Pradesh
+2016-01-02 - club - SMA - male - 902097 - Saurashtra vs Tripura
+2016-01-02 - club - SMA - male - 902095 - Jammu & Kashmir vs Kerala
+2016-01-02 - club - SMA - male - 902093 - Punjab vs Rajasthan
+2016-01-02 - club - SMA - male - 902091 - Haryana vs Tamil Nadu
+2016-01-02 - club - SMA - male - 902089 - Bengal vs Hyderabad (India)
+2016-01-02 - club - SMA - male - 902087 - Gujarat vs Himachal

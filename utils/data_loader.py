@@ -23,9 +23,24 @@ def get_match_info(file_path: str):
     
     # Get year from season or date
     try:
-        year = int(info.get("season", match_date[:4]))
+        season = info.get("season", "")
+        if season:
+            # Handle different season formats
+            if "/" in season:
+                # Format like "2022/23" - extract the first year
+                year = int(season.split("/")[0])
+            else:
+                # Format like "2022" - direct conversion
+                year = int(season)
+        else:
+            # Fall back to extracting year from date
+            year = int(match_date[:4]) if match_date else 0
     except (ValueError, TypeError):
-        year = 0
+        # If all else fails, try to extract from date
+        try:
+            year = int(match_date[:4]) if match_date else 0
+        except (ValueError, TypeError):
+            year = 0
         
     event = info.get("event", {})
     tournament = event.get("name", "")
